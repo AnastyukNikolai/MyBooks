@@ -1,0 +1,229 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 10vh;
+    padding-top: 3.5rem;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10vh; /*высота футера будет зависеть от высоты экрана*/
+}
+/* чтобы весь футер заливался */
+footer .row{
+    background-color: #193441;
+}
+
+
+div.renewal-bottom {
+    width: 100%;
+}
+
+
+
+
+/*-------------------Menu---------------*/
+
+div.log-reg {
+    display:inline-block;
+}
+
+
+
+
+/*-------------------MainPage---------------*/
+
+div.book-block {
+    margin-bottom: 25px;
+}
+
+div.vote-default {
+    width: 40%;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+div.watch {
+    display: inline-block;
+    width: 55%;
+
+}
+
+
+img.ico-voice {
+    width: 20%;
+    height: 20%;
+    margin-left: 5px;
+    margin-right: 5px;
+    display:inline-block;
+    vertical-align:center;
+}
+
+
+img.ico-main {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  display:inline-block;
+  vertical-align:bottom;
+}
+
+img.book-img-main {
+    width: 100%;
+    height: 85%;
+    display:inline-block;
+    vertical-align:bottom;
+}
+
+
+
+/*-------------------BookPage---------------*/
+
+/*---------------------------*/
+
+img.book-img {
+    width: 100%;
+    height: 100%;
+}
+
+div.book_read {
+    padding: 4px;
+}
+
+img.book-info-icn {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+/*---------------------------*/
+
+div.book__cont {
+    font-size: 17px;
+}
+
+div.book__info {
+    margin: 10px;
+
+}
+
+div.book__block-name {
+    display:inline-block;
+}
+
+div.book__block-time {
+    display:inline-block;
+    vertical-align:bottom;
+}
+
+div.book__block-genre {
+    display:inline-block;
+    vertical-align:bottom;
+}
+
+div.vote-book {
+    display:inline-block;
+    vertical-align:bottom;
+}
+/*---------------------------*/
+
+div.book__description {
+    margin-top: 25px;
+    padding: 15px;
+    border-style: dashed;
+    border-color: #218838;
+    border-width: 2px;
+    border-radius: 20px;
+}
+
+div.book__description-heading {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+/*---------------------------*/
+
+div.book_content {
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+div.book_content-title {
+    padding: 20px;
+    font-size: 20px;
+    background-color: #31373e;
+    color: snow;
+}
+
+a.book_chapter-title {
+    color: #218838;
+    width: 33%;
+}
+
+a.book_chapter-title:hover {
+    color: snow;
+    text-decoration: none;
+}
+
+a.btn-link {
+    font-size: 20px;
+    width: fit-content;
+}
+
+div.book_content-table {
+    margin-bottom: 25px;
+}
+
+div.book_item:hover {
+    background-color: #31373e;
+    border-radius: 10px;
+    transition: 0.3s;
+    color: snow;
+}
+
+div.book_item-btn {
+    padding: 4px;
+
+}
+
+div.book_content-item {
+    margin-top: 25px;
+}
+
+div.book_item-text {
+    margin: 10px;
+}
+
+div.book__item-wrapper {
+    display:inline-block;
+    vertical-align:bottom;
+    width: 60%;
+}
+
+div.book__block-time {
+    display:inline-block;
+    vertical-align:bottom;
+    width: 15%;
+}
+
+div.book_item-btn {
+    display:inline-block;
+    vertical-align:bottom;
+    width: 15%;
+    margin-left: 8%;
+}
+
+#disqus_thread {
+
+}
+
+
+/*---------------------------*/
+
+
+
+
