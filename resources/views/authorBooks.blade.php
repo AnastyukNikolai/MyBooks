@@ -12,6 +12,11 @@
           <div class="col-md-12">
             <div class="title default">
               <h2>Мои произвидения</h2>
+              <div class="book_add-btn">
+                <a class="btn btn-success" href="{{ route('addArtwork') }}">
+                  <span class="read-bloc">Добавить произвидение</span>
+                </a>
+              </div>
             </div>
             <hr>
           </div>
@@ -40,11 +45,7 @@
              </div>
             @endforeach
         </div>
-        <div class="book_add-btn">
-          <a class="btn btn-success btn-block " href="{{ route('addArtwork') }}">
-            <span class="read-bloc">Добавить произвидение</span>
-          </a>
-        </div>
+
         <hr>
       </div> <!-- /container -->
     </main>

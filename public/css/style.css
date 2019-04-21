@@ -225,5 +225,8 @@ div.book_item-btn {
 /*---------------------------*/
 
 
-
+div.book_add-btn {
+    display:inline-block;
+    vertical-align:bottom;
+}
 

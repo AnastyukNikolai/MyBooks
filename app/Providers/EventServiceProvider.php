@@ -21,6 +21,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\onAddArtworkEvent' => [
             'App\Listeners\AddArtworkListener',
         ],
+        'App\Events\onAddArtwor2kEvent' => [
+            'App\Listeners\AddArtwor2kListener',
+        ],
+        'App\Events\onAddArtwor3kEvent' => [
+            'App\Listeners\AddArtwor3kListener',
+        ],
     ];
 
     /**

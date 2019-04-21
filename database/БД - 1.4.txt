@@ -78,16 +78,16 @@ Name VARCHAR(100) NOT NULL
 
 CREATE TABLE Work_genres (
 Id Serial PRIMARY KEY ,
-Artwork_id int NOT NULL REFERENCES Artworks (Id),
-ransfer_id int NOT NULL REFERENCES Transfers (Id),
-Ganre_id int NOT NULL REFERENCES Genres (Id)
+Artwork_id int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id),
+Gånre_id int NOT NULL REFERENCES Genres (Id)
 );
 
 
 CREATE TABLE Work_tags (
 Id Serial PRIMARY KEY ,
-Artwork_id int NOT NULL REFERENCES Artworks (Id),
-Transfer_id int NOT NULL REFERENCES Transfers (Id),
+Artwork_id int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id),
 Tag_id int NOT NULL REFERENCES Tags (Id)
 );
 

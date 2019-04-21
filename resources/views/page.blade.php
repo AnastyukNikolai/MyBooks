@@ -36,7 +36,10 @@
                     <img class="ico-voice" src="/icn/view.png" ><span>{{ $artwork->views }}</span>
                   </div>
                 </div>
-                <h4 style="color: #008080"><a  href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a></h4>
+                <h4 style="color: #008080"><a  href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a>
+                  @if($artwork->chapters->max('number')!=null)
+                    - {{$artwork->chapters->where('number', $artwork->chapters->max('number'))->first()->title}}
+                  @endif</h4>
              </div>
             @endforeach
         </div>

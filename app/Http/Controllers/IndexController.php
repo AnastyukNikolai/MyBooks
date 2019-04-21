@@ -15,7 +15,8 @@ class IndexController extends Controller
 {
     public function indexShow() {
 
-       $artworks=Artwork::all();
+       $artworks_no_sort=Artwork::all();
+       $artworks=$artworks_no_sort->sortBy('created_at');
 
         return view('page')->with(['artworks' => $artworks]);
 
@@ -47,7 +48,7 @@ class IndexController extends Controller
         $previous_chapter=Chapter::where('artwork_id',$artwork_id)->where('number',$chapter->number-1)->first();
         $text_link=$chapter->text_link;
         $link= $text_link.'.txt';
-        $content = Storage::get($link);
+        $content = \Storage::disk('public')->get($link);
         $content = iconv('CP1251', 'UTF-8', $content);
         $content = preg_replace( "#\r?\n#", "<br />", $content );
         return view('chapterPage')->with(['chapter' => $chapter,

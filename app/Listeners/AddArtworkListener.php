@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Artwork;
 use App\Events\onAddArtworkEvent;
+use App\Events\onAddArtwor2kEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -27,7 +28,7 @@ class AddArtworkListener
      */
     public function handle(onAddArtworkEvent $event)
     {
-        Artwork::create([
+       $artwork = Artwork::create([
             'title' => $event->artwork->title,
             'language_id' => $event->artwork->language,
             'description' => $event->artwork->description,
@@ -35,5 +36,7 @@ class AddArtworkListener
             'user_id' => $event->artwork->user_id,
             'status' => $event->artwork->status,
         ]);
+
+        event(new onAddArtwor2kEvent($event,$artwork));
     }
 }

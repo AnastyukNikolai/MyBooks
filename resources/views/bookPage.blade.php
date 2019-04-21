@@ -38,7 +38,7 @@
                             <hr color="green">
                         <div class="book__block-item">
                             <div class="book__block-name">Жанр:</div>
-                            <div class="book__block-genre"><a>Драма</a></div>
+                            <div class="book__block-genre">@foreach($artwork->genres as $genre) {{ $genre->name }}, @endforeach</div>
                         </div>
                             <hr color="green">
                         <div class="book__block-item country-block">
@@ -74,8 +74,7 @@
                                 <strong>Описание:</strong>
                             </div>
                             <div>
-                                <p>Эта история берет начало меж восьмой и девятой горой. Она о несостоявшемся юном ученом по имени Мэн Хао, которого заставили вступить в Секту Бессмертных Практиков. Это мир культивации, где сильный поедает слабого, где господствует закон джунглей. Мэн Хао должен приспособиться к новому миру или погибнуть. Однако он не забыл идеи Даосизма и Конфуцианства, на которых был воспитан. Это вкупе с твердым характером открывает для него путь истинного героя. </p>
-                                <p>Что же значит «Запечатать Небеса?» Ответ на это вы можете получить только вместе с Мэн Хао!<br></p>
+                                <p>{{ $artwork->description }}<br></p>
                             </div>
                         </div>
                         <div class="book__description default">
@@ -84,13 +83,11 @@
                                 <strong>Важная информация:</strong>
                             </div>
                             <div>
-                                <p>Статус произведения:&nbsp;Завершено</p>
+                                <p>Статус произведения:&nbsp;{{ $artwork->status }}</p>
                                 <p></p>
-                                @if($artwork->transfer==true)
-                                <p>Статус перевода:&nbsp;Активен</p>
-                                <p></p>
+                                @if($artwork->chapters!=null)
+                                <p>Количество глав: {{ $artwork->chapters->count() }}</p>
                                 @endif
-                                <p>Количество глав: 1614+3+1</p>
                             </div>
                         </div>
                     </div>

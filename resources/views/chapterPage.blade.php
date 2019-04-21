@@ -11,6 +11,7 @@
 
                 <div class="col-lg-9">
 
+
                     <article class="part-block">
                         <div class="preloaderFilter none">
                             <div class="preloaderWrapper">
@@ -22,7 +23,11 @@
                             <h4 style="color: #495057">{{$chapter->title}}</h4>
                         </div>
                         <div>
+                            @if($content)
                             <p>{!!$content!!}</p>
+                                @else
+                                <p>Данная глава временно недоступна</p>
+                            @endif
                        </div>
                     </article>
                     <div class="col-md-12 text-center">
