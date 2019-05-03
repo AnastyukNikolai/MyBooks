@@ -159,6 +159,11 @@ div.book_content-title {
     color: snow;
 }
 
+div.book_content-title a {
+    display:inline-block;
+    vertical-align:bottom;
+}
+
 a.book_chapter-title {
     color: #218838;
     width: 33%;

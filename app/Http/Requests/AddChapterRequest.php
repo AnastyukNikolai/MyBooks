@@ -13,7 +13,7 @@ class AddChapterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class AddChapterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'description' => 'required',
+            'text' => 'required|mimes:txt,pdf,doc,docx|max:10000',
+            'price' => 'integer|not_in:0'
         ];
     }
 }

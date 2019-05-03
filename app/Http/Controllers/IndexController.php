@@ -34,7 +34,7 @@ class IndexController extends Controller
         return view('bookPage')->with(['artwork' => $artwork,
                                              'language' => $language,
                                              'first_chapter' => $first_chapter,
-                                             'chapters' => $chapters
+                                             'chapters' => $chapters,
                                              ]);
 
 
@@ -47,9 +47,13 @@ class IndexController extends Controller
         $next_chapter=Chapter::where('artwork_id',$artwork_id)->where('number',$chapter->number+1)->first();
         $previous_chapter=Chapter::where('artwork_id',$artwork_id)->where('number',$chapter->number-1)->first();
         $text_link=$chapter->text_link;
-        $link= $text_link.'.txt';
+        $link= $text_link;
         $content = \Storage::disk('public')->get($link);
-        $content = iconv('CP1251', 'UTF-8', $content);
+        dump( mb_detect_encoding($content));
+       // if(mb_detect_encoding($content)!='UTF-8') {
+         //   $content = iconv('CP1251', 'UTF-8', $content);
+       // }
+      // $content= mb_convert_encoding($content, "UTF-8", "JIS, eucjp-win, sjis-win, ASCII, JIS, UTF-8, EUC-JP, SJIS, CP1251, windows-1251");
         $content = preg_replace( "#\r?\n#", "<br />", $content );
         return view('chapterPage')->with(['chapter' => $chapter,
                                                 'content' => $content,

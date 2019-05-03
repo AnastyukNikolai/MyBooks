@@ -10,11 +10,12 @@
 
                 <div class="col-md-12">
                     <div class="title default">
-                        <h3>Добавить произвидение</h3>
+                        <h3>Добавление главы</h3>
                     </div>
                     <hr>
                 </div>
                 <div class="col-lg-9">
+
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -24,49 +25,45 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('storeArtwork') }}" enctype="multipart/form-data">
+
+                        @if(Session::has('message'))
+                            <div class="alert alert-success">
+                                <ul>
+                                    <li>{{Session::get('message')}}</li>
+                                </ul>
+                            </div>
+                        @endif
+
+                    <form method="POST" action="{{ route('storeArtworkChapter') }}" enctype="multipart/form-data" accept-charset="UTF-8">
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Название</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" aria-describedby="emailHelp" placeholder="Введите название произведения">
+                            <label for="exampleInputTitle">Название</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" aria-describedby="emailHelp" placeholder="Введите название главы">
                         </div>
                         <div class="form-group">
-                            <label class="mr-sm-2" for="inlineFormCustomSelect">Язык</label>
-                            <select name="language" value="{{ old('language') }}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                @foreach($languages as $language)
-                                <option value="{{$language->id}}">{{$language->title}}</option>
-                                @endforeach
-                            </select>
+                            <label for="InputDescription">Цена главы</label>
+                            <input  type="text" name="price" class="form-control" placeholder="Укажите цену главы">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect2">Жанры (для выбора нескольких жанров держите ctrl)</label>
-                            <select multiple="multiple" class="form-control" id="exampleFormControlSelect2" name="genres[ ]">
-                                @foreach($genres as $genre)
-                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="InputDescription">Описание главы</label>
+                            <textarea name="description" value="{{ old('description') }}" class="form-control" placeholder="Описание главы"></textarea>
                         </div>
                         <div class="form-group">
-                            <label class="mr-sm-2" for="inlineFormCustomSelect">Статус произведения</label>
-                            <select name="status" value="{{ old('language') }}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                <option value="В процессе">В процессе</option>
-                                <option value="Завершено">Завершено</option>
-                                <option value="Заморожено">Заморожено</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="InputImage">Изображение</label>
-                            <input type="file" name="image" class="form-control-file" placeholder="Выберите изображение">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputDescription">Описание</label>
-                            <textarea name="description" value="{{ old('description') }}" class="form-control" placeholder="Введите описание произведения"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" name="user_id" value={{ $user->id }}>
+                            <label for="InputImage">Текст главы</label>
+                            <input type="file" name="text" class="form-control-file" placeholder="Выберите файл">
                         </div>
 
-                        <button type="submit" class="btn btn-success btn-md">Добавить</button>
+                        <div class="form-group">
+                            <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="hidden" name="artwork_id" value={{ $artwork_id }}>
+                        </div>
+
+                        <div class="text-right">
+                        <button style="text-align: right" type="submit" class="btn btn-success btn-md text-right">Добавить главу</button>
+                        </div>
                         {{ csrf_field() }}
                     </form>
                 </div>

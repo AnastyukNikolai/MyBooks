@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Artwork;
+use App\Chapter;
 use App\Events\onAddArtworkEvent;
 use App\Genre;
 use App\Image;
@@ -58,7 +59,7 @@ class authorController extends Controller
 
     }
 
-    public function addChapter($id) {
+    public function addArtworkChapter($id) {
 
         $artwork_id = $id;
 
@@ -68,18 +69,23 @@ class authorController extends Controller
 
     }
 
-    public function storeChapter(AddChapterRequest $request) {
+    public function storeArtworkChapter(AddChapterRequest $request) {
 
-        //dump($request['genres']);
-        $image_path=$request->file('image')->storePublicly('public/books_img');
-        $image_path=preg_replace( "#public/#", "", $image_path );
-        $image = Image::create([
-            'img_link' => $image_path,
-            'category_id' => 1,
+        $artwork=Artwork::find($request->artwork_id);
+        $number=$artwork->chapters->max('number')+1;
+        $text_store=$request->file('text')->storePublicly('public/books_chapter');
+        $text_path=preg_replace( "#public/#", "", $text_store );
+
+        $chapter = Chapter::create([
+            'title' => $request->title,
+            'text_link' => $text_path,
+            'price' => $request->price,
+            'artwork_id' => $request->artwork_id,
+            'number' => $number,
+
         ]);
-        event(new onAddArtworkEvent($request,$image));
 
-
+        return redirect()->back()->with('massage', 'Глава успешно добавлена');
 
     }
 }

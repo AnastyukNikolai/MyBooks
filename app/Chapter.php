@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Chapter extends Model
 {
 
+    protected $fillable = ['title', 'description', 'artwork_id', 'price', 'number', 'text_link'];
+
+
     public function users() {
         return $this -> belongsToMany('App\User', 'buying_a_chapters');
     }

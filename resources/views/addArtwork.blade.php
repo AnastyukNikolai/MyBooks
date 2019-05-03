@@ -66,7 +66,9 @@
                             <input type="hidden" name="user_id" value={{ $user->id }}>
                         </div>
 
+                        <div class="text-right">
                         <button type="submit" class="btn btn-success btn-md">Добавить</button>
+                        </div>
                         {{ csrf_field() }}
                     </form>
                 </div>

@@ -30,8 +30,11 @@ Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
 Route::post('/artwork/add', 'authorController@storeArtwork')->name('storeArtwork');
 
-Route::get('/artwork/{id}/chapter/add', 'authorController@addChapter')->name('addChapter');
-Route::post('/artwork/chapter/add', 'authorController@storeChapter')->name('storeChapter');
+Route::get('/artwork/{id}/chapter/add', 'authorController@addArtworkChapter')->name('addArtworkChapter');
+Route::post('/artwork/chapter/add', 'authorController@storeArtworkChapter')->name('storeArtworkChapter');
+
+Route::get('/transfer/{id}/chapter/add', 'authorController@addChapter')->name('addTransferChapter');
+Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('storeTransferChapter');
 
 ////////////////////////////////////////////
 

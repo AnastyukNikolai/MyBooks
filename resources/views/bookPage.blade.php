@@ -102,6 +102,9 @@
                             </div>
                             <div class="book_content-item">
                                 <div class="book_content-table">
+                                    @if(Auth::user()->id==$artwork->user_id)
+                                        <a class="btn btn-outline-success btn-block " href="{{ route('addArtworkChapter', ['id'=>$artwork->id]) }}">Добавить главу</a>
+                                    @endif
                                     @foreach($chapters as $chapter)
                                     <div class="book_item">
                                         <div class="book_item-text">
