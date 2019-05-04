@@ -44,7 +44,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="{{ route('artworksShow', ['id'=>Auth::user()->id]) }}">Мои Произвидения</a>
             <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="{{ url('logout') }}">Выход</a>
           </div>
           </li>
           </ul>

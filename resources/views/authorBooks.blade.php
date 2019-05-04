@@ -11,12 +11,16 @@
 
           <div class="col-md-12">
             <div class="title default">
+              @if(Auth::user()&&$author->id==Auth::user()->id)
               <h2>Мои произвидения</h2>
               <div class="book_add-btn">
                 <a class="btn btn-success" href="{{ route('addArtwork') }}">
                   <span class="read-bloc">Добавить произвидение</span>
                 </a>
               </div>
+              @else
+                <h2>Произвидения автора {{$author->name}}</h2>
+              @endif
             </div>
             <hr>
           </div>

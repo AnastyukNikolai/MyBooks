@@ -29,7 +29,10 @@
                         <h2 style="color: #008080; text-align: center; margin-top: 5px" class="book-heading">{{ $artwork->title }}</h2>
                         <hr color="green" height="bold">
                         <div class="book__info default">
-                            <div class="book__block-name">Автор: {{ $artwork->user->name }}</div>
+                            <div class="book__block-name">Автор: </div>
+                            <div align="right" class="book__block-time pull-right">
+                                <a href="{{ route('artworksShow', ['id'=>$artwork->user->id]) }}">{{ $artwork->user->name }}</a>
+                            </div>
                             <hr color="green">
                         <div class="book__block-item book__block-star clearfix">
                             <div class="book__block-name">Опубликовано:</div>
@@ -102,8 +105,9 @@
                             </div>
                             <div class="book_content-item">
                                 <div class="book_content-table">
-                                    @if(Auth::user()->id==$artwork->user_id)
+                                    @if(Auth::user()&&Auth::user()->id==$artwork->user_id)
                                         <a class="btn btn-outline-success btn-block " href="{{ route('addArtworkChapter', ['id'=>$artwork->id]) }}">Добавить главу</a>
+                                        <hr>
                                     @endif
                                     @foreach($chapters as $chapter)
                                     <div class="book_item">
@@ -113,13 +117,34 @@
                                                     <strong>{{$chapter->title}}</strong>
                                                 </a>
                                             </div>
-                                            <div class="book__block-time table-time time-green" style="vertical-align: middle">4 часа назад</div>
+                                            @if($chapter->price==0||$chapter->users->find(Auth::user()==true))
+                                            <div class="book-action">
                                             <div class="book_item-btn">
-                                                <a class="btn btn-success btn-block " href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
+                                                <a class="btn btn-success" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
                                                     <i class="icon-arrow"></i>
                                                     <span class="read-block">Читать</span>
                                                 </a>
                                             </div>
+                                                <div class="book_item-btn">
+                                                <a class="btn btn-primary" href="{{ route('downloadChapter', ['chapter'=>$chapter]) }}">
+                                                    <i class="icon-arrow"></i>
+                                                    <span class="download-block">Скачать</span>
+                                                </a>
+                                            </div>
+                                            </div>
+                                                @else
+                                                <div class="book-action">
+                                                    <div class="book_item-btn">
+                                                        <span class="read-block">{{ $chapter->price }} у.е.</span>
+                                                    </div>
+                                                    <div class="book_item-btn">
+                                                        <button type="button" class="btn btn-info">
+                                                            <i class="icon-arrow"></i>
+                                                            <span class="read-block">Купить</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                         <hr color="white" style="margin: 0">

@@ -21,12 +21,12 @@ class authorController extends Controller
 
     public function artworksShow($id) {
 
-        $user=User::find($id);
-        $artworks=$user->artworks->where('transfer', false);
+        $author=User::find($id);
+        $artworks=$author->artworks->where('transfer', false);
        // $image_link= \Storage::disk('public')->
 
         return view('authorBooks')->with(['artworks' => $artworks,
-                                                'user' => $user,
+                                                'author' => $author,
                                                 ]);
 
     }

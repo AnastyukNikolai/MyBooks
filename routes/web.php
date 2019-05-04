@@ -24,6 +24,8 @@ Route::get('/book/{id}', 'IndexController@bookShow')->name('bookShow');
 
 Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
+Route::get('/artwork/download/{chapter?}', 'IndexController@downloadChapter')->name('downloadChapter');
+
 ////////////////////////////////////////////author
 
 
@@ -41,3 +43,5 @@ Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('sto
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

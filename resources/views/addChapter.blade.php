@@ -48,9 +48,9 @@
                             <label for="InputDescription">Описание главы</label>
                             <textarea name="description" value="{{ old('description') }}" class="form-control" placeholder="Описание главы"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="InputImage">Текст главы</label>
-                            <input type="file" name="text" class="form-control-file" placeholder="Выберите файл">
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="InputImage">Выберите файл (.txt)</label>
+                            <input type="file" name="text" class="custom-file-input" placeholder="Выберите файл">
                         </div>
 
                         <div class="form-group">

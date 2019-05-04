@@ -49,12 +49,12 @@ class IndexController extends Controller
         $text_link=$chapter->text_link;
         $link= $text_link;
         $content = \Storage::disk('public')->get($link);
-        dump( mb_detect_encoding($content));
-       // if(mb_detect_encoding($content)!='UTF-8') {
-         //   $content = iconv('CP1251', 'UTF-8', $content);
-       // }
-      // $content= mb_convert_encoding($content, "UTF-8", "JIS, eucjp-win, sjis-win, ASCII, JIS, UTF-8, EUC-JP, SJIS, CP1251, windows-1251");
+
+        if(mb_detect_encoding($content)!='UTF-8') {
+           $content = iconv('CP1251', 'UTF-8', $content);
+        }
         $content = preg_replace( "#\r?\n#", "<br />", $content );
+
         return view('chapterPage')->with(['chapter' => $chapter,
                                                 'content' => $content,
                                                 'next_chapter' => $next_chapter,
@@ -62,6 +62,11 @@ class IndexController extends Controller
                                                ]);
 
 
+    }
+
+    public function downloadChapter(Chapter $chapter) {
+
+        return response()->download(storage_path('app/public/' . $chapter->text_link));
     }
 
 }

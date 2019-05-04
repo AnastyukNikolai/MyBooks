@@ -190,11 +190,6 @@ div.book_item:hover {
     color: snow;
 }
 
-div.book_item-btn {
-    padding: 4px;
-
-}
-
 div.book_content-item {
     margin-top: 25px;
 }
@@ -209,17 +204,18 @@ div.book__item-wrapper {
     width: 60%;
 }
 
-div.book__block-time {
+div.book-action {
     display:inline-block;
     vertical-align:bottom;
-    width: 15%;
+    text-align: right;
+    width: 35%;
 }
 
 div.book_item-btn {
     display:inline-block;
     vertical-align:bottom;
-    width: 15%;
-    margin-left: 8%;
+    text-align: right;
+    padding: 4px;
 }
 
 #disqus_thread {

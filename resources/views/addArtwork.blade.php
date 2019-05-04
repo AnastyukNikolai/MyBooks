@@ -54,9 +54,9 @@
                                 <option value="Заморожено">Заморожено</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="InputImage">Изображение</label>
-                            <input type="file" name="image" class="form-control-file" placeholder="Выберите изображение">
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="InputImage">Выберите изображение (.jpg, .jpeg)</label>
+                            <input type="file" name="image" class="custom-file-input" placeholder="Выберите изображение">
                         </div>
                         <div class="form-group">
                             <label for="InputDescription">Описание</label>
