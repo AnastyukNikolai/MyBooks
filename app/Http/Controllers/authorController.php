@@ -25,7 +25,7 @@ class authorController extends Controller
         $artworks=$author->artworks->where('transfer', false);
        // $image_link= \Storage::disk('public')->
 
-        return view('authorBooks')->with(['artworks' => $artworks,
+        return view('artwork.authorBooks')->with(['artworks' => $artworks,
                                                 'author' => $author,
                                                 ]);
 
@@ -37,7 +37,7 @@ class authorController extends Controller
         $genres = Genre::all();
         $user=Auth::user();
 
-        return view('addArtwork')->with(['languages' => $languages,
+        return view('artwork.addArtwork')->with(['languages' => $languages,
                                                'genres' => $genres,
                                                'user' => $user,
                                                  ]);
@@ -63,7 +63,7 @@ class authorController extends Controller
 
         $artwork_id = $id;
 
-        return view('addChapter')->with([
+        return view('chapter.addChapter')->with([
             'artwork_id' => $artwork_id,
         ]);
 
@@ -86,6 +86,16 @@ class authorController extends Controller
         ]);
 
         return redirect()->back()->with('massage', 'Глава успешно добавлена');
+
+    }
+
+    public function editArtworkChapter($id) {
+
+        $chapter = Chapter::find($id);
+
+        return view('chapter.editChapter')->with([
+            'chapter' => $chapter,
+        ]);
 
     }
 }

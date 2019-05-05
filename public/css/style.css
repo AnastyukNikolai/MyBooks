@@ -204,11 +204,23 @@ div.book__item-wrapper {
     width: 60%;
 }
 
+div.book_chapter-title {
+    display:inline-block;
+    vertical-align:bottom;
+    width: 30%;
+}
+
 div.book-action {
     display:inline-block;
     vertical-align:bottom;
     text-align: right;
     width: 35%;
+}
+
+div.book-author-control {
+    display:inline-block;
+    vertical-align:bottom;
+    width: 60%;
 }
 
 div.book_item-btn {

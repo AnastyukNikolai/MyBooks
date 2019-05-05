@@ -31,7 +31,7 @@ class IndexController extends Controller
         $first_chapter=$artwork->chapters->where('number', 1)->first();
         Artwork::where('id',$id)->update(['views' => $artwork_views+1]);
 
-        return view('bookPage')->with(['artwork' => $artwork,
+        return view('artwork.bookPage')->with(['artwork' => $artwork,
                                              'language' => $language,
                                              'first_chapter' => $first_chapter,
                                              'chapters' => $chapters,
@@ -55,7 +55,7 @@ class IndexController extends Controller
         }
         $content = preg_replace( "#\r?\n#", "<br />", $content );
 
-        return view('chapterPage')->with(['chapter' => $chapter,
+        return view('chapter.chapterPage')->with(['chapter' => $chapter,
                                                 'content' => $content,
                                                 'next_chapter' => $next_chapter,
                                                 'previous_chapter' => $previous_chapter,

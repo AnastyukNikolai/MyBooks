@@ -113,9 +113,27 @@
                                     <div class="book_item">
                                         <div class="book_item-text">
                                             <div class="book__item-wrapper" style="vertical-align: middle">
+                                                <div class="book_chapter-title">
                                                 <a  class="btn btn-link book_chapter-title" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
                                                     <strong>{{$chapter->title}}</strong>
                                                 </a>
+                                                </div>
+                                                    @if($chapter->artwork->user==Auth::user())
+                                                        <div class="book-author-control">
+                                                            <div class="book_item-btn">
+                                                                <a class="btn btn-warning" href="{{ route('editArtworkChapter', ['id'=>$chapter->id]) }}">
+                                                                    <i class="icon-arrow"></i>
+                                                                    <span class="read-block">Изменить</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="book_item-btn">
+                                                                <a class="btn btn-danger" href="{{ route('downloadChapter', ['chapter'=>$chapter]) }}">
+                                                                    <i class="icon-arrow"></i>
+                                                                    <span class="download-block">Удалить</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                             </div>
                                             @if($chapter->price==0||$chapter->users->find(Auth::user()==true))
                                             <div class="book-action">
