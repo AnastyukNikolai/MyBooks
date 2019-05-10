@@ -48,3 +48,21 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login/google', 'Auth\LoginController@redirectToGoogleProvider')->name('googleLogin');
+
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderGoogleCallback');
+
+Route::get('/drive', 'DriveController@getDrive'); // retreive folders
+
+Route::get('/drive/upload', 'DriveController@uploadFile'); // File upload form
+
+Route::post('/drive/upload', 'DriveController@uploadFile')->name('googleUploadFile');; // Upload file to Drive from Form
+
+Route::get('/drive/create', 'DriveController@create'); // Upload file to Drive from Storage
+
+Route::get('/drive/delete/{id}', 'DriveController@deleteFile'); // Delete file or folder

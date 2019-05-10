@@ -51,7 +51,7 @@
           </div>
         @else
               <div class="log-reg">
-                  <a class="btn btn-light" href="{{ url('/login') }}" style="margin-left: 10px">Вход</a>
+                  <a class="btn btn-light" href="{{ url('/login/google') }}" style="margin-left: 10px">Вход</a>
                   <a class="btn btn-warning" href="{{ url('/register') }}" style="margin-left: 10px">Регистрация</a>
               </div>
         @endif

@@ -26,15 +26,15 @@
                         </div>
                     @endif
 
-                        @if(Session::has('message'))
+                        @if(Session::has('success'))
                             <div class="alert alert-success">
                                 <ul>
-                                    <li>{{Session::get('message')}}</li>
+                                    <li>{{Session::get('success')}}</li>
                                 </ul>
                             </div>
                         @endif
 
-                    <form method="POST" action="{{ route('storeArtworkChapter') }}" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <form method="POST" action="{{ route('googleUploadFile') }}" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="exampleInputTitle">Название</label>
