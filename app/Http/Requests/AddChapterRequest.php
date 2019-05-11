@@ -26,7 +26,7 @@ class AddChapterRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'text' => 'required|mimes:txt,pdf,doc,docx|max:10000',
+            'text' => 'mimes:txt,pdf,doc,docx|max:10000',
             'price' => 'integer|not_in:0'
         ];
     }

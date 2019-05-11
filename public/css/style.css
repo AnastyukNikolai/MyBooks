@@ -195,6 +195,16 @@ div.book_content-item {
     margin-top: 25px;
 }
 
+div.chapter_add_btn {
+    display:inline-block;
+    vertical-align:bottom;
+}
+
+div.chapter_add_anons_btn {
+    display:inline-block;
+    vertical-align:bottom;
+}
+
 div.book_item-text {
     margin: 10px;
 }

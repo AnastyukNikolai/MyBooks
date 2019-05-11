@@ -59,6 +59,7 @@ class DriveController extends Controller
         if($request->isMethod('GET')){
             view('upload');
         }else{
+
             $file_id = $this->createFile($request->file('text'));
             $artwork=Artwork::find($request->artwork_id);
             $number=$artwork->chapters->max('number')+1;
@@ -68,7 +69,7 @@ class DriveController extends Controller
                 'price' => $request->price,
                 'artwork_id' => $request->artwork_id,
                 'number' => $number,
-                'file_id' => $file_id,
+                'file_id' => $file_id
             ]);
 
             return redirect()->back()->with('success', 'Глава успешно добавлена');

@@ -83,6 +83,7 @@ Number int NOT NULL,
 Title VARCHAR(100) NOT NULL,
 Description VARCHAR(500),
 Price int NOT NULL default 0,
+Min_amount int,
 File_id VARCHAR(200),
 Artwork_id Int REFERENCES Artworks (Id),
 Transfer_id Int REFERENCES Transfers (Id)

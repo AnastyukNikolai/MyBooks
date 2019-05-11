@@ -73,26 +73,35 @@ class authorController extends Controller
 
     }
 
-    public function storeArtworkChapter(AddChapterRequest $request) {
+    public function addChapterAnons($id) {
 
-        $client = new Google_Client();
+        $artwork_id = $id;
+
+        return view('chapter.addChapterAnons')->with([
+            'artwork_id' => $artwork_id,
+        ]);
+
+    }
+
+    public function storeChapterAnons(AddChapterRequest $request) {
+
         $artwork=Artwork::find($request->artwork_id);
         $number=$artwork->chapters->max('number')+1;
-        $text_store = new DriveController($client);
-        $text_store->createFile($request->file('text'));
-        //$text_path=preg_replace( "#public/#", "", $text_store );
+        if($request->min_amount==null) {
+            $request->min_amount=0;
+        }
 
         $chapter = Chapter::create([
-            'id' => $text_store,
+
+            'announcement' => TRUE,
             'title' => $request->title,
-            'text_link' => 'dfghj',
-            'price' => $request->price,
             'artwork_id' => $request->artwork_id,
             'number' => $number,
+            'min_amount' => $request->min_amount,
 
         ]);
 
-        return redirect()->back()->with('success', 'Глава успешно добавлена');
+        return redirect()->back()->with('success', 'Анонс успешно добавлен');
 
     }
 

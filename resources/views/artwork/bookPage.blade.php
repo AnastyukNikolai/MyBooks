@@ -100,7 +100,7 @@
                                 <p>Статус произведения:&nbsp;{{ $artwork->status }}</p>
                                 <p></p>
                                 @if($artwork->chapters!=null)
-                                <p>Количество глав: {{ $artwork->chapters->count() }}</p>
+                                <p>Количество глав: {{ $artwork->chapters->where('announcement', false)->count() }}</p>
                                 @endif
                             </div>
                         </div>
@@ -117,7 +117,9 @@
                             <div class="book_content-item">
                                 <div class="book_content-table">
                                     @if(Auth::user()&&Auth::user()->id==$artwork->user_id)
+                                        <div class="chapter_add_btn">
                                         <a class="btn btn-outline-success btn-block " href="{{ route('addArtworkChapter', ['id'=>$artwork->id]) }}">Добавить главу</a>
+                                        </div>
                                         <hr>
                                     @endif
                                     @foreach($chapters as $chapter)
@@ -168,7 +170,6 @@
                                                     </div>
                                                     <div class="book_item-btn">
                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#buyModal">
-                                                            <i class="icon-arrow"></i>
                                                             <span class="read-block">Купить главу</span>
                                                         </button>
                                                     </div>
@@ -218,6 +219,117 @@
                                     </div>
                                         <hr color="white" style="margin: 0">
                                         @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book_content default">
+                            <div class="book_content-title">
+                                <strong>Анонсы:</strong>
+                            </div>
+                            <div class="book_content-item">
+                                <div class="book_content-table">
+                                    @if(Auth::user()&&Auth::user()->id==$artwork->user_id)
+                                        <div class="chapter_add_anons_btn">
+                                            <a class="btn btn-outline-success btn-block " href="{{ route('addChapterAnons', ['id'=>$artwork->id]) }}">Добавить анонс главы</a>
+                                        </div>
+                                        <hr>
+                                    @endif
+                                    @foreach($announcements as $announcement)
+                                        <div class="book_item">
+                                            <div class="book_item-text">
+                                                <div class="book__item-wrapper" style="vertical-align: middle">
+                                                    <div class="book_chapter-title">
+                                                        <a  class="btn btn-link book_chapter-title" data-toggle="modal" data-target="#descriptionModal">
+                                                            <strong>{{$announcement->title}}</strong>
+                                                        </a>
+                                                    </div>
+                                                    <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div style="color: #1b1e21" class="modal-header">
+                                                                    <h5 class="modal-title" id="buyModalLabel">Описание главы</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                    <div style="color: #1b1e21" class="modal-body">
+                                                                        {{$announcement->description}}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @if($announcement->artwork->user==Auth::user())
+                                                        <div class="book-author-control">
+                                                            <div class="book_item-btn">
+                                                                <a class="btn btn-warning" href="{{ route('editChapter', ['id'=>$announcement->id]) }}">
+                                                                    <span class="read-block">Опубликовать главу</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="book_item-btn">
+                                                                <a class="btn btn-danger" href="{{ route('deleteChapter', ['id'=>$announcement->id]) }}">
+                                                                    <span class="download-block">Удалить</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                    <div class="book-action">
+                                                        <div class="book_item-btn">
+                                                            <span class="read-block">{{ $announcement->min_amount }} у.е.</span>
+                                                        </div>
+                                                        <div class="book_item-btn">
+                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sponsorModal">
+                                                                <span class="read-block">Спонсировать</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="sponsorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div style="color: #1b1e21" class="modal-header">
+                                                                    <h5 class="modal-title" id="buyModalLabel">Спонсирование главы</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                @if(Auth::user()&&Auth::user()->balance >= $announcement->min_amount)
+                                                                    <div style="color: #1b1e21" class="modal-body">
+                                                                        Вы уверены что хотите приобрести данную главу?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a class="btn btn-info" href="{{ route('chapterBuy', ['id'=>$announcement->id]) }}">
+                                                                            <span class="buy-modal-block">Да</span>
+                                                                        </a>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                    </div>
+                                                                @elseif(Auth::user()&&Auth::user()->balance < $announcement->min_amount)
+                                                                    <div style="color: #1b1e21" class="modal-body">
+                                                                        У вас недостаточно средств для спонсирования
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                                    </div>
+                                                                @else
+                                                                    <div style="color: #1b1e21" class="modal-body">
+                                                                        Для спонсирования главы необходимо войти на сайт
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a class="btn btn-info" href="{{ url('/login/google') }}">
+                                                                            <span class="buy-modal-block">Войти</span>
+                                                                        </a>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <hr color="white" style="margin: 0">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
