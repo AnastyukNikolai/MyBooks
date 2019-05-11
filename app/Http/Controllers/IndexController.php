@@ -25,14 +25,12 @@ class IndexController extends Controller
     public function bookShow($id) {
 
         $artwork=Artwork::find($id);
-        $language=$artwork->language;
         $artwork_views=$artwork->views;
         $chapters=$artwork->chapters->sortBy('number');
         $first_chapter=$artwork->chapters->where('number', 1)->first();
         Artwork::where('id',$id)->update(['views' => $artwork_views+1]);
 
         return view('artwork.bookPage')->with(['artwork' => $artwork,
-                                             'language' => $language,
                                              'first_chapter' => $first_chapter,
                                              'chapters' => $chapters,
                                              ]);

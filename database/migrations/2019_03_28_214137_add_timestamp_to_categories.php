@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTimestampToLanguages extends Migration
+class AddTimestampToCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class AddTimestampToLanguages extends Migration
      */
     public function up()
     {
-        Schema::table('languages', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -24,7 +24,7 @@ class AddTimestampToLanguages extends Migration
      */
     public function down()
     {
-        Schema::table('languages', function(Blueprint $table)
+        Schema::table('categories', function(Blueprint $table)
         {
             $table->dropTimestamps();
         });

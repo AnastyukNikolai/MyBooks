@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $fillable = ['img_link', 'category_id'];
+    protected $fillable = ['image_path', 'category_id'];
 
     public function artwork() {
         return $this -> hasOne('App\Artwork');
     }
 
-    public function language() {
-        return $this -> hasOne('App\Language');
+    public function category() {
+        return $this -> hasOne('App\Category');
     }
 
-    public function category() {
-        return $this -> belongsTo('App\Image_category');
+    public function language() {
+        return $this -> hasOne('App\Language');
     }
 }

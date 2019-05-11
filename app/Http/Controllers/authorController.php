@@ -5,6 +5,7 @@ use App\Artwork;
 use App\Chapter;
 use App\Events\onAddArtworkEvent;
 use App\Genre;
+use App\Category;
 use App\Image;
 use App\Language;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddArtworkRequest;
 use App\Http\Requests\AddChapterRequest;
-use App\Http\Controllers\DriveController;
 
 use App\Http\Requests;
 
@@ -37,10 +37,12 @@ class authorController extends Controller
 
         $languages=Language::all();
         $genres = Genre::all();
+        $categories = Category::all();
         $user=Auth::user();
 
         return view('artwork.addArtwork')->with(['languages' => $languages,
                                                'genres' => $genres,
+                                               'categories' => $categories,
                                                'user' => $user,
                                                  ]);
 
@@ -48,12 +50,10 @@ class authorController extends Controller
 
     public function storeArtwork(AddArtworkRequest $request) {
 
-        //dump($request['genres']);
         $image_path=$request->file('image')->storePublicly('public/books_img');
         $image_path=preg_replace( "#public/#", "", $image_path );
         $image = Image::create([
-            'img_link' => $image_path,
-            'category_id' => 1,
+            'image_path' => $image_path,
         ]);
         event(new onAddArtworkEvent($request,$image));
 
@@ -76,12 +76,10 @@ class authorController extends Controller
     public function storeArtworkChapter(AddChapterRequest $request) {
 
         $client = new Google_Client();
-        dump($client);
         $artwork=Artwork::find($request->artwork_id);
         $number=$artwork->chapters->max('number')+1;
-       // $text_store=$request->file('text')->storePublicly('public/books_chapter');
         $text_store = new DriveController($client);
-        $text_store->uploadFile($request);
+        $text_store->createFile($request->file('text'));
         //$text_path=preg_replace( "#public/#", "", $text_store );
 
         $chapter = Chapter::create([

@@ -1,0 +1,180 @@
+﻿
+CREATE TABLE Images (
+Id Serial PRIMARY KEY,
+Image_path character varying(250)
+);
+
+
+CREATE TABLE Languages (
+Id Serial PRIMARY KEY ,
+Title VARCHAR(100) NOT NULL,
+Image_id int REFERENCES Images (Id)
+);
+
+
+CREATE TABLE Categories (
+Id Serial PRIMARY KEY ,
+Title VARCHAR(100) NOT NULL,
+Image_id int REFERENCES Images (Id)
+);
+
+
+CREATE TABLE Artworks (
+Id Serial Primary key,
+Title VARCHAR(100) NOT NULL,
+Views int NOT NULL default 0,
+Subscription_price int,
+Image_id int REFERENCES Images (Id),
+User_id int NOT NULL REFERENCES Users (Id),
+Language_id Int NOT NULL REFERENCES Languages (Id),
+Category_id Int NOT NULL REFERENCES Categories (Id),
+Description VARCHAR(1000) NOT NULL,
+Status VARCHAR(25) NOT NULL CHECK(Status IN('В процессе','Завершено', 'Заморожено'))
+);
+
+
+CREATE TABLE Transfers (
+Id Serial Primary key,
+Title VARCHAR(100) NOT NULL,
+Views int NOT NULL default 0,
+Subscription_price int,
+Image_id int REFERENCES Images (Id),
+Category_id Int NOT NULL REFERENCES Categories (Id),
+Author VARCHAR(100) NOT NULL,
+User_id int NOT NULL REFERENCES Users (Id),
+Transfer_status VARCHAR(25) CHECK(Transfer_status IN('Активен','Завершен', 'Заморожен')),
+Original_status VARCHAR(25) NOT NULL CHECK(Original_status IN('В процессе','Завершено', 'Заморожено')),
+Transfer_language_id Int NOT NULL REFERENCES Languages (Id),
+Original_language_id Int NOT NULL REFERENCES Languages (Id),
+Description VARCHAR(1000) NOT NULL,
+Original_link VARCHAR(400)
+);
+
+
+CREATE TABLE Likes (
+Id Serial PRIMARY KEY ,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id Int REFERENCES Artworks (Id),
+Transfer_id Int REFERENCES Transfers (Id)
+);
+
+
+CREATE TABLE Reviews (
+Id Serial PRIMARY KEY ,
+Text VARCHAR(5000) NOT NULL,
+Type Boolean NOT NULL,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id)
+);
+
+
+CREATE TABLE Favorites (
+Id Serial PRIMARY KEY ,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id Int NOT NULL REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id)
+);
+
+CREATE TABLE Chapters (
+Id Serial PRIMARY KEY,
+Announcement Boolean NOT NULL default FALSE,
+Number int NOT NULL,
+Title VARCHAR(100) NOT NULL,
+Description VARCHAR(500),
+Price int NOT NULL default 0,
+File_id VARCHAR(200),
+Artwork_id Int REFERENCES Artworks (Id),
+Transfer_id Int REFERENCES Transfers (Id)
+);
+
+CREATE TABLE Genres (
+Id Serial PRIMARY KEY ,
+Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Tags (
+Id Serial PRIMARY KEY ,
+Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Work_genres (
+Id Serial PRIMARY KEY ,
+Artwork_id int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id),
+Gеnre_id int NOT NULL REFERENCES Genres (Id)
+);
+
+
+CREATE TABLE Work_tags (
+Id Serial PRIMARY KEY ,
+Artwork_id int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id),
+Tag_id int NOT NULL REFERENCES Tags (Id)
+);
+
+
+CREATE TABLE Buying_statuses (
+Id Serial PRIMARY KEY,
+Title VARCHAR(100) NOT NULL CHECK(Title IN('Успешно','Отменено', 'Ожидает'))
+);
+
+
+CREATE TABLE Buying_a_chapters (
+Id Serial PRIMARY KEY,
+Operation VARCHAR(250) NOT NULL,
+Amount int NOT NULL,
+Chapter_id int NOT NULL REFERENCES Chapters (Id),
+Status_id int NOT NULL REFERENCES Buying_statuses (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+CREATE TABLE Subscriptions (
+Id Serial PRIMARY KEY ,
+Artwork_id Int REFERENCES Artworks (Id),
+Transfer_id int REFERENCES Transfers (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+INSERT INTO Images
+(Image_path)
+VALUES
+('/img/Books/sheriff2.jpg'),
+('/img/Languages/ua.png'),
+('/img/Languages/ru.png'),
+('/img/Languages/en.png'),
+('/img/Languages/jp.png');
+
+
+INSERT INTO Languages
+(Title, Image_id)
+VALUES
+('Українська', 2),
+('Русский', 3),
+('English', 4),
+('日本語', 5);
+
+INSERT INTO Categories
+(Title)
+VALUES
+('Развлекательная литература'),
+('Научная литература'),
+('Учебная литература'),
+('Публицистика');
+
+
+INSERT INTO Artworks
+(Title, Views, Image_id, User_id, Language_id, Category_id, Description, Status)
+VALUES
+('Шериф', 407, 1, 1, 2, 1, 'Серьезный человек в игровом мире.', 'Завершено');
+
+
+
+-------------------------------------------------------------------------------------------------------------------------

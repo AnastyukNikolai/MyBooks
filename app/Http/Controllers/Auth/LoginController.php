@@ -52,6 +52,6 @@ class LoginController extends Controller
         $auth_user = Socialite::driver('google')->user();
         $user = User::updateOrCreate(['email' => $auth_user->email], ['refresh_token' => $auth_user->refreshToken, 'name' => $auth_user->name]);
         Auth::login($user, true);
-        return redirect()->to('/'); // Redirect to a secure page
+        return redirect()->back(); // Redirect to a previous page
     }
 }

@@ -14,7 +14,10 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
   </head>
 
   <body>
@@ -51,13 +54,13 @@
           </div>
         @else
               <div class="log-reg">
-                  <a class="btn btn-light" href="{{ url('/login/google') }}" style="margin-left: 10px">Вход</a>
-                  <a class="btn btn-warning" href="{{ url('/register') }}" style="margin-left: 10px">Регистрация</a>
+                  <a class="btn btn-warning" href="{{ url('/login/google') }}" style="margin-left: 10px">Вход (Google account)</a>
               </div>
         @endif
       </div>
     </nav>
 
+    <hr>
 
 @yield('content')
 

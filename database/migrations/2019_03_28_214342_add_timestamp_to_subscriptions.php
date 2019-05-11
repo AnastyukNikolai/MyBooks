@@ -26,7 +26,7 @@ class AddTimestampToSubscriptions extends Migration
     {
         Schema::table('subscriptions', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

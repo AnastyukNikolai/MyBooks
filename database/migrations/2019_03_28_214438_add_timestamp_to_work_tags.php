@@ -26,7 +26,7 @@ class AddTimestampToWorkTags extends Migration
     {
         Schema::table('work_tags', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

@@ -14,7 +14,7 @@
                     <div class="col-md-4" style="padding-right: 5%">
                         <div class="book-photo text-center">
                             <div class="image-wrapper">
-                                <img alt="{{ $artwork->title }}" src="{{ \Storage::disk('public')->url($artwork->image->img_link) }}" class="book-img">
+                                <img alt="{{ $artwork->title }}" src="{{ \Storage::disk('public')->url($artwork->image->image_path) }}" class="book-img">
                             </div>
                         </div>
                         <div class="book_read text-center default" style="margin-top: 10px">
@@ -36,19 +36,30 @@
                             <hr color="green">
                         <div class="book__block-item book__block-star clearfix">
                             <div class="book__block-name">Опубликовано:</div>
-                            <div align="right" class="book__block-time time-green pull-right">04.01.2017</div>
+                            <div align="right" class="book__block-time time-green pull-right">{{$artwork->created_at}}</div>
                         </div>
                             <hr color="green">
                         <div class="book__block-item">
-                            <div class="book__block-name">Жанр:</div>
-                            <div class="book__block-genre">@foreach($artwork->genres as $genre) {{ $genre->name }}, @endforeach</div>
+                            <div class="book__block-name">Жанры:</div>
+                            <div class="book__block-genre">
+                                <span class="book-category">{{ $artwork->category->title }}</span>
+                            </div>
                         </div>
+                            <hr color="green">
+                            <div class="book__block-item">
+                                <div class="book__block-name">Категория:</div>
+                                <div class="book__block-genre">
+                                    @if($artwork->category)
+                                        @foreach($artwork->genres as $genre) {{ $genre->name }} | @endforeach
+                                    @endif
+                                </div>
+                            </div>
                             <hr color="green">
                         <div class="book__block-item country-block">
                             <div class="book__block-name">
-                               Страна: <span class="book-country">{{ $artwork->language->title }}</span>
+                               Язык: <span class="book-country">{{ $artwork->language->title }}</span>
                             </div>
-                            <img class="book-info-icn" src="{{ $language->image->img_link }}{{ $language->image->name }}" class="country-img" alt="{{ $artwork->language->title }}">
+                            <img class="book-info-icn" src="{{ \Storage::disk('public')->url($artwork->language->image->image_path) }}" class="country-img" alt="{{ $artwork->language->title }}">
                         </div>
                             <hr color="green">
                         <div class="book__block-item">
@@ -135,7 +146,7 @@
                                                         </div>
                                                     @endif
                                             </div>
-                                            @if($chapter->price==0||$chapter->users->find(Auth::user()==true))
+                                            @if($chapter->price==0||$chapter->users->find(Auth::user()==true)||$chapter->artwork->user==Auth::user())
                                             <div class="book-action">
                                             <div class="book_item-btn">
                                                 <a class="btn btn-success" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
@@ -156,10 +167,50 @@
                                                         <span class="read-block">{{ $chapter->price }} у.е.</span>
                                                     </div>
                                                     <div class="book_item-btn">
-                                                        <button type="button" class="btn btn-info">
+                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#buyModal">
                                                             <i class="icon-arrow"></i>
-                                                            <span class="read-block">Купить</span>
+                                                            <span class="read-block">Купить главу</span>
                                                         </button>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div style="color: #1b1e21" class="modal-header">
+                                                                <h5 class="modal-title" id="buyModalLabel">Покупка главы</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            @if(Auth::user()&&Auth::user()->balance>=$chapter->price)
+                                                            <div style="color: #1b1e21" class="modal-body">
+                                                                Вы уверены что хотите приобрести данную главу?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a class="btn btn-info" href="{{ route('chapterBuy', ['id'=>$chapter->id]) }}">
+                                                                    <span class="buy-modal-block">Да</span>
+                                                                </a>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                            </div>
+                                                                @elseif(Auth::user()&&Auth::user()->balance<$chapter->price)
+                                                                <div style="color: #1b1e21" class="modal-body">
+                                                                    У вас недостаточно средств для покупки данной главы
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                                </div>
+                                                                @else
+                                                                <div style="color: #1b1e21" class="modal-body">
+                                                                    Для покупки главы необходимо войти на сайт
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a class="btn btn-info" href="{{ url('/login/google') }}">
+                                                                        <span class="buy-modal-block">Войти</span>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                                </div>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
                                             @endif

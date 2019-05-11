@@ -20,7 +20,7 @@
             <div class="col-md-3 col-sm-4 col-xs-6 book-block">
               <div class="renewal-item">
                 <div class="renewal-img">
-                    <img class="book-img-main" alt="{{ $artwork->title }}" src="{{ \Storage::disk('public')->url($artwork->image->img_link) }}">
+                    <img class="book-img-main" alt="{{ $artwork->title }}" src="{{ \Storage::disk('public')->url($artwork->image->image_path) }}">
                 </div>
               </div>
                 <div class="renewal-bottom">

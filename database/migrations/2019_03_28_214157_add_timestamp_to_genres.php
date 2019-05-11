@@ -26,7 +26,7 @@ class AddTimestampToGenres extends Migration
     {
         Schema::table('genres', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

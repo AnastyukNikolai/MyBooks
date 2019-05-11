@@ -26,7 +26,7 @@ class AddTimestampToArtworks extends Migration
     {
         Schema::table('artworks', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

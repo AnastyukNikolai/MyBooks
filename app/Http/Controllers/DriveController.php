@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddChapterRequest;
 use Exception;
 use Google_Client;
+use App\Chapter;
+use App\Artwork;
 use Google_Service_Drive;
 use Google_Service_Drive_DriveFile;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -58,7 +59,19 @@ class DriveController extends Controller
         if($request->isMethod('GET')){
             view('upload');
         }else{
-            $this->createFile($request->file('text'));
+            $file_id = $this->createFile($request->file('text'));
+            $artwork=Artwork::find($request->artwork_id);
+            $number=$artwork->chapters->max('number')+1;
+
+            $chapter = Chapter::create([
+                'title' => $request->title,
+                'price' => $request->price,
+                'artwork_id' => $request->artwork_id,
+                'number' => $number,
+                'file_id' => $file_id,
+            ]);
+
+            return redirect()->back()->with('success', 'Глава успешно добавлена');
 
 
         }
@@ -79,6 +92,7 @@ class DriveController extends Controller
 
         $data = gettype($file) === 'object' ?  File::get($file) : Storage::get($file);
         $mimeType = gettype($file) === 'object' ? File::mimeType($file) : Storage::mimeType($file);
+
 
 
         $file = $this->drive->files->create($fileMetadata, [

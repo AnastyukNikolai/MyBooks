@@ -26,7 +26,7 @@ class AddTimestampToChapters extends Migration
     {
         Schema::table('chapters', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

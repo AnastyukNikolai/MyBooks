@@ -26,7 +26,7 @@ class AddTimestampToWorkGenges extends Migration
     {
         Schema::table('work_genres', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

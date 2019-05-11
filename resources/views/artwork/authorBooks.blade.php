@@ -13,7 +13,7 @@
             <div class="title default">
               @if(Auth::user()&&$author->id==Auth::user()->id)
               <h2>Мои произвидения</h2>
-              <div class="book_add-btn">
+              <div style="text-align: right" class="book_add-btn">
                 <a class="btn btn-success" href="{{ route('addArtwork') }}">
                   <span class="read-bloc">Добавить произвидение</span>
                 </a>
@@ -29,7 +29,7 @@
             <div class="col-md-3 col-sm-4 col-xs-6 book-block">
               <div class="renewal-item">
                 <div class="renewal-img">
-                    <img class="book-img-main" alt="Шериф" src="{{ \Storage::disk('public')->url($artwork->image->img_link) }}">
+                    <img class="book-img-main" alt="Шериф" src="{{ \Storage::disk('public')->url($artwork->image->image_path) }}">
                 </div>
               </div>
                 <div class="renewal-bottom">

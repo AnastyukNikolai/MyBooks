@@ -74,8 +74,8 @@ img.ico-main {
 }
 
 img.book-img-main {
-    width: 100%;
-    height: 85%;
+    width: 250px;
+    height: 350px;
     display:inline-block;
     vertical-align:bottom;
 }
@@ -87,8 +87,9 @@ img.book-img-main {
 /*---------------------------*/
 
 img.book-img {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 400px;
+    margin-top: 25px;
 }
 
 div.book_read {

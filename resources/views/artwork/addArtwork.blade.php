@@ -39,6 +39,14 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Категория</label>
+                            <select name="category" value="{{ old('category') }}" class="custom-select mr-sm-2">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleFormControlSelect2">Жанры (для выбора нескольких жанров держите ctrl)</label>
                             <select multiple="multiple" class="form-control" id="exampleFormControlSelect2" name="genres[ ]">
                                 @foreach($genres as $genre)

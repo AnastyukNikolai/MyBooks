@@ -26,7 +26,7 @@ class AddTimestampToFavorites extends Migration
     {
         Schema::table('favorites', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

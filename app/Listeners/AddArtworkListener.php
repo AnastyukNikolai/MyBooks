@@ -31,6 +31,7 @@ class AddArtworkListener
        $artwork = Artwork::create([
             'title' => $event->artwork->title,
             'language_id' => $event->artwork->language,
+            'category_id' => $event->artwork->category,
             'description' => $event->artwork->description,
             'image_id' => $event->image_id,
             'user_id' => $event->artwork->user_id,

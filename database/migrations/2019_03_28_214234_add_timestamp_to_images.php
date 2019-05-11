@@ -26,7 +26,7 @@ class AddTimestampToImages extends Migration
     {
         Schema::table('images', function(Blueprint $table)
         {
-            $table->dropColumn('timestamps');
+            $table->dropTimestamps();
         });
     }
 }

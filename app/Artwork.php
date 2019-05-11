@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artwork extends Model
 {
-    protected $fillable = ['title', 'language_id', 'description', 'image_id', 'user_id', 'status'];
+    protected $fillable = ['title', 'language_id', 'category_id', 'description', 'image_id', 'user_id', 'status'];
 
     public function chapters() {
         return $this -> hasMany('App\Chapter');
@@ -42,5 +42,9 @@ class Artwork extends Model
 
     public function language() {
         return $this -> belongsTo('App\Language');
+    }
+
+    public function category() {
+        return $this -> belongsTo('App\Category');
     }
 }

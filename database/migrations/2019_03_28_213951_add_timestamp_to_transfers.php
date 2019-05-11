@@ -24,6 +24,9 @@ class AddTimestampToTransfers extends Migration
      */
     public function down()
     {
-
+        Schema::table('transfers', function(Blueprint $table)
+        {
+            $table->dropTimestamps();
+        });
     }
 }

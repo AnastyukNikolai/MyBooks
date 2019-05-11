@@ -26,7 +26,7 @@ Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
 Route::get('/artwork/download/{chapter?}', 'IndexController@downloadChapter')->name('downloadChapter');
 
-////////////////////////////////////////////author
+////////////////////////////////////////////Author
 
 
 Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
@@ -40,6 +40,11 @@ Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->n
 
 Route::get('/transfer/{id}/chapter/add', 'authorController@addChapter')->name('addTransferChapter');
 Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('storeTransferChapter');
+
+////////////////////////////////////////////User
+
+Route::get('/chapter/{id}/buy', 'readerController@chapterBuy')->name('chapterBuy');
+
 
 ////////////////////////////////////////////
 
