@@ -6,18 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artwork extends Model
 {
-    protected $fillable = ['title', 'language_id', 'category_id', 'description', 'image_id', 'user_id', 'status'];
+   // protected $fillable = ['title', 'language_id', 'category_id', 'description', 'image_id', 'user_id', 'status'];
+
+    protected $guarded = [];
 
     public function chapters() {
         return $this -> hasMany('App\Chapter');
     }
 
-    public function comments() {
-        return $this -> hasMany('App\Comment');
+    public function lovers() {
+        return $this -> belongsToMany('App\User', 'favorites');
     }
 
-    public function favorites() {
-        return $this -> belongsToMany('App\User', 'favorites');
+    public function likers() {
+        return $this -> belongsToMany('App\User', 'likes');
+    }
+
+    public function reviews() {
+        return $this -> hasMany('App\Review');
     }
 
     public function subscriptions() {
@@ -46,5 +52,9 @@ class Artwork extends Model
 
     public function category() {
         return $this -> belongsTo('App\Category');
+    }
+
+    public function status() {
+        return $this -> belongsTo('App\Work_status');
     }
 }

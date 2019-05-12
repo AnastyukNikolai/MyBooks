@@ -51,7 +51,7 @@ Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('sto
 
 ////////////////////////////////////////////User
 
-Route::get('/chapter/{id}/buy', 'readerController@chapterBuy')->name('chapterBuy');
+Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 
 
 ////////////////////////////////////////////

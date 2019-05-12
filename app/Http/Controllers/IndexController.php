@@ -7,6 +7,7 @@ use App\Artwork;
 use App\Image;
 use App\Chapter;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,6 +28,8 @@ class IndexController extends Controller
         $artwork=Artwork::find($id);
         $artwork_views=$artwork->views;
         $chapters=$artwork->chapters->where('announcement', false)->sortBy('number');
+       // $t = Auth::user()->purchase_transactions->buy_chapters;
+        //dd($t);
         $announcements=$artwork->chapters->where('announcement', true)->sortBy('number');
         $first_chapter=$artwork->chapters->where('number', 1)->first();
         Artwork::where('id',$id)->update(['views' => $artwork_views+1]);

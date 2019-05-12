@@ -6,16 +6,42 @@ Image_path character varying(250)
 
 
 CREATE TABLE Languages (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Title VARCHAR(100) NOT NULL,
 Image_id int REFERENCES Images (Id)
 );
 
 
 CREATE TABLE Categories (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Title VARCHAR(100) NOT NULL,
 Image_id int REFERENCES Images (Id)
+);
+
+CREATE TABLE Work_statuses (
+Id Serial PRIMARY KEY,
+Title VARCHAR NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Types_of_financial_operations (
+Id Serial PRIMARY KEY,
+Title VARCHAR(200) NOT NULL UNIQUE
+);
+
+CREATE TABLE Financial_operation_statuses (
+Id Serial PRIMARY KEY,
+Title VARCHAR(100) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Financial_operations (
+Id Serial PRIMARY KEY,
+Amount int NOT NULL,
+Status_id int NOT NULL REFERENCES Financial_operation_statuses (Id),
+Type_id int NOT NULL REFERENCES Types_of_financial_operations (Id),
+Payer_id int NOT NULL REFERENCES Users (Id),
+Receiver_id int NOT NULL REFERENCES Users (Id)
 );
 
 
@@ -28,8 +54,8 @@ Image_id int REFERENCES Images (Id),
 User_id int NOT NULL REFERENCES Users (Id),
 Language_id Int NOT NULL REFERENCES Languages (Id),
 Category_id Int NOT NULL REFERENCES Categories (Id),
+Status_id Int REFERENCES Work_statuses (Id),
 Description VARCHAR(1000) NOT NULL,
-Status VARCHAR(25) NOT NULL CHECK(Status IN('В процессе','Завершено', 'Заморожено'))
 );
 
 
@@ -42,8 +68,8 @@ Image_id int REFERENCES Images (Id),
 Category_id Int NOT NULL REFERENCES Categories (Id),
 Author VARCHAR(100) NOT NULL,
 User_id int NOT NULL REFERENCES Users (Id),
-Transfer_status VARCHAR(25) CHECK(Transfer_status IN('Активен','Завершен', 'Заморожен')),
-Original_status VARCHAR(25) NOT NULL CHECK(Original_status IN('В процессе','Завершено', 'Заморожено')),
+Transfer_status_id Int REFERENCES Work_statuses (Id),
+Original_status_id Int REFERENCES Work_statuses (Id),
 Transfer_language_id Int NOT NULL REFERENCES Languages (Id),
 Original_language_id Int NOT NULL REFERENCES Languages (Id),
 Description VARCHAR(1000) NOT NULL,
@@ -115,19 +141,10 @@ Tag_id int NOT NULL REFERENCES Tags (Id)
 );
 
 
-CREATE TABLE Buying_statuses (
-Id Serial PRIMARY KEY,
-Title VARCHAR(100) NOT NULL CHECK(Title IN('Успешно','Отменено', 'Ожидает'))
-);
-
-
 CREATE TABLE Buying_a_chapters (
 Id Serial PRIMARY KEY,
-Operation VARCHAR(250) NOT NULL,
-Amount int NOT NULL,
-Chapter_id int NOT NULL REFERENCES Chapters (Id),
-Status_id int NOT NULL REFERENCES Buying_statuses (Id),
-User_id int NOT NULL REFERENCES Users (Id)
+Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
+Chapter_id int NOT NULL REFERENCES Chapters (Id)
 );
 
 
@@ -135,7 +152,7 @@ CREATE TABLE Subscriptions (
 Id Serial PRIMARY KEY ,
 Artwork_id Int REFERENCES Artworks (Id),
 Transfer_id int REFERENCES Transfers (Id),
-User_id int NOT NULL REFERENCES Users (Id)
+Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
 );
 
 

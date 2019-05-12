@@ -9,6 +9,11 @@ use App\User;
 
 class readerController extends Controller
 {
+
+    public function chapterSponsorship() {
+
+    }
+
     public function chapterBuy($id) {
 
         $chapter = Chapter::find($id);

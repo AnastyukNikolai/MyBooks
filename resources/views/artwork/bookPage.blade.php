@@ -6,9 +6,23 @@
         <hr>
         <div class="container">
             <!-- row of columns -->
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-
-
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    <ul>
+                        <li>{{Session::get('success')}}</li>
+                    </ul>
+                </div>
+            @endif
 
                 <div class="row book-main-block">
                     <div class="col-md-4" style="padding-right: 5%">
@@ -148,7 +162,7 @@
                                                         </div>
                                                     @endif
                                             </div>
-                                            @if($chapter->price==0||$chapter->users->find(Auth::user()==true)||$chapter->artwork->user==Auth::user())
+                                            @if($chapter->price==0||$chapter->users->find(Auth::user()->id)==true||$chapter->artwork->user==Auth::user())
                                             <div class="book-action">
                                             <div class="book_item-btn">
                                                 <a class="btn btn-success" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
@@ -297,7 +311,7 @@
                                                                 </div>
                                                                 @if(Auth::user()&&Auth::user()->balance >= $announcement->min_amount)
                                                                     <div style="color: #1b1e21" class="modal-body">
-                                                                        Вы уверены что хотите приобрести данную главу?
+                                                                        Вы уверены что хотите спонсировать данную главу?
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a class="btn btn-info" href="{{ route('chapterBuy', ['id'=>$announcement->id]) }}">

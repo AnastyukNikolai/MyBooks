@@ -28,16 +28,23 @@ class User extends Authenticatable
         return $this -> hasMany('App\Artwork');
     }
 
-    public function comments() {
-        return $this -> hasMany('App\Comment');
+    public function purchase_transactions() {
+        return $this -> hasMany('App\Financial_operation', 'payer_id');
     }
 
-    public function chapters() {
-        return $this -> belongsToMany('App\Chapter', 'buying_a_chapters');
+    public function sale_transactions() {
+        return $this -> hasMany('App\Financial_operation', 'receiver_id');
     }
 
+    public function reviews() {
+        return $this -> hasMany('App\Review');
+    }
     public function favorites() {
         return $this -> belongsToMany('App\Artwork', 'favorites');
+    }
+
+    public function liked() {
+        return $this -> belongsToMany('App\Artwork', 'likes');
     }
 
     public function subscriptions() {

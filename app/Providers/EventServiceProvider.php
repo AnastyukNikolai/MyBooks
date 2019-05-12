@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\onAddArtwor3kEvent' => [
             'App\Listeners\AddArtwor3kListener',
         ],
+        'App\Events\onAddFinancialOperationEvent' => [
+            'App\Listeners\AddFinancialOperationListener',
+        ],
     ];
 
     /**

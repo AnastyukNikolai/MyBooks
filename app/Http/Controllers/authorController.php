@@ -52,9 +52,11 @@ class authorController extends Controller
 
         $image_path=$request->file('image')->storePublicly('public/books_img');
         $image_path=preg_replace( "#public/#", "", $image_path );
+
         $image = Image::create([
             'image_path' => $image_path,
         ]);
+
         event(new onAddArtworkEvent($request,$image));
 
         return redirect()->back()->with('success', 'Книга успешно добавлена');
