@@ -55,7 +55,7 @@ User_id int NOT NULL REFERENCES Users (Id),
 Language_id Int NOT NULL REFERENCES Languages (Id),
 Category_id Int NOT NULL REFERENCES Categories (Id),
 Status_id Int REFERENCES Work_statuses (Id),
-Description VARCHAR(1000) NOT NULL,
+Description VARCHAR(1000) NOT NULL
 );
 
 
@@ -144,7 +144,8 @@ Tag_id int NOT NULL REFERENCES Tags (Id)
 CREATE TABLE Buying_a_chapters (
 Id Serial PRIMARY KEY,
 Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
-Chapter_id int NOT NULL REFERENCES Chapters (Id)
+Chapter_id int NOT NULL REFERENCES Chapters (Id),
+User_id int NOT NULL REFERENCES Users (Id)
 );
 
 
@@ -153,6 +154,7 @@ Id Serial PRIMARY KEY ,
 Artwork_id Int REFERENCES Artworks (Id),
 Transfer_id int REFERENCES Transfers (Id),
 Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
+User_id int NOT NULL REFERENCES Users (Id)
 );
 
 

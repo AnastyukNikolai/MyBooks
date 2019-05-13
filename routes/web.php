@@ -26,7 +26,7 @@ Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
 Route::get('/artwork/download/{chapter?}', 'IndexController@downloadChapter')->name('downloadChapter');
 
-////////////////////////////////////////////Author
+////////////////////////////////////////////Author  yh
 
 
 Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
@@ -35,13 +35,14 @@ Route::post('/artwork/add', 'authorController@storeArtwork')->name('storeArtwork
 Route::get('/artwork/{id}/chapter/add', 'authorController@addArtworkChapter')->name('addArtworkChapter');
 Route::post('/artwork/chapter/add', 'authorController@storeArtworkChapter')->name('storeArtworkChapter');
 Route::get('/chapter/{id}/edit', 'authorController@editChapter')->name('editChapter');
-Route::post('/artwork/chapter/edit', 'authorController@storeEditChapter')->name('storeEditChapter');
+Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
 Route::post('/chapter/{id}/delete', 'authorController@deleteChapter')->name('deleteChapter');
 
 
 
 Route::get('/artwork/{id}/chapter/anons/add', 'authorController@addChapterAnons')->name('addChapterAnons');
 Route::post('/artwork/chapter/anons/add', 'authorController@storeChapterAnons')->name('storeChapterAnons');
+Route::post('/anons/publish', 'authorController@publishAnons')->name('publishAnons');
 
 Route::get('/artwork/{id}/chapter/edit', 'authorController@editArtworkChapter')->name('editArtworkChapter');
 Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
@@ -52,6 +53,7 @@ Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('sto
 ////////////////////////////////////////////User
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
+Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');
 
 
 ////////////////////////////////////////////

@@ -30,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\onAddFinancialOperationEvent' => [
             'App\Listeners\AddFinancialOperationListener',
         ],
+        'App\Events\onPublishAnonsEvent' => [
+            'App\Listeners\PublishAnonsListener',
+        ],
     ];
 
     /**

@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function subscriptions() {
         return $this -> belongsToMany('App\Artwork', 'subscriptions');
     }
+
+    public function chapters() {
+        return $this -> belongsToMany('App\Chapter', 'buying_a_chapters');
+    }
 }

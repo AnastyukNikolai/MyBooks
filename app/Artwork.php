@@ -38,6 +38,10 @@ class Artwork extends Model
         return $this -> belongsToMany('App\Tag', 'work_tags');
     }
 
+    public function users() {
+        return $this -> belongsToMany('App\User', 'subscriptions');
+    }
+
     public function image() {
         return $this -> belongsTo('App\Image');
     }

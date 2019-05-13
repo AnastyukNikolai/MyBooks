@@ -24,11 +24,11 @@ class Financial_operation extends Model
         return $this -> belongsTo('App\User', 'receiver_id');
     }
 
-    public function buy_chapters() {
-        return $this -> hasMany('App\Buying_a_chapter');
+    public function chapter() {
+        return $this -> hasOne('App\Buying_a_chapter');
     }
 
-    public function buy_artwork() {
+    public function artwork() {
         return $this -> hasOne('App\Subscription');
     }
 

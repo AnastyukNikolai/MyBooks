@@ -24,6 +24,14 @@
                             </ul>
                         </div>
                     @endif
+
+                    @if(Session::has('success'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{{Session::get('success')}}</li>
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('storeArtwork') }}" enctype="multipart/form-data">
 
                         <div class="form-group">
@@ -57,9 +65,9 @@
                         <div class="form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Статус произведения</label>
                             <select name="status" value="{{ old('language') }}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                <option value="В процессе">В процессе</option>
-                                <option value="Завершено">Завершено</option>
-                                <option value="Заморожено">Заморожено</option>
+                                @foreach($statuses as $statuse)
+                                    <option value="{{$statuse->id}}">{{$statuse->title}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="custom-file">

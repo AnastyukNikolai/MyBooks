@@ -34,7 +34,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('updateArtworkChapter') }}" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <form method="POST" action="{{ route('updateArtworkChapter') }}">
 
                         <div class="form-group">
                             <label for="exampleInputTitle">Название</label>
@@ -48,17 +48,15 @@
                             <label for="InputDescription">Описание главы</label>
                             <textarea name="description"  class="form-control" placeholder="Новое описание главы"></textarea>
                         </div>
-                        <div class="custom-file">
-                            <label class="custom-file-label" for="InputImage">Выберите новый файл (.txt)</label>
-                            <input type="file" name="text" value="{{ $chapter->text_link }}" class="custom-file-input" placeholder="Выберите новый файл">
-                        </div>
 
                         <div class="form-group">
                             <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
                         </div>
-
                         <div class="form-group">
                             <input type="hidden" name="chapter_id" value={{ $chapter->id }}>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="text" value="1">
                         </div>
 
                         <div class="text-right">

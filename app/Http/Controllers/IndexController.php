@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Artwork;
+use App\Buying_a_chapter;
+use App\Financial_operation;
 use App\Image;
 use App\Chapter;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -28,10 +31,9 @@ class IndexController extends Controller
         $artwork=Artwork::find($id);
         $artwork_views=$artwork->views;
         $chapters=$artwork->chapters->where('announcement', false)->sortBy('number');
-       // $t = Auth::user()->purchase_transactions->buy_chapters;
-        //dd($t);
         $announcements=$artwork->chapters->where('announcement', true)->sortBy('number');
         $first_chapter=$artwork->chapters->where('number', 1)->first();
+
         Artwork::where('id',$id)->update(['views' => $artwork_views+1]);
 
         return view('artwork.bookPage')->with(['artwork' => $artwork,

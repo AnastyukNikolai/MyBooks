@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddChapterRequest extends FormRequest
+class ChapterSponsorshipRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class AddChapterRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'text' => 'required',
-            'price' => 'integer'
+            'sponsor_sum' => 'required|integer'
         ];
     }
 }

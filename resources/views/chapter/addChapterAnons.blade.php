@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="InputDescription">Описание планируемой главы</label>
-                            <textarea name="description" value="{{ old('description') }}" class="form-control" placeholder="Описание главы"></textarea>
+                            <textarea name="description" class="form-control" placeholder="Описание главы"></textarea>
                         </div>
 
                         <div class="form-group">

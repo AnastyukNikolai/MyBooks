@@ -16,6 +16,12 @@
                 </div>
             @endif
 
+            @if (session('error'))
+                <div class="alert alert-danger text-center msg" id="error">
+                    <strong>{{ session('error') }}</strong>
+                </div>
+            @endif
+
             @if(Session::has('success'))
                 <div class="alert alert-success">
                     <ul>
@@ -62,7 +68,7 @@
                             <hr color="green">
                             <div class="book__block-item">
                                 <div class="book__block-name">Категория:</div>
-                                <div class="book__block-genre">
+                                <div class="book__block-genre">|
                                     @if($artwork->category)
                                         @foreach($artwork->genres as $genre) {{ $genre->name }} | @endforeach
                                     @endif
@@ -111,7 +117,7 @@
                                 <strong>Важная информация:</strong>
                             </div>
                             <div>
-                                <p>Статус произведения:&nbsp;{{ $artwork->status }}</p>
+                                <p>Статус произведения:&nbsp;{{ $artwork->status->title }}</p>
                                 <p></p>
                                 @if($artwork->chapters!=null)
                                 <p>Количество глав: {{ $artwork->chapters->where('announcement', false)->count() }}</p>
@@ -141,7 +147,7 @@
                                         <div class="book_item-text">
                                             <div class="book__item-wrapper" style="vertical-align: middle">
                                                 <div class="book_chapter-title">
-                                                <a  class="btn btn-link book_chapter-title" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
+                                                <a class="btn btn-link book_chapter-title" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
                                                     <strong>{{$chapter->title}}</strong>
                                                 </a>
                                                 </div>
@@ -162,18 +168,11 @@
                                                         </div>
                                                     @endif
                                             </div>
-                                            @if($chapter->price==0||$chapter->users->find(Auth::user()->id)==true||$chapter->artwork->user==Auth::user())
+                                            @if($chapter->price==0||Auth::user()&&$chapter->users->find(Auth::user()->id)==true||Auth::user()&&$chapter->artwork->users->find(Auth::user()->id)==true||$chapter->artwork->user==Auth::user())
                                             <div class="book-action">
                                             <div class="book_item-btn">
-                                                <a class="btn btn-success" href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
-                                                    <i class="icon-arrow"></i>
+                                                <a class="btn btn-success" href="https://drive.google.com/file/d/{{$chapter->file_id}}/view">
                                                     <span class="read-block">Читать</span>
-                                                </a>
-                                            </div>
-                                                <div class="book_item-btn">
-                                                <a class="btn btn-primary" href="{{ route('downloadChapter', ['chapter'=>$chapter]) }}">
-                                                    <i class="icon-arrow"></i>
-                                                    <span class="download-block">Скачать</span>
                                                 </a>
                                             </div>
                                             </div>
@@ -197,7 +196,7 @@
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-                                                            @if(Auth::user()&&Auth::user()->balance>=$chapter->price)
+                                                            @if(Auth::user()&&$chapter->price<=Auth::user()->balance)
                                                             <div style="color: #1b1e21" class="modal-body">
                                                                 Вы уверены что хотите приобрести данную главу?
                                                             </div>
@@ -278,13 +277,63 @@
                                                     @if($announcement->artwork->user==Auth::user())
                                                         <div class="book-author-control">
                                                             <div class="book_item-btn">
-                                                                <a class="btn btn-warning" href="{{ route('editChapter', ['id'=>$announcement->id]) }}">
-                                                                    <span class="read-block">Опубликовать главу</span>
-                                                                </a>
+                                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#publishAnonsModal">
+                                                                    <span class="read-block">Опубликовать</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal fade" id="publishAnonsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div style="color: #1b1e21" class="modal-header">
+                                                                            <h5 class="modal-title" id="buyModalLabel">Опубликовать</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                            <div style="color: #1b1e21" class="modal-body">
+                                                                                Выберите файл и укажите номер публикуемой главы
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <div class="row">
+                                                                                    <form class="form-inline" method="POST" action="{{ route('googleUploadFile') }}" enctype="multipart/form-data">
+                                                                                        <div class="col-sm-8">
+                                                                                        <div class="form-group">
+                                                                                            <input type="text" name="number" class="form-control" placeholder="Номер главы">
+                                                                                        </div>
+                                                                                            <hr>
+                                                                                        <div class="custom-file">
+                                                                                            <label class="custom-file-label" for="InputFile"></label>
+                                                                                            <input type="file" name="text" class="custom-file-input" placeholder="Выберите файл">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <input type="hidden" name="anons_id" value={{ $announcement->id }}>
+                                                                                        </div>
+                                                                                            <div class="form-group">
+                                                                                                <input type="hidden" name="title" value={{ $announcement->title }}>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <input type="hidden" name="description" value={{ $announcement->description }}>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <input type="hidden" name="price" value={{ $announcement->price }}>
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                        <div class="text-right col-sm-4">
+                                                                                            <button style="text-align: right" type="submit" class="btn btn-success btn-md text-right">ОК</button>
+                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                                                                        </div>
+                                                                                        {{ csrf_field() }}
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="book_item-btn">
                                                                 <a class="btn btn-danger" href="{{ route('deleteChapter', ['id'=>$announcement->id]) }}">
-                                                                    <span class="download-block">Удалить</span>
+                                                                    <span class="download-block">Отменить</span>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -292,12 +341,15 @@
                                                 </div>
                                                     <div class="book-action">
                                                         <div class="book_item-btn">
-                                                            <span class="read-block">{{ $announcement->min_amount }} у.е.</span>
-                                                        </div>
-                                                        <div class="book_item-btn">
-                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sponsorModal">
-                                                                <span class="read-block">Спонсировать</span>
-                                                            </button>
+                                                            @if(Auth::user()&&Auth::user()->id==$announcement->artwork->user->id)
+                                                                <button type="button" class="btn btn-info" disabled>
+                                                                <span class="read-block">Количество спонсирований: {{ $announcement->purchases->count() }}</span>
+                                                                </button>
+                                                                @else
+                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sponsorModal">
+                                                                    <span class="read-block">Спонсировать</span>
+                                                                </button>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="modal fade" id="sponsorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -314,11 +366,30 @@
                                                                         Вы уверены что хотите спонсировать данную главу?
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <a class="btn btn-info" href="{{ route('chapterBuy', ['id'=>$announcement->id]) }}">
-                                                                            <span class="buy-modal-block">Да</span>
-                                                                        </a>
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                        <div class="row">
+                                                                    <form class="form-inline" method="POST" action="{{ route('chapterSponsorship') }}">
+                                                                        <div class="form-group col-sm-4">
+                                                                            <input type="text" name="sponsor_sum" class="form-control" placeholder="Мин. сумма {{ $announcement->min_amount }} у.е.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="anons_id" value={{ $announcement->id }}>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="author_id" value={{ $announcement->artwork->user->id }}>
+                                                                        </div>
+
+                                                                            <div class="text-right col-sm-8">
+                                                                                <button style="text-align: right" type="submit" class="btn btn-success btn-md text-right">ОК</button>
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                            </div>
+                                                                        {{ csrf_field() }}
+                                                                    </form>
+                                                                        </div>
                                                                     </div>
+
                                                                 @elseif(Auth::user()&&Auth::user()->balance < $announcement->min_amount)
                                                                     <div style="color: #1b1e21" class="modal-body">
                                                                         У вас недостаточно средств для спонсирования

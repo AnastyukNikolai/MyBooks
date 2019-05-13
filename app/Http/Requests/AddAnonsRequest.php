@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddChapterRequest extends FormRequest
+class AddAnonsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,6 @@ class AddChapterRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'text' => 'required',
             'price' => 'integer'
         ];
     }

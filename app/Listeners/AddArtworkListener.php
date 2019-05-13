@@ -35,7 +35,7 @@ class AddArtworkListener
             'description' => $event->artwork->description,
             'image_id' => $event->image_id,
             'user_id' => $event->artwork->user_id,
-            'status' => $event->artwork->status,
+            'status_id' => $event->artwork->status,
         ]);
 
         event(new onAddArtwor2kEvent($event,$artwork));
