@@ -11,14 +11,11 @@ use App\Language;
 use App\Work_status;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Google_Client;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddArtworkRequest;
 use App\Http\Requests\AddChapterRequest;
-use App\Http\Requests\PublishAnonsRequest;
 use App\Http\Requests\AddAnonsRequest;
-use App\Http\Controllers\DriveController;
+
 
 use App\Http\Requests;
 
@@ -29,7 +26,6 @@ class authorController extends Controller
 
         $author=User::find($id);
         $artworks=$author->artworks->where('transfer', false);
-       // $image_link= \Storage::disk('public')->
 
         return view('artwork.authorBooks')->with(['artworks' => $artworks,
                                                 'author' => $author,
@@ -94,7 +90,6 @@ class authorController extends Controller
     public function storeChapterAnons(AddAnonsRequest $request) {
 
         $artwork=Artwork::find($request->artwork_id);
-        $number=$artwork->chapters->max('number')+1;
         if($request->min_amount==null) {
             $request->min_amount=0;
         }
@@ -115,12 +110,18 @@ class authorController extends Controller
     }
 
 
-    public function cancelAnnouncement($id) {
+    public function deleteAnons($id) {
 
-        $chapter = Chapter::find($id);
+        $anons = Chapter::find($id);
+        $anons_operations = $anons->financial_operations->where('type_id', 2)->where('status_id', 3);
+
+        FinancialController::cancellationSponsorship($anons_operations);
+
+        $anons->purchases()->delete();
+        $anons->delete();
 
 
-        return redirect()->back()->with('success', 'Анонс успешно отменен');
+        return redirect()->back()->with('success', 'Анонс успешно отменен, деньги возвращены спонсорам');
 
     }
 
@@ -145,6 +146,15 @@ class authorController extends Controller
         ]);
 
         return redirect()->route('bookShow',['id'=>$chapter->artwork->id])->with('success', 'Информация о главе обновлена');
+
+    }
+
+    public function deleteChapter($id) {
+
+        $chapter = Chapter::find($id)->delete();
+
+
+        return redirect()->back()->with('success', 'Глава успешно удалена');
 
     }
 }

@@ -14,21 +14,27 @@ class readerController extends Controller
 
     }
 
-    public function chapterBuy($id) {
+    public function test() {
 
-        $chapter = Chapter::find($id);
-        $user = Auth::user();
-        $user_new_balance=$user->balance-$chapter->price;
-        $chapter_author = $chapter->artwork->user;
-        $chapter_author_new_balance=$chapter_author->balance+$chapter->price;
+        $chapter = Chapter::find(11);
 
-        User::find($user->id)->update([
-            'balance' => $user_new_balance,
-        ]);
-
-        User::find($chapter_author->id)->update([
-           'balance' =>  $chapter_author_new_balance,
-        ]);
+        dump($chapter->financial_operations);
 
     }
+
+    public function cancelSponsorship($id) {
+
+        $anons = Chapter::find($id);
+        $anons_operations = $anons->financial_operations->where('type_id', 2)->where('status_id', 3);
+
+        FinancialController::cancellationSponsorship($anons_operations);
+
+        $anons->purchases()->where('user_id', Auth::user()->id)->delete();
+
+
+        return redirect()->back()->with('success', 'Спонсирование успешно отменено, деньги возвращены');
+
+    }
+
+
 }

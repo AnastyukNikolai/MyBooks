@@ -105,7 +105,6 @@ Transfer_id int REFERENCES Transfers (Id)
 CREATE TABLE Chapters (
 Id Serial PRIMARY KEY,
 Announcement Boolean NOT NULL default FALSE,
-Number int NOT NULL,
 Title VARCHAR(100) NOT NULL,
 Description VARCHAR(500),
 Price int NOT NULL default 0,

@@ -66,7 +66,6 @@ class DriveController extends Controller
             $chapter = Chapter::find($request->anons_id);
              Chapter::find($request->anons_id)->update([
                 'announcement' => false,
-                'number' => $request->number,
                 'file_id' => $file_id,
                 'min_amount' => null,
             ]);
@@ -91,13 +90,11 @@ class DriveController extends Controller
 
 
             $artwork=Artwork::find($request->artwork_id);
-            $number=$artwork->chapters->max('number')+1;
 
             $chapter = Chapter::create([
                 'title' => $request->title,
                 'price' => $request->price,
                 'artwork_id' => $request->artwork_id,
-                'number' => $number,
                 'file_id' => $file_id
             ]);
 

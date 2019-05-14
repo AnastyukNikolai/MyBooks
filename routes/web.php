@@ -24,7 +24,7 @@ Route::get('/book/{id}', 'IndexController@bookShow')->name('bookShow');
 
 Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
-Route::get('/artwork/download/{chapter?}', 'IndexController@downloadChapter')->name('downloadChapter');
+Route::get('/test', 'readerController@test')->name('test');
 
 ////////////////////////////////////////////Author  yh
 
@@ -36,13 +36,13 @@ Route::get('/artwork/{id}/chapter/add', 'authorController@addArtworkChapter')->n
 Route::post('/artwork/chapter/add', 'authorController@storeArtworkChapter')->name('storeArtworkChapter');
 Route::get('/chapter/{id}/edit', 'authorController@editChapter')->name('editChapter');
 Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
-Route::post('/chapter/{id}/delete', 'authorController@deleteChapter')->name('deleteChapter');
+Route::get('/chapter/{id}/delete', 'authorController@deleteChapter')->name('deleteChapter');
 
 
 
 Route::get('/artwork/{id}/chapter/anons/add', 'authorController@addChapterAnons')->name('addChapterAnons');
 Route::post('/artwork/chapter/anons/add', 'authorController@storeChapterAnons')->name('storeChapterAnons');
-Route::post('/anons/publish', 'authorController@publishAnons')->name('publishAnons');
+Route::get('/anons/{id}/delete', 'authorController@deleteAnons')->name('deleteAnons');
 
 Route::get('/artwork/{id}/chapter/edit', 'authorController@editArtworkChapter')->name('editArtworkChapter');
 Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
@@ -54,6 +54,8 @@ Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('sto
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');
+Route::get('/chapter/{id}/cancel/sponsorship', 'readerController@cancelSponsorship')->name('cancelSponsorship');
+
 
 
 ////////////////////////////////////////////

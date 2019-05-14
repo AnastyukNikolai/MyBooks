@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Http\Requests;
 
@@ -30,9 +31,10 @@ class IndexController extends Controller
 
         $artwork=Artwork::find($id);
         $artwork_views=$artwork->views;
-        $chapters=$artwork->chapters->where('announcement', false)->sortBy('number');
-        $announcements=$artwork->chapters->where('announcement', true)->sortBy('number');
-        $first_chapter=$artwork->chapters->where('number', 1)->first();
+        $chapters = Chapter::withTrashed()->get();
+        $chapters=$chapters->where('artwork_id', $artwork->id)->where('announcement', false)->sortBy('created_at');
+        $announcements=$artwork->chapters->where('announcement', true)->sortBy('created_at');
+        $first_chapter=$chapters->sortBy('created_at')->first();
 
         Artwork::where('id',$id)->update(['views' => $artwork_views+1]);
 

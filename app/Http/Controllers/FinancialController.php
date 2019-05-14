@@ -27,7 +27,7 @@ class FinancialController extends Controller
         $payment = event(new onAddFinancialOperationEvent($operation));
 
 
-        if($payment == true&&$operation->type_id == 1) {
+        if($payment == true&&$operation->type_id == 1||$payment == true&&$operation->type_id == 4) {
             $operation->update([
                 'status_id' => 1
             ]);
@@ -40,13 +40,14 @@ class FinancialController extends Controller
             return $operation->id;
         }
 
+
         else {
 
             $operation->update([
                 'status_id' => 4
             ]);
 
-            $error = 'При оплате произошла ошибка';
+            $error = 'При выполнении финансовой операции произошла ошибка';
 
             return redirect()->back()->with(['error' => $error]);
         }
@@ -77,6 +78,22 @@ class FinancialController extends Controller
             ]);
 
             return redirect()->back()->with('success', 'Глава успешно спонсирована');
+        }
+
+    }
+
+    public static function cancellationSponsorship($operations, $reader = null) {
+
+        foreach ($operations as $operation) {
+
+            $operation->update([
+                'status_id' => 2,
+            ]);
+
+
+            $fin_controller = new FinancialController();
+            $refund = $fin_controller->financialOperation($operation->amount, 4, $operation->receiver_id, $operation->payer_id);
+
         }
 
     }

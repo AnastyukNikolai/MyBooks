@@ -143,6 +143,7 @@
                                         <hr>
                                     @endif
                                     @foreach($chapters as $chapter)
+                                        @if($chapter->trashed()==false || $chapter->trashed()&&$chapter->purchases->where('user_id', Auth::user()->id)->first() != null)
                                     <div class="book_item">
                                         <div class="book_item-text">
                                             <div class="book__item-wrapper" style="vertical-align: middle">
@@ -160,17 +161,47 @@
                                                                 </a>
                                                             </div>
                                                             <div class="book_item-btn">
-                                                                <a class="btn btn-danger" href="{{ route('downloadChapter', ['chapter'=>$chapter]) }}">
-                                                                    <i class="icon-arrow"></i>
-                                                                    <span class="download-block">Удалить</span>
-                                                                </a>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChapterModal">
+                                                                    <span class="read-block">Удалить</span>
+                                                                </button>
                                                             </div>
                                                         </div>
+                                                    <div class="modal fade" id="deleteChapterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div style="color: #1b1e21" class="modal-header">
+                                                                    <h5 class="modal-title" id="buyModalLabel">Удаление главы</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                    <div style="color: #1b1e21" class="modal-body">
+                                                                        <p>Вы уверены что хотите удалить данную главу из списка глав книги?</p>
+                                                                        <p></p>
+                                                                        <p>Пользователи купившие данную главу по прежнему будут ее видеть.</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a class="btn btn-info" href="{{ route('deleteChapter', ['id'=>$chapter->id]) }}">
+                                                                            <span class="buy-modal-block">Да</span>
+                                                                        </a>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                         </div>
                                                     @endif
                                             </div>
                                             @if($chapter->price==0||Auth::user()&&$chapter->users->find(Auth::user()->id)==true||Auth::user()&&$chapter->artwork->users->find(Auth::user()->id)==true||$chapter->artwork->user==Auth::user())
                                             <div class="book-action">
-                                            <div class="book_item-btn">
+                                                @if($chapter->trashed())
+                                                 <div class="book_item-btn">
+                                                <button type="button" class="btn btn-dark" disabled>
+                                                    <span class="read-block">Удалена</span>
+                                                </button>
+                                                 </div>
+                                                @endif
+                                                 <div class="book_item-btn">
                                                 <a class="btn btn-success" href="https://drive.google.com/file/d/{{$chapter->file_id}}/view">
                                                     <span class="read-block">Читать</span>
                                                 </a>
@@ -231,6 +262,7 @@
                                         </div>
                                     </div>
                                         <hr color="white" style="margin: 0">
+                                            @endif
                                         @endforeach
                                 </div>
                             </div>
@@ -291,16 +323,12 @@
                                                                             </button>
                                                                         </div>
                                                                             <div style="color: #1b1e21" class="modal-body">
-                                                                                Выберите файл и укажите номер публикуемой главы
+                                                                                Выберите файл публикуемой главы
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <div class="row">
                                                                                     <form class="form-inline" method="POST" action="{{ route('googleUploadFile') }}" enctype="multipart/form-data">
                                                                                         <div class="col-sm-8">
-                                                                                        <div class="form-group">
-                                                                                            <input type="text" name="number" class="form-control" placeholder="Номер главы">
-                                                                                        </div>
-                                                                                            <hr>
                                                                                         <div class="custom-file">
                                                                                             <label class="custom-file-label" for="InputFile"></label>
                                                                                             <input type="file" name="text" class="custom-file-input" placeholder="Выберите файл">
@@ -332,14 +360,65 @@
                                                                 </div>
                                                             </div>
                                                             <div class="book_item-btn">
-                                                                <a class="btn btn-danger" href="{{ route('deleteChapter', ['id'=>$announcement->id]) }}">
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelAnnouncementModal">
                                                                     <span class="download-block">Отменить</span>
-                                                                </a>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal fade" id="cancelAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div style="color: #1b1e21" class="modal-header">
+                                                                            <h5 class="modal-title" id="buyModalLabel">Отмена анонса главы</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div style="color: #1b1e21" class="modal-body">
+                                                                           Вы уверены что хотите отменить данный анонс?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <a class="btn btn-info" href="{{ route('deleteAnons', ['id'=>$announcement->id]) }}">
+                                                                                <span class="buy-modal-block">Да</span>
+                                                                            </a>
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     @endif
                                                 </div>
                                                     <div class="book-action">
+                                                        @if(Auth::user()&&Auth::user()->buy_chapters->where('chapter_id', $announcement->id)->first() !=null)
+                                                        <div class="book_item-btn">
+                                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cancelSponsorshipModal">
+                                                                <span class="read-block">Отменить</span>
+                                                            </button>
+                                                        </div>
+                                                <div class="modal fade" id="cancelSponsorshipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div style="color: #1b1e21" class="modal-header">
+                                                                <h5 class="modal-title" id="buyModalLabel">Отмена спонсирования</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                                <div style="color: #1b1e21" class="modal-body">
+                                                                    <p>Вы уверены что хотите отменить спонсирование данной главы?</p>
+                                                                    <p></p>
+                                                                    <p>Общая сумма спонсирования составляет {{Auth::user()->purchase_transactions->whereIn('id', Auth::user()->buy_chapters->where('chapter_id', $announcement->id)->pluck('financial_operation_id'))->sum('amount') }} у.е.</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a class="btn btn-info" href="{{ route('cancelSponsorship', ['id'=>$announcement->id]) }}">
+                                                                        <span class="buy-modal-block">Да</span>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                            @endif
                                                         <div class="book_item-btn">
                                                             @if(Auth::user()&&Auth::user()->id==$announcement->artwork->user->id)
                                                                 <button type="button" class="btn btn-info" disabled>
@@ -411,6 +490,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <hr color="white" style="margin: 0">

@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -39,6 +42,11 @@ class User extends Authenticatable
     public function reviews() {
         return $this -> hasMany('App\Review');
     }
+
+    public function buy_chapters() {
+        return $this -> hasMany('App\Buying_a_chapter');
+    }
+
     public function favorites() {
         return $this -> belongsToMany('App\Artwork', 'favorites');
     }

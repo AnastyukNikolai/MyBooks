@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Artwork extends Model
 {
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
    // protected $fillable = ['title', 'language_id', 'category_id', 'description', 'image_id', 'user_id', 'status'];
 
     protected $guarded = [];
