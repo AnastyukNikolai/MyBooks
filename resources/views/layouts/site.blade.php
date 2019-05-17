@@ -41,6 +41,18 @@
         </form>
         @if(Auth::check())
           <div class="log-reg">
+          <ul class="list-inline" style="margin-bottom: 0;padding-bottom: 0;">
+            <li class="list-group-item-dark d-flex justify-content-between align-items-center">
+              Баланс:
+              <span class="badge badge-success badge-pill">{{Auth::user()->balance - Auth::user()->sale_transactions->where('status_id', 3)->sum('amount') }}</span>
+            </li>
+            <li class="list-group-item-dark d-flex justify-content-between align-items-center">
+              Возможный заработок:
+              <span class="badge badge-warning badge-pill">{{ Auth::user()->sale_transactions->where('status_id', 3)->sum('amount') }}</span>
+            </li>
+          </ul>
+          </div>
+          <div class="log-reg">
           <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown dropdown-header">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>

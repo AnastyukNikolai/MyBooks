@@ -171,7 +171,7 @@ a.book_chapter-title {
 }
 
 a.book_chapter-title:hover {
-    color: snow;
+    color: black;
     text-decoration: none;
 }
 
@@ -184,10 +184,10 @@ div.book_content-table {
     margin-bottom: 25px;
 }
 
-div.book_item:hover {
-    background-color: #31373e;
-    border-radius: 10px;
-    transition: 0.3s;
+div.book_item-text {
+    background-color: #38c172;
+    border-radius: 100px;
+    transition: 0s;
     color: snow;
 }
 

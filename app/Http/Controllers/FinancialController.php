@@ -67,6 +67,14 @@ class FinancialController extends Controller
             return redirect()->back()->with(['error' => $error]);
         }
 
+        elseif ($request->sponsor_sum > Auth::user()->balance - Auth::user()->sale_transactions->where('status_id', 3)->sum('amount')) {
+
+            $error = 'сумма спонсирования введенная вами превышает ваши наличные средства';
+
+            return redirect()->back()->with(['error' => $error]);
+
+        }
+
         else {
 
             $buying = $this->financialOperation($sponsor_sum, 2, $request->user_id, $request->author_id);

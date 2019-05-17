@@ -3,7 +3,6 @@
 @section('content')
     <main role="main">
 
-      <hr>
       <div class="container">
         <!-- row of columns -->
         <div class="row">
@@ -38,8 +37,9 @@
                 </div>
                 <h4 style="color: #008080"><a  href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a>
                   @if($artwork->chapters->sortBy('created_at')->first()!=null)
-                    - {{$artwork->chapters->where('created_at', $artwork->chapters->where('announcement', false)->max('created_at'))->first()->title}}
-                  @endif</h4>
+                    - {{$artwork->chapters->where('created_at', $artwork->chapters->where('announcement', false)->max('created_at'))->first()->created_at}}
+                  @endif
+                </h4>
              </div>
             @endforeach
         </div>

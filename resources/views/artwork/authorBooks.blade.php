@@ -3,7 +3,6 @@
 @section('content')
     <main role="main">
 
-      <hr>
       <div class="container">
         <!-- row of columns -->
         <div class="row">
