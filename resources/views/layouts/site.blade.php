@@ -58,7 +58,7 @@
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="{{ route('artworksShow', ['id'=>Auth::user()->id]) }}">Мои Произвидения</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="{{ route('userFinancialOperations', ['id'=>Auth::id()]) }}">Мои финансовые операции</a>
             <a class="dropdown-item" href="{{ url('logout') }}">Выход</a>
           </div>
           </li>

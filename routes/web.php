@@ -26,7 +26,7 @@ Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
 Route::get('/test', 'readerController@test')->name('test');
 
-////////////////////////////////////////////Author  yh
+////////////////////////////////////////////Author
 
 
 Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
@@ -50,13 +50,15 @@ Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->n
 Route::get('/transfer/{id}/chapter/add', 'authorController@addChapter')->name('addTransferChapter');
 Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('storeTransferChapter');
 
+Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance')->name('chapterFinancialOperations');
+
 ////////////////////////////////////////////User
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');
 Route::get('/chapter/{id}/cancel/sponsorship', 'readerController@cancelSponsorship')->name('cancelSponsorship');
 
-
+Route::get('/user/{id}/finance', 'authorController@showUserFinance')->name('userFinancialOperations');
 
 ////////////////////////////////////////////
 

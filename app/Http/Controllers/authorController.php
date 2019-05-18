@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Artwork;
 use App\Chapter;
 use App\Events\onAddArtworkEvent;
+use App\Financial_operation;
 use App\Genre;
 use App\Category;
 use App\Image;
@@ -157,4 +158,32 @@ class authorController extends Controller
         return redirect()->back()->with('success', 'Глава успешно удалена');
 
     }
+
+    public function showChapterFinance($id, $anons) {
+
+        $chapter=Chapter::withTrashed()->where('id', $id)->first();
+        $operations=$chapter->financial_operations->sortByDesc('updated_at');
+        $n = 0;
+
+        return view('finance.chapterFinancialOperations')
+            ->with(['operations' => $operations,
+            'anons' => $anons,
+            'chapter' => $chapter,
+            'n' => $n,
+        ]);
+
+    }
+
+    public function showUserFinance($id) {
+
+        $operations=Financial_operation::where('payer_id', $id)->orWhere('receiver_id', $id)->get()->sortByDesc('updated_at');
+        $n = 0;
+
+        return view('finance.userFinancialOperations')
+            ->with(['operations' => $operations,
+                'n' => $n,
+            ]);
+
+    }
+
 }

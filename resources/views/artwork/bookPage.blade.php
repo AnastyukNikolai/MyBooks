@@ -145,13 +145,13 @@
                         <div class="book_content-title">
                             <strong>Содеражание:</strong>
                         </div>
-                        <div class="book_content-item">
+                        <div class="book_content-item" style="text-align: right">
                             <div class="book_content-table">
                                 @if(Auth::user()&&Auth::user()->id==$artwork->user_id)
                                     <div class="chapter_add_btn">
                                         <a class="btn btn-outline-success btn-block "
-                                           href="{{ route('addArtworkChapter', ['id'=>$artwork->id]) }}">Добавить
-                                            главу</a>
+                                           href="{{ route('addArtworkChapter', ['id'=>$artwork->id]) }}">Добавить главу
+                                        </a>
                                     </div>
                                     <hr>
                                 @endif
@@ -161,15 +161,36 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
+
             @foreach($chapters as $chapter)
                 @if($chapter->trashed()==false || Auth::check()&&$chapter->trashed()&&$chapter->purchases->where('user_id', Auth::user()->id)->first() != null)
                     <div class="book_item">
                         <div class="row">
-                            <div class="book_chapter-title col-md-10" style="text-align: center">
-                                <a class="btn btn-link book_chapter-title"
-                                   href="{{ route('chapterShow', ['id'=>$chapter->id]) }}">
+                            <div class="book_chapter-title col-md-10" title="Нажмите что бы увидеть описание главы" style="text-align: center">
+                                <a class="btn btn-link book_chapter-title" title="Нажмите что бы увидеть описание главы" data-toggle="modal" data-target="#chapter{{ $chapter->id }}DescriptionModal">
                                     <strong>{{$chapter->title}}</strong>
                                 </a>
+                            </div>
+                            <div class="modal fade" id="chapter{{ $chapter->id }}DescriptionModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div style="color: #1b1e21" class="modal-header">
+                                            <h5 class="modal-title" id="buyModalLabel">Описание главы</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div style="color: #1b1e21" class="modal-body">
+                                            @if($chapter->description != null){{$chapter->description}}@else Нет описания @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Закрыть
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
@@ -185,12 +206,12 @@
                                     </div>
                                     <div class="book_item-btn">
                                         <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#deleteChapterModal">
+                                                data-target="#deleteChapter{{ $chapter->id }}Modal">
                                             <span class="read-block">Удалить</span>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="deleteChapterModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="deleteChapter{{ $chapter->id }}Modal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -226,10 +247,18 @@
                                     @if($chapter->trashed())
                                         <div class="book_item-btn">
                                             <button type="button" class="btn btn-dark" disabled>
-                                                <span class="read-block">Удалена</span>
+                                                <span class="read-block">Удалена автором</span>
                                             </button>
                                         </div>
                                     @endif
+                                        @if(Auth::user()&&Auth::user()->id==$chapter->artwork->user->id)
+                                            <div class="book_item-btn">
+                                                <a class="btn btn-info" href="{{ route('chapterFinancialOperations', ['id'=>$chapter->id, 'anons'=> 0]) }}">
+                                                    <span class="read-block">Сумма покупок: {{ $chapter->financial_operations->where('status_id', 1)->where('type_id', 1)->sum('amount') }}</span>
+                                                </a>
+                                            </div>
+                                        @endif
+
                                     <div class="book_item-btn">
                                         <a class="btn btn-success"
                                            href="https://drive.google.com/file/d/{{$chapter->file_id}}/view">
@@ -244,12 +273,12 @@
                                     </div>
                                     <div class="book_item-btn">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
-                                                data-target="#buyModal">
+                                                data-target="#buy{{ $chapter->id }}Modal">
                                             <span class="read-block">Купить главу</span>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="buyModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="buy{{ $chapter->id }}Modal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -314,7 +343,7 @@
                         <div class="book_content-title">
                             <strong>Анонсы:</strong>
                         </div>
-                        <div class="book_content-item">
+                        <div class="book_content-item" style="text-align: right">
                             <div class="book_content-table">
                                 @if(Auth::user()&&Auth::user()->id==$artwork->user_id)
                                     <div class="chapter_add_anons_btn">
@@ -332,28 +361,30 @@
             </div>
 
             <div>
-
                 @foreach($announcements as $announcement)
                     <div class="book_item">
                         <div class="row">
                             <div class="book_chapter-title col-md-10" style="text-align: center">
-                                <a class="btn btn-link book_chapter-title" data-toggle="modal"
-                                   data-target="#descriptionModal">
+                                <a class="btn btn-link book_chapter-title" title="Нажмите что бы увидеть описание анонса" data-toggle="modal" data-target="#anons{{ $announcement->id }}DescriptionModal">
                                     <strong>{{$announcement->title}}</strong>
                                 </a>
                             </div>
-                            <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="anons{{ $announcement->id }}DescriptionModal" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div style="color: #1b1e21" class="modal-header">
-                                            <h5 class="modal-title" id="buyModalLabel">Описание главы</h5>
+                                            <h5 class="modal-title" id="buyModalLabel">Описание анонса</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div style="color: #1b1e21" class="modal-body">
-                                            {{$announcement->description}}
+                                            @if($announcement->description != null)
+                                                {{$announcement->description}}
+                                            @else
+                                                Нет описания
+                                            @endif
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -370,11 +401,11 @@
                                 <div class="book-author-control col-md-5">
                                     <div class="book_item-btn">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
-                                                data-target="#publishAnonsModal">
+                                                data-target="#publishAnons{{ $announcement->id }}Modal">
                                             <span class="read-block">Опубликовать</span>
                                         </button>
                                     </div>
-                                    <div class="modal fade" id="publishAnonsModal" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="publishAnons{{ $announcement->id }}Modal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -437,11 +468,11 @@
                                     </div>
                                     <div class="book_item-btn">
                                         <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#cancelAnnouncementModal">
+                                                data-target="#cancelAnnouncement{{ $announcement->id }}Modal">
                                             <span class="download-block">Отменить</span>
                                         </button>
                                     </div>
-                                    <div class="modal fade" id="cancelAnnouncementModal" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="cancelAnnouncement{{ $announcement->id }}Modal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -468,16 +499,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="col-md-5"></div>
                             @endif
                             <div class="book-action col-md-5">
                                 @if(Auth::user()&&Auth::user()->buy_chapters->where('chapter_id', $announcement->id)->first() !=null)
                                     <div class="book_item-btn">
                                         <button type="button" class="btn btn-warning" data-toggle="modal"
-                                                data-target="#cancelSponsorshipModal">
+                                                data-target="#cancelSponsorship{{ $announcement->id }}Modal">
                                             <span class="read-block">Отменить</span>
                                         </button>
                                     </div>
-                                    <div class="modal fade" id="cancelSponsorshipModal" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="cancelSponsorship{{ $announcement->id }}Modal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -510,18 +543,17 @@
                                 @endif
                                 <div class="book_item-btn">
                                     @if(Auth::user()&&Auth::user()->id==$announcement->artwork->user->id)
-                                        <button type="button" class="btn btn-info" disabled>
-                                            <span class="read-block">Количество спонсирований: {{ $announcement->purchases->count() }}</span>
-                                        </button>
+                                        <a class="btn btn-info" href="{{ route('chapterFinancialOperations', ['id'=>$announcement->id, 'anons'=> true]) }}">
+                                            <span class="read-block">Количество спонсирований: {{ $announcement->purchases->count() }}; Сумма: {{ $announcement->financial_operations->where('status_id', 3)->sum('amount') }}</span>
+                                        </a>
                                     @else
                                         <button type="button" class="btn btn-info" data-toggle="modal"
-                                                data-target="#sponsorModal">
+                                                data-target="#sponsor{{ $announcement->id }}Modal">
                                             <span class="read-block">Спонсировать</span>
                                         </button>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="modal fade" id="sponsorModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="sponsor{{ $announcement->id }}Modal" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -594,6 +626,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <div class="col-md-2"></div>
                             <div class="col-md-10 book_item-text" style="margin: 1px"></div>
                             <hr color="white" style="margin: 0">
