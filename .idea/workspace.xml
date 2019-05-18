@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5258bb67-530f-41e0-a609-883eef390255" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/site.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/site.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,10 +95,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="295">
+              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
               <folding>
-                <element signature="e#1704#1726#0#HTML" expanded="true" />
+                <element signature="e#1704#1748#0#HTML" expanded="true" />
+                <element signature="e#1752#1796#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -424,7 +421,7 @@
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -494,12 +491,12 @@
       <workItem from="1558095744886" duration="16364000" />
       <workItem from="1558167868848" duration="16859000" />
       <workItem from="1558194165758" duration="2383000" />
-      <workItem from="1558196734921" duration="12326000" />
+      <workItem from="1558196734921" duration="14050000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303610000" />
+    <option name="totallyTimeSpent" value="305334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +509,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -527,13 +523,13 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329582" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.329582" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.329582" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.329582" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50075644" side_tool="true" weight="0.329582" />
       <window_info anchor="right" id="Database" order="0" weight="0.1913767" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.22314675" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.22314675" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1230,10 +1226,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="295">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
           <folding>
-            <element signature="e#1704#1726#0#HTML" expanded="true" />
+            <element signature="e#1704#1748#0#HTML" expanded="true" />
+            <element signature="e#1752#1796#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
