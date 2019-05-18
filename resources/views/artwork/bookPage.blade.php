@@ -362,8 +362,6 @@
 
             <div>
                 @foreach($announcements as $announcement)
-
-
                     <div class="book_item">
                         <div class="row">
                             <div class="book_chapter-title col-md-10" style="text-align: center">
@@ -371,8 +369,6 @@
                                     <strong>{{$announcement->title}}</strong>
                                 </a>
                             </div>
-
-
                             <div class="modal fade" id="anons{{ $announcement->id }}DescriptionModal" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
