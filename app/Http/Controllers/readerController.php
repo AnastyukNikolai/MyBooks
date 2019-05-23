@@ -16,9 +16,9 @@ class readerController extends Controller
 
     public function test() {
 
-        $chapter = Chapter::find(11);
+        $chapters = Chapter::withCount('purchases')->orderBy('purchases_count', 'desc')->get();
 
-        dump($chapter->financial_operations);
+        dump($chapters);
 
     }
 

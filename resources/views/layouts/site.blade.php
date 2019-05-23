@@ -25,6 +25,10 @@
 
         }
 
+        .third-lvl  {
+
+        }
+
         .dropdown-menu {
             background-color: #999999;
             color: snow;
@@ -137,24 +141,29 @@
                             <a class="btn-outline-dark" href="#">Категории</a>
                             <hr  style="margin: 0; padding: 0">
                             <ul class="dropdown-menu">
-                                <li><a href="#">3rd level</a></li>
-                                <li><a href="#">3rd level</a></li>
+                                @foreach($categories as $category)
+                                <li class="third-lvl">
+                                    <a href="{{ route('filterAndSort', ['table'=>'categories', 'id'=>$category->id, 'sort_param'=>'created_at']) }}">{{$category->title}}</a>
+                                </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a class="btn-outline-dark" href="#">Жанры</a>
                             <hr  style="margin: 0; padding: 0">
                             <ul class="dropdown-menu">
-                                <li><a href="#">3rd level</a></li>
-                                <li><a href="#">3rd level</a></li>
+                                @foreach($genres as $genre)
+                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'genres', 'id'=>$genre->id, 'sort_param'=>'created_at']) }}">{{$genre->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
                             <a class="btn-outline-dark" href="#">Языки</a>
                             <hr style="margin: 0; padding: 0">
                             <ul class="dropdown-menu">
-                                <li><a href="#">3rd level</a></li>
-                                <li><a href="#">3rd level</a></li>
+                                @foreach($languages as $language)
+                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'languages', 'id'=>$language->id, 'sort_param'=>'created_at']) }}">{{$language->title}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -225,5 +234,6 @@
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="../../../../assets/js/vendor/popper.min.js"></script>
 <script src="../../../../dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 </body>
 </html>

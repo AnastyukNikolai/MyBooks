@@ -18,6 +18,8 @@
 
 Route::get('/', 'IndexController@indexShow');
 
+Route::get('/{table}/{id}/{sort_param}', 'IndexController@indexShow')->name('filterAndSort');
+
 Route::get('/user/{id}/books', 'authorController@artworksShow')->name('artworksShow');
 
 Route::get('/book/{id}', 'IndexController@bookShow')->name('bookShow');

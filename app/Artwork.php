@@ -30,6 +30,11 @@ class Artwork extends Model
         return $this -> hasMany('App\Review');
     }
 
+    public function likes() {
+        return $this -> hasMany('App\Like');
+    }
+
+
     public function subscriptions() {
         return $this -> belongsToMany('App\User', 'subscriptions');
     }
