@@ -90,19 +90,19 @@
                         </div>
                         <hr color="green">
                         <div class="book__block-item">
-                            <div class="book__block-name">Рейтинг книги:</div>
+                            <div class="book__block-name">Популярность книги:</div>
 
                             <div class="vote-book" style="align: right">
                                <span data-tip="Понравилось" data-for="rating-tooltip" class="vote__item vote-green "
                                      currentitem="false">
-                                    <img class="book-info-icn" src="/icn/like.png"><span
-                                           color="#218838">{{ $artwork->likes }}</span>
+                                   @if(Auth::user()->liked->where('id', $artwork->id)->where('deleted_at', null)->first() != null)
+                                       <a title="Отменить" href="{{ route('deleteLike', ['artwork_id'=>$artwork->id, 'user_id' => Auth::id()]) }}"><img class="book-info-icn" src="/icn/heart.png"></a><span
+                                               style="color: #218838">{{ $artwork->likers->count() }}</span>
+                                       @else
+                                       <a title="Отметить как понравившееся" href="{{ route('addLike', ['id'=>$artwork->id]) }}"><img class="book-info-icn" src="/icn/like.png"></a><span
+                                               style="color: #218838">{{ $artwork->likers->count() }}</span>
+                                       @endif
                                </span>
-                                <span data-tip="Не понравилось" data-for="rating-tooltip" class="vote__item vote-red "
-                                      currentitem="false">
-                                    <img class="book-info-icn"
-                                         src="/icn/dislike.png"><span>{{ $artwork->dislikes }}</span>
-                                </span>
                             </div>
                         </div>
                         <hr color="green">
@@ -138,6 +138,124 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="book_content default">
+                        <div class="book_content-title">
+                            <strong>Отзывы:</strong>
+                        </div>
+                        <div class="book_content-item" style="text-align: right">
+                            <div class="book_content-table">
+                                @if(Auth::user()&&$artwork->users->find(Auth::user()->id)==true||$user_chapter->first()==true)
+                                    <div class="chapter_add_btn">
+                                        <a class="btn btn-outline-success btn-block "
+                                           href="{{ route('addReview', ['id'=>$artwork->id]) }}">Добавить отзыв
+                                        </a>
+                                    </div>
+                                    <hr>
+                                @else
+                                    <div class="chapter_add_btn">
+                                        <a class="btn btn-secondary btn-block disabled"
+                                           href="#">Отзывы могут добавлять только пользователи купившие хотя-бы одну главу
+                                        </a>
+                                    </div>
+                                    <hr>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            @foreach($reviews as $review)
+                    <div class="book_item">
+                        <div class="row">
+                            <div class="book_chapter-title col-md-10" title="Нажмите что бы увидеть отзыв" style="text-align: center">
+                                <a class="btn btn-link book_chapter-title" title="Нажмите что бы увидеть отзыв" data-toggle="modal" data-target="#review{{ $review->id }}DescriptionModal">
+                                    <strong>{{$review->title}}</strong>
+                                </a>
+                            </div>
+                            <div class="modal fade" id="review{{ $review->id }}DescriptionModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div style="color: #1b1e21" class="modal-header">
+                                            <h5 class="modal-title" id="buyModalLabel">{{ $review->title }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div style="color: #1b1e21" class="modal-body">
+                                            @if($review->text != null){{$review->text}}@else Текст отсутствует @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Закрыть
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="row">
+                            @if($review->user->id==Auth::id())
+                                <div class="book-author-control col-md-5">
+                                    <div class="book_item-btn">
+                                        <a class="btn btn-warning"
+                                           href="{{ route('editReview', ['id'=>$review->id]) }}">
+                                            <i class="icon-arrow"></i>
+                                            <span class="read-block">Изменить</span>
+                                        </a>
+                                    </div>
+                                    <div class="book_item-btn">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target="#deleteReview{{ $review->id }}Modal">
+                                            <span class="read-block">Удалить</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="deleteReview{{ $review->id }}Modal" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div style="color: #1b1e21" class="modal-header">
+                                                <h5 class="modal-title" id="buyModalLabel">Удаление отзыва</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div style="color: #1b1e21" class="modal-body">
+                                                <p>Вы уверены что хотите удалить данный отзыв?</p>
+                                                <p></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-info"
+                                                   href="{{ route('deleteReview', ['id'=>$review->id]) }}">
+                                                    <span class="buy-modal-block">Да</span>
+                                                </a>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Нет
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-md-5"></div>
+                            @endif
+                        </div>
+                    </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-10 book_item-text" style="margin: 0.1px"></div>
+            @endforeach
+
 
             <div class="row">
                 <div class="col-md-10">
@@ -242,7 +360,7 @@
                             @else
                                 <div class="col-md-5"></div>
                             @endif
-                            @if($chapter->price==0||Auth::user()&&$chapter->users->find(Auth::user()->id)==true||Auth::user()&&$chapter->artwork->users->find(Auth::user()->id)==true||$chapter->artwork->user==Auth::user())
+                            @if($chapter->price==0||Auth::user()&&$chapter->users->find(Auth::user()->id)==true||Auth::user()&&$chapter->artwork->users->find(Auth::user()->id)==true||$chapter->artwork->user->id==Auth::id())
                                 <div class="book-action col-md-5">
                                     @if($chapter->trashed())
                                         <div class="book_item-btn">

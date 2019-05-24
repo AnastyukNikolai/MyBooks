@@ -129,6 +129,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        @if(Request::url() !== '/login/google/callback')
         <div style="margin-right: 20%; margin-left: 5%" class="log-reg">
             <ul class="navbar-nav mr-auto">
                 <li class="divider"></li>
@@ -170,6 +171,7 @@
                 </li>
             </ul>
         </div>
+        @endif
         <form class="form-inline my-2 my-lg-0 mr-auto">
             <input class="form-control mr-sm-2" type="text" placeholder="Поиск по названию" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>

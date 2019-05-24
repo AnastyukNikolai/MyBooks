@@ -24,20 +24,26 @@ class IndexController extends Controller
     public function indexShow($filter_table = null, $filter_id = null, $sort_param = 'created_at') {
 
 
+
         if($filter_table != null) {
+
             $artworks = $this->filter($filter_table, $filter_id);
 
-            if($filter_table == 'categories'&&$artworks->count()!=0) {
+            if ($artworks == false) {
+                $artworks=Artwork::all();
+                $message = 'Все книги';
+            }
+            if($filter_table == 'categories'&&$artworks!=false&&$artworks->count()!=0) {
                 $message = 'Книги в категории \''.$artworks->first()->category->title.'\'';
             }
-            elseif($filter_table == 'genres'&&$artworks->count()!=0) {
+            elseif($filter_table == 'genres'&&$artworks!=false&&$artworks->count()!=0) {
                 $message = 'Книги в жанре \''.$artworks->first()->genres->where('id', $filter_id)->first()->name.'\'';
             }
-            elseif($filter_table == 'languages'&&$artworks->count()!=0) {
+            elseif($filter_table == 'languages'&&$artworks!=false&&$artworks->count()!=0) {
                 $message = 'Язык книг: \''.$artworks->first()->language->title.'\'';
             }
-            else {
-                $message = 'Книг не найдено';
+            elseif ($filter_table == 'a'&&$filter_id == 'a') {
+                $message = 'Все книги';
             }
         }
         else {
@@ -47,13 +53,20 @@ class IndexController extends Controller
 
 
         if($sort_param != 'created_at') {
-            $artworks = $this->sort($artworks, $filter_table, $filter_id, $sort_param);
+            $artworks = $this->sort($artworks, $sort_param);
             if($sort_param == 'likes') {
-                $message .= '; Сортировка по лайкам';
+                $message .= '; Сортировка по популярности';
+            }
+            elseif ($sort_param == 'views') {
+                $message .= '; Сортировка по просмотрам';
+            }
+            elseif ($sort_param == 'reviews') {
+                $message .= '; Сортировка по отзывам';
             }
         }
         else {
             $artworks = $artworks->sortBy('created_at');
+            $message .= '; Сортировка по дате добавления';
         }
 
 
@@ -62,6 +75,7 @@ class IndexController extends Controller
             'message' => $message,
             'filter_table' => $filter_table,
             'filter_id' => $filter_id,
+            'sort_param' => $sort_param,
         ]);
 
     }
@@ -70,16 +84,14 @@ class IndexController extends Controller
 
         $className = 'App\\' . studly_case(str_singular($tableName));
 
+
         if(class_exists($className)) {
             $model = new $className;
             $model = $model->where('id', $id)->first();
         }
         else {
-            $error = 'Ошибка поиска';
-
-            return redirect()->back()->with(['error' => $error]);
+            return false;
         }
-
 
         $artworks = $model->artworks;
 
@@ -87,11 +99,25 @@ class IndexController extends Controller
 
     }
 
-    public function sort($artworks, $filter_table, $filter_id, $sort_param) {
+    public function sort($artworks, $sort_param) {
 
-        $order_column = $sort_param.'_count';
+        if($sort_param == 'likes'||$sort_param == 'reviews') {
 
-        //$artworks = Artwork::where()->withCount($sort_param)->orderBy($order_column, 'desc')->get();
+            $order_column = $sort_param . '_count';
+            $artworks_id = $artworks->map(function ($artworks) {
+                return $artworks->only(['id']);
+            });
+
+            $artworks = Artwork::whereIn('id', $artworks_id);
+
+            if($sort_param == 'likes'||$sort_param == 'reviews') {
+                $artworks = $artworks->withCount($sort_param)->orderBy($order_column, 'desc')->get();
+            }
+
+        }
+        elseif ($sort_param == 'views') {
+            $artworks = $artworks->sortByDesc($sort_param);
+        }
 
         return $artworks;
 
@@ -103,8 +129,13 @@ class IndexController extends Controller
 
         $artwork=Artwork::find($id);
         $artwork_views=$artwork->views;
+        $reviews = $artwork->reviews;
         $chapters = Chapter::withTrashed()->get();
         $chapters=$chapters->where('artwork_id', $artwork->id)->where('announcement', false)->sortBy('created_at');
+
+
+        $user_chapter = Auth::user()->chapters->where('artwork_id', $artwork->id);
+
         $announcements=$artwork->chapters->where('announcement', true)->sortBy('created_at');
         $first_chapter=$chapters->sortBy('created_at')->first();
 
@@ -112,7 +143,9 @@ class IndexController extends Controller
 
         return view('artwork.bookPage')->with(['artwork' => $artwork,
                                              'first_chapter' => $first_chapter,
+                                             'reviews' => $reviews,
                                              'chapters' => $chapters,
+                                             'user_chapter' => $user_chapter,
                                              'announcements' => $announcements,
                                              ]);
 

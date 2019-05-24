@@ -6,7 +6,9 @@
         <div class="container">
             <!-- row of columns -->
             <div class="row">
-
+                @if($filter_table == null&&$filter_id == null)
+                    <div style="color: white">{{ $filter_table = 'a' }}{{ $filter_id = 'a' }}</div>
+                @endif
 
                 <div class="col-md-12">
                     <div class="row">
@@ -28,14 +30,15 @@
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
                                                href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'likes']) }}">
-                                                Лайкам</a>
+                                                Популярности</a>
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
                                                href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'views']) }}">
                                                 Просмотрам</a>
                                             <hr style="margin: 5px">
-                                            <a class="dropdown-item" href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'reviews']) }}">
-                                                Положительным отзывам</a>
+                                            <a class="dropdown-item"
+                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'reviews']) }}">
+                                                Отзывам</a>
                                             <hr style="margin: 5px">
                                         </div>
                                     </li>
@@ -59,12 +62,13 @@
                                 <div class="vote-default">
                       <span data-tip="Понравилось" data-for="rating-tooltip" class="vote__item vote-green "
                             currentitem="false">
-                        <img class="ico-voice" src="/icn/like.png"><span color="green">  </span>
-                      </span>
-                                    <span data-tip="Не понравилось" data-for="rating-tooltip"
-                                          class="vote__item vote-red "
-                                          currentitem="false">
-                        <img class="ico-voice" src="/icn/dislike.png"><span>{{ $artwork->dislikes }}</span>
+                        @if(Auth::user()->liked->where('id', $artwork->id)->first() == true)
+                              <img class="book-info-icn" src="/icn/heart.png"><span
+                                      style="color: #218838">{{ $artwork->likers->count() }}</span>
+                          @else
+                              <img class="book-info-icn" src="/icn/like.png"><span
+                                      style="color: #218838">{{ $artwork->likers->count() }}</span>
+                          @endif
                       </span>
                                 </div>
                                 <div align="right" ata-html="true" data-tip="Просмотры " class="watch"
@@ -73,7 +77,7 @@
                                 </div>
                             </div>
                             <h4 style="color: #218838;text-decoration: none"><a style="color: #218838"
-                                                                                href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a>
+                                href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a>
                                 @if($artwork->chapters->sortBy('created_at')->first()!=null)
                                     - {{$artwork->chapters->where('created_at', $artwork->chapters->where('announcement', false)->max('created_at'))->first()->created_at}}
                                 @endif

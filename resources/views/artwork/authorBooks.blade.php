@@ -34,10 +34,13 @@
                 <div class="renewal-bottom">
                     <div class="vote-default">
                       <span data-tip="Понравилось" data-for="rating-tooltip" class="vote__item vote-green " currentitem="false">
-                        <img class="ico-voice" src="/icn/like.png" ><span color="green">{{ $artwork->likes }}  </span>
-                      </span>
-                      <span data-tip="Не понравилось" data-for="rating-tooltip" class="vote__item vote-red " currentitem="false">
-                        <img class="ico-voice" src="/icn/dislike.png" ><span>{{ $artwork->dislikes }}</span>
+                       @if(Auth::user()->liked->where('id', $artwork->id)->first() == true)
+                          <img class="book-info-icn" src="/icn/heart.png"><span
+                                  style="color: #218838">{{ $artwork->likers->count() }}</span>
+                        @else
+                          <img class="book-info-icn" src="/icn/like.png"><span
+                                  style="color: #218838">{{ $artwork->likers->count() }}</span>
+                        @endif
                       </span>
                     </div>
                   <div align="right" ata-html="true" data-tip="Просмотры " class="watch" currentitem="false">

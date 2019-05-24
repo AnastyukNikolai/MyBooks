@@ -18,7 +18,7 @@
 
 Route::get('/', 'IndexController@indexShow');
 
-Route::get('/{table}/{id}/{sort_param}', 'IndexController@indexShow')->name('filterAndSort');
+Route::get('/q/{table}/{id}/{sort_param}', 'IndexController@indexShow')->name('filterAndSort');
 
 Route::get('/user/{id}/books', 'authorController@artworksShow')->name('artworksShow');
 
@@ -55,6 +55,16 @@ Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('sto
 Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance')->name('chapterFinancialOperations');
 
 ////////////////////////////////////////////User
+
+Route::get('/artwork/{id}/review/add', 'readerController@addReview')->name('addReview');
+Route::post('/artwork/review/add', 'readerController@storeReview')->name('storeReview');
+Route::get('/review/{id}/delete', 'readerController@deleteReview')->name('deleteReview');
+
+Route::get('/artwork/{id}/review/edit', 'readerController@editReview')->name('editReview');
+Route::post('/artwork/review/edit', 'readerController@updateReview')->name('updateReview');
+
+Route::get('/artwork/{id}/like/add', 'readerController@addLike')->name('addLike');
+Route::get('/{artwork_id}/{user_id}/like/delete', 'readerController@deleteLike')->name('deleteLike');
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');
