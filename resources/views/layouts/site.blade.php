@@ -129,8 +129,17 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        @if(Auth::check()&&Auth::user()->role_id == 1)
+            <a class="btn btn-outline-primary" href="{{ url('admin') }}">Администрирование</a>
+        @endif
+
         @if(Request::url() !== '/login/google/callback')
-        <div style="margin-right: 20%; margin-left: 5%" class="log-reg">
+            @if(Auth::check()&&Auth::user()->role_id == 1)
+                <div style="margin-right: 10%; margin-left: 5%" class="log-reg">
+            @else
+                <div style="margin-right: 20%; margin-left: 5%" class="log-reg">
+            @endif
             <ul class="navbar-nav mr-auto">
                 <li class="divider"></li>
                 <a style="color: #218838;padding: 4px;border-radius: 5%;font-size: 17px" class="nav-link dropdown-toggle btn-outline-light"

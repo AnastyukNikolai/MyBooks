@@ -97,3 +97,8 @@ Route::post('/drive/upload', 'DriveController@uploadFile')->name('googleUploadFi
 Route::get('/drive/create', 'DriveController@create'); // Upload file to Drive from Storage
 
 Route::get('/drive/delete/{id}', 'DriveController@deleteFile'); // Delete file or folder
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

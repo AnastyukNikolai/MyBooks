@@ -62,7 +62,7 @@
                                 <div class="vote-default">
                       <span data-tip="Понравилось" data-for="rating-tooltip" class="vote__item vote-green "
                             currentitem="false">
-                        @if(Auth::user()->liked->where('id', $artwork->id)->first() == true)
+                        @if(Auth::check()&&Auth::user()->liked->where('id', $artwork->id)->first() == true)
                               <img class="book-info-icn" src="/icn/heart.png"><span
                                       style="color: #218838">{{ $artwork->likers->count() }}</span>
                           @else
