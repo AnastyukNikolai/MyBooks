@@ -95,11 +95,14 @@
                             <div class="vote-book" style="align: right">
                                <span data-tip="Понравилось" data-for="rating-tooltip" class="vote__item vote-green "
                                      currentitem="false">
-                                   @if(Auth::user()->liked->where('id', $artwork->id)->where('deleted_at', null)->first() != null)
+                                   @if(Auth::check()&&Auth::user()->liked->where('id', $artwork->id)->where('deleted_at', null)->first() != null)
                                        <a title="Отменить" href="{{ route('deleteLike', ['artwork_id'=>$artwork->id, 'user_id' => Auth::id()]) }}"><img class="book-info-icn" src="/icn/heart.png"></a><span
                                                style="color: #218838">{{ $artwork->likers->count() }}</span>
-                                       @else
+                                       @elseif(Auth::check())
                                        <a title="Отметить как понравившееся" href="{{ route('addLike', ['id'=>$artwork->id]) }}"><img class="book-info-icn" src="/icn/like.png"></a><span
+                                               style="color: #218838">{{ $artwork->likers->count() }}</span>
+                                       @else
+                                       <a title="Отметить как понравившееся" href="{{ route('googleLogin') }}"><img class="book-info-icn" src="/icn/like.png"></a><span
                                                style="color: #218838">{{ $artwork->likers->count() }}</span>
                                        @endif
                                </span>
@@ -150,7 +153,7 @@
                         </div>
                         <div class="book_content-item" style="text-align: right">
                             <div class="book_content-table">
-                                @if(Auth::user()&&$artwork->users->find(Auth::user()->id)==true||$user_chapter->first()==true)
+                                @if(Auth::user()&&$artwork->users->find(Auth::user()->id)==true||$user_chapter==true)
                                     <div class="chapter_add_btn">
                                         <a class="btn btn-outline-success btn-block "
                                            href="{{ route('addReview', ['id'=>$artwork->id]) }}">Добавить отзыв

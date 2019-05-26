@@ -15,10 +15,13 @@
     return view('welcome');
 });*/
 
+Route::get('/find', 'SearchController@find')->name('search');
 
 Route::get('/', 'IndexController@indexShow');
 
-Route::get('/q/{table}/{id}/{sort_param}', 'IndexController@indexShow')->name('filterAndSort');
+Route::get('/q/{table}/{id}/{sort_param}/{search?}', 'IndexController@indexShow')->name('filterAndSort');
+
+//Route::get('/{artworksS_id?}', 'IndexController@indexShow')->name('artworksS');
 
 Route::get('/user/{id}/books', 'authorController@artworksShow')->name('artworksShow');
 
@@ -97,6 +100,9 @@ Route::post('/drive/upload', 'DriveController@uploadFile')->name('googleUploadFi
 Route::get('/drive/create', 'DriveController@create'); // Upload file to Drive from Storage
 
 Route::get('/drive/delete/{id}', 'DriveController@deleteFile'); // Delete file or folder
+
+
+
 
 
 Route::group(['prefix' => 'admin'], function () {

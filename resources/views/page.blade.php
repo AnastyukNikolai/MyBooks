@@ -9,6 +9,10 @@
                 @if($filter_table == null&&$filter_id == null)
                     <div style="color: white">{{ $filter_table = 'a' }}{{ $filter_id = 'a' }}</div>
                 @endif
+                @if($search_request == null)
+                    <div style="color: white">{{ $search_request = 'a'  }}</div>
+                @endif
+
 
                 <div class="col-md-12">
                     <div class="row">
@@ -29,15 +33,15 @@
                                              aria-labelledby="dropdown01">
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
-                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'likes']) }}">
+                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'search'=>$search_request, 'sort_param'=>'likes']) }}">
                                                 Популярности</a>
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
-                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'views']) }}">
+                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'search'=>$search_request, 'sort_param'=>'views']) }}">
                                                 Просмотрам</a>
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
-                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'sort_param'=>'reviews']) }}">
+                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'search'=>$search_request, 'sort_param'=>'reviews']) }}">
                                                 Отзывам</a>
                                             <hr style="margin: 5px">
                                         </div>

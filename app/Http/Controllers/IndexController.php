@@ -21,13 +21,13 @@ class IndexController extends Controller
 {
 
     //главная страница (с фильтрацией и сортировкой)
-    public function indexShow($filter_table = null, $filter_id = null, $sort_param = 'created_at') {
+    public static function indexShow($filter_table = null, $filter_id = null, $sort_param = 'created_at', $search_request = null, $artworksS = null) {
 
-
+        $indexController = new IndexController();
 
         if($filter_table != null) {
 
-            $artworks = $this->filter($filter_table, $filter_id);
+            $artworks = $indexController->filter($filter_table, $filter_id);
 
             if ($artworks == false) {
                 $artworks=Artwork::all();
@@ -46,6 +46,12 @@ class IndexController extends Controller
                 $message = 'Все книги';
             }
         }
+
+        elseif ($artworksS != null) {
+            $artworks = $artworksS;
+            $message = 'Поиск по названию и описанию';
+        }
+
         else {
             $artworks=Artwork::all();
             $message = 'Все книги';
@@ -53,7 +59,16 @@ class IndexController extends Controller
 
 
         if($sort_param != 'created_at') {
-            $artworks = $this->sort($artworks, $sort_param);
+
+
+
+            if ($search_request != null&&$search_request != 'a') {
+
+                $request = new Request();
+                $artworks = SearchController::find($request, $search_request);
+                $message = 'Поиск по названию и описанию';
+            }
+            $artworks = $indexController->sort($artworks, $sort_param);
             if($sort_param == 'likes') {
                 $message .= '; Сортировка по популярности';
             }
@@ -69,6 +84,15 @@ class IndexController extends Controller
             $message .= '; Сортировка по дате добавления';
         }
 
+        if (is_string($search_request)) {
+            $q = $search_request;
+        }
+        elseif($search_request != null) {
+            $q = $search_request->q;
+        }
+        else {
+            $q = null;
+        }
 
         return view('page')->with([
             'artworks' => $artworks,
@@ -76,6 +100,7 @@ class IndexController extends Controller
             'filter_table' => $filter_table,
             'filter_id' => $filter_id,
             'sort_param' => $sort_param,
+            'search_request' => $q,
         ]);
 
     }
@@ -133,8 +158,13 @@ class IndexController extends Controller
         $chapters = Chapter::withTrashed()->get();
         $chapters=$chapters->where('artwork_id', $artwork->id)->where('announcement', false)->sortBy('created_at');
 
+        if(Auth::check()) {
+            $user_chapter = Auth::user()->chapters->where('artwork_id', $artwork->id)->first();
+        }
+        else {
+            $user_chapter = false;
+        }
 
-        $user_chapter = Auth::user()->chapters->where('artwork_id', $artwork->id);
 
         $announcements=$artwork->chapters->where('announcement', true)->sortBy('created_at');
         $first_chapter=$chapters->sortBy('created_at')->first();

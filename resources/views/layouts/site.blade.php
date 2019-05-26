@@ -153,7 +153,7 @@
                             <ul class="dropdown-menu">
                                 @foreach($categories as $category)
                                 <li class="third-lvl">
-                                    <a href="{{ route('filterAndSort', ['table'=>'categories', 'id'=>$category->id, 'sort_param'=>'created_at']) }}">{{$category->title}}</a>
+                                    <a href="{{ route('filterAndSort', ['table'=>'categories', 'id'=>$category->id, 'search'=>null, 'sort_param'=>'created_at']) }}">{{$category->title}}</a>
                                 </li>
                                 @endforeach
                             </ul>
@@ -163,7 +163,7 @@
                             <hr  style="margin: 0; padding: 0">
                             <ul class="dropdown-menu">
                                 @foreach($genres as $genre)
-                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'genres', 'id'=>$genre->id, 'sort_param'=>'created_at']) }}">{{$genre->name}}</a></li>
+                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'genres', 'id'=>$genre->id, 'search'=>null, 'sort_param'=>'created_at']) }}">{{$genre->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -172,7 +172,7 @@
                             <hr style="margin: 0; padding: 0">
                             <ul class="dropdown-menu">
                                 @foreach($languages as $language)
-                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'languages', 'id'=>$language->id, 'sort_param'=>'created_at']) }}">{{$language->title}}</a></li>
+                                    <li class="third-lvl"><a href="{{ route('filterAndSort', ['table'=>'languages', 'id'=>$language->id, 'search'=>null, 'sort_param'=>'created_at']) }}">{{$language->title}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -181,8 +181,8 @@
             </ul>
         </div>
         @endif
-        <form class="form-inline my-2 my-lg-0 mr-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Поиск по названию" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0 mr-auto typeahead" role="search" action="{{ route('search') }}">
+            <input  value="{{ old('q') }}" class="form-control mr-sm-2" type="search" name="q" placeholder="Поиск..." aria-label="Search" autocomplete="off">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
         </form>
         @if(Auth::check())
@@ -223,6 +223,7 @@
                 <a class="btn btn-warning" href="{{ url('/login/google') }}" style="margin-left: 10px">Вход (Google
                     account)</a>
             </div>
+
         @endif
     </div>
 </nav>
@@ -243,8 +244,11 @@
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="../../../../assets/js/vendor/popper.min.js"></script>
 <script src="../../../../dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+
 </body>
 </html>

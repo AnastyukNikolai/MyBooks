@@ -4,9 +4,28 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 
 class Artwork extends Model
 {
+    use SearchableTrait;
+
+
+
+    protected $searchable = [
+
+        'columns' => [
+
+            'artworks.title' => 10,
+
+            'artworks.description' => 5,
+
+
+        ],
+
+    ];
+
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

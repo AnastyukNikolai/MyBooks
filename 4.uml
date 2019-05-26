@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>e798f906-d68f-437f-9431-5f6f6bde38eb.DATABASE:BookMake_1.4</OriginalElement>
+  <nodes>
+    <node x="1774.0420068027213" y="718.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.tags</node>
+    <node x="2032.0420068027215" y="410.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_rows</node>
+    <node x="2008.0420068027215" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_types</node>
+    <node x="366.9375" y="718.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations</node>
+    <node x="330.0372448979592" y="1060.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations</node>
+    <node x="1520.4798598949208" y="1336.136602451839">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.translations</node>
+    <node x="1517.7920068027213" y="1082.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres</node>
+    <node x="531.375" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles</node>
+    <node x="2036.9264448336241" y="744.9684763572682">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menus</node>
+    <node x="1256.4729591836733" y="1016.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters</node>
+    <node x="2036.9264448336241" y="912.9684763572682">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menu_items</node>
+    <node x="581.125" y="1049.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews</node>
+    <node x="517.375" y="190.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users</node>
+    <node x="1160.95" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images</node>
+    <node x="1753.8336252189138" y="0.6479859894927813">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.password_resets</node>
+    <node x="343.5420068027213" y="1381.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters</node>
+    <node x="913.7920068027213" y="1370.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions</node>
+    <node x="786.375" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permissions</node>
+    <node x="1726.7920068027213" y="1082.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags</node>
+    <node x="827.1499999999999" y="1071.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes</node>
+    <node x="1055.95" y="289.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories</node>
+    <node x="1420.079761904762" y="289.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages</node>
+    <node x="1629.079761904762" y="300.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses</node>
+    <node x="0.0" y="751.5">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles</node>
+    <node x="1763.4798598949208" y="1336.136602451839">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.settings</node>
+    <node x="1533.8336252189138" y="0.6479859894927813">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.migrations</node>
+    <node x="1287.231547619048" y="630.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks</node>
+    <node x="1037.1499999999999" y="1071.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites</node>
+    <node x="157.9375" y="718.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses</node>
+    <node x="1565.0420068027213" y="718.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.genres</node>
+    <node x="759.375" y="333.5">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menu_items" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menus">
+      <point x="0.0" y="-158.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+      <point x="-33.0" y="-36.5" />
+      <point x="33.0" y="170.0" />
+      <point x="563.7083333333333" y="170.0" />
+      <point x="-64.66666666666663" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permissions">
+      <point x="40.5" y="-36.5" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="47.25" y="-114.0" />
+      <point x="722.875" y="966.0" />
+      <point x="1301.017261904762" y="966.0" />
+      <point x="-82.71428571428578" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="-47.25" y="-114.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="71.0" y="-103.0" />
+      <point x="1091.2920068027213" y="1350.0" />
+      <point x="1491.7027210884355" y="1350.0" />
+      <point x="1491.7027210884355" y="996.0" />
+      <point x="1411.3029761904763" y="996.0" />
+      <point x="27.57142857142844" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="-47.25" y="-81.0" />
+      <point x="1565.0420068027213" y="986.0" />
+      <point x="1438.8744047619048" y="986.0" />
+      <point x="55.14285714285711" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="47.25" y="-92.0" />
+      <point x="968.8999999999999" y="976.0" />
+      <point x="1328.5886904761905" y="976.0" />
+      <point x="-55.14285714285711" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations">
+      <point x="-23.625" y="-103.0" />
+      <point x="400.9122448979592" y="976.0" />
+      <point x="461.4375" y="976.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="0.0" y="-103.0" />
+      <point x="1020.2920068027213" y="1330.0" />
+      <point x="1026.6499999999999" y="1330.0" />
+      <point x="1026.6499999999999" y="600.0" />
+      <point x="677.7083333333333" y="600.0" />
+      <point x="49.33333333333337" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations">
+      <point x="-71.0" y="-103.0" />
+      <point x="949.2920068027213" y="1330.0" />
+      <point x="471.7872448979592" y="1330.0" />
+      <point x="47.25" y="103.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses">
+      <point x="-70.875" y="-103.0" />
+      <point x="353.6622448979592" y="996.0" />
+      <point x="252.4375" y="996.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_rows" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_types">
+      <point x="0.0" y="-158.0" />
+      <point x="0.0" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="-47.25" y="-81.0" />
+      <point x="1774.0420068027213" y="976.0" />
+      <point x="1466.4458333333337" y="976.0" />
+      <point x="82.71428571428578" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+      <point x="0.0" y="-81.0" />
+      <point x="1150.45" y="170.0" />
+      <point x="1192.45" y="170.0" />
+      <point x="-63.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="-47.25" y="-92.0" />
+      <point x="874.3999999999999" y="610.0" />
+      <point x="653.0416666666667" y="610.0" />
+      <point x="24.666666666666742" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="0.0" y="-147.0" />
+      <point x="1350.9729591836733" y="996.0" />
+      <point x="1383.731547619048" y="996.0" />
+      <point x="0.0" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories">
+      <point x="-38.59999999999991" y="-158.0" />
+      <point x="1345.131547619048" y="570.0" />
+      <point x="1150.45" y="570.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages">
+      <point x="38.59999999999991" y="-158.0" />
+      <point x="1422.3315476190478" y="600.0" />
+      <point x="1514.579761904762" y="600.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters">
+      <point x="71.0" y="-92.0" />
+      <point x="521.0420068027213" y="1340.0" />
+      <point x="1350.9729591836733" y="1340.0" />
+      <point x="0.0" y="147.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+      <point x="0.0" y="-180.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="33.0" y="-36.5" />
+      <point x="99.0" y="600.0" />
+      <point x="529.7083333333333" y="600.0" />
+      <point x="-98.66666666666663" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="-77.20000000000005" y="-158.0" />
+      <point x="1306.5315476190476" y="580.0" />
+      <point x="727.0416666666667" y="580.0" />
+      <point x="98.66666666666674" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+      <point x="0.0" y="-158.0" />
+      <point x="1383.731547619048" y="610.0" />
+      <point x="1409.579761904762" y="610.0" />
+      <point x="1409.579761904762" y="170.0" />
+      <point x="1255.45" y="170.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.genres">
+      <point x="47.25" y="-81.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations">
+      <point x="0.0" y="-92.0" />
+      <point x="450.0420068027213" y="1340.0" />
+      <point x="377.2872448979592" y="1340.0" />
+      <point x="-47.25" y="103.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+      <point x="47.250000000000114" y="-92.0" />
+      <point x="1178.9" y="986.0" />
+      <point x="1356.160119047619" y="986.0" />
+      <point x="-27.57142857142867" y="158.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses">
+      <point x="77.20000000000005" y="-158.0" />
+      <point x="1460.9315476190477" y="610.0" />
+      <point x="1723.579761904762" y="610.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="23.625" y="-103.0" />
+      <point x="448.1622448979592" y="986.0" />
+      <point x="566.4375" y="986.0" />
+      <point x="566.4375" y="610.0" />
+      <point x="579.0416666666665" y="610.0" />
+      <point x="-49.33333333333337" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+      <point x="-40.5" y="-36.5" />
+      <point x="799.875" y="170.0" />
+      <point x="693.0416666666667" y="170.0" />
+      <point x="64.66666666666674" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="-71.0" y="-92.0" />
+      <point x="379.0420068027213" y="1350.0" />
+      <point x="142.5" y="1350.0" />
+      <point x="142.5" y="610.0" />
+      <point x="554.375" y="610.0" />
+      <point x="-74.0" y="180.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+      <point x="0.0" y="-81.0" />
+      <point x="1514.579761904762" y="160.0" />
+      <point x="1318.45" y="160.0" />
+      <point x="63.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.tags">
+      <point x="47.25" y="-81.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+      <point x="-47.249999999999886" y="-92.0" />
+      <point x="1084.4" y="590.0" />
+      <point x="702.375" y="590.0" />
+      <point x="74.0" y="180.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.35776942355889724" x="1125.5" y="782.0" />
+  <SelectedNodes>
+    <node>e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles</node>
+    <node>e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations</node>
+    <node>e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
