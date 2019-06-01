@@ -59,9 +59,10 @@ class readerController extends Controller
             return redirect()->back()->with(['error'=>$error]);
         }
         else {
-            $review = Review::create([
+                Review::create([
                 'title' => $request->title,
                 'text' => $request->textrev,
+                'assessment' => $request->assessment,
                 'artwork_id' => $request->artwork_id,
                 'user_id' => $request->user_id,
             ]);
@@ -88,6 +89,7 @@ class readerController extends Controller
         $review->update([
             'title' => $request->title,
             'text' => $request->textrev,
+            'assessment' => $request->assessment,
         ]);
 
         return redirect()->back()->with('success', 'Отзыв успешно редактирован');

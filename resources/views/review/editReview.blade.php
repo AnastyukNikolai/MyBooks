@@ -52,6 +52,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="exampleFormControlSelect2">Новая оценка книги</label>
+                            <select class="form-control" id="exampleFormControlSelect2" name="assessment">
+                                <option value="5">Отлично</option>
+                                <option value="4">Хорошо</option>
+                                <option value="3">Неплохо</option>
+                                <option value="2">Плохо</option>
+                                <option value="1">Ужасно</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
                             <input type="hidden" name="review_id" value={{ $review->id }}>
                         </div>
 

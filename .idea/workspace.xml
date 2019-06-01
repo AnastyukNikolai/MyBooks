@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5258bb67-530f-41e0-a609-883eef390255" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/bookmake.od.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bookmake.od.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e798f906-d68f-437f-9431-5f6f6bde38eb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e798f906-d68f-437f-9431-5f6f6bde38eb.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e798f906-d68f-437f-9431-5f6f6bde38eb/storage_v2/_src_/database/BookMake_1.4.D0axdQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e798f906-d68f-437f-9431-5f6f6bde38eb/storage_v2/_src_/database/BookMake_1.4.D0axdQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/review/showReviews.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Artwork.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Artwork.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Favorite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Favorite.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/authorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/authorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/readerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/readerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/books/Шериф/Глава_1.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/Books/sheriff2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/artwork/authorBooks.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/site.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/site.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/review/addReview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/review/addReview.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/review/editReview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/review/editReview.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,50 +61,50 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/site.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/readerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="179" column="20" lean-forward="true" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="20" />
+            <state relative-caret-position="119">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/review/editReview.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="35" column="147" lean-forward="true" selection-start-line="35" selection-start-column="122" selection-end-line="35" selection-end-column="147" />
+            <state relative-caret-position="359">
+              <caret line="55" column="104" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="104" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="199" column="53" lean-forward="true" selection-start-line="199" selection-start-column="53" selection-end-line="199" selection-end-column="53" />
               <folding>
-                <element signature="e#256#276#0#HTML" expanded="true" />
-                <element signature="e#416#436#0#HTML" expanded="true" />
+                <element signature="e#14921#14942#0#HTML" expanded="true" />
+                <element signature="e#15530#15554#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/review/showReviews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="97" column="90" lean-forward="true" selection-start-line="97" selection-start-column="90" selection-end-line="97" selection-end-column="90" />
+            <state relative-caret-position="459">
+              <caret line="57" column="62" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReviewController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="89" column="95" lean-forward="true" selection-start-line="89" selection-start-column="84" selection-end-line="89" selection-end-column="95" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SearchController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="119">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
@@ -108,14 +112,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1322">
-              <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state relative-caret-position="268">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FavoriteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="29" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="29" />
               <folding>
-                <element signature="e#41#57#0#PHP" expanded="true" />
+                <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/review/addReview.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/artwork/addArtwork.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="62" column="30" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="62" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -140,11 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Requests/AddChapterRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/AddAnonsRequest.php" />
-        <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/Events/onPublishAnonsEvent.php" />
-        <option value="$PROJECT_DIR$/app/Listeners/PublishAnonsListener.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_14_085650_add_column_softdelete_to_tables.php" />
         <option value="$PROJECT_DIR$/app/Financial_operation.php" />
         <option value="$PROJECT_DIR$/app/Role.php" />
@@ -158,7 +184,6 @@
         <option value="$PROJECT_DIR$/app/Image.php" />
         <option value="$PROJECT_DIR$/app/Genre.php" />
         <option value="$PROJECT_DIR$/app/Financial_operation_status.php" />
-        <option value="$PROJECT_DIR$/app/Favorite.php" />
         <option value="$PROJECT_DIR$/app/Category.php" />
         <option value="$PROJECT_DIR$/app/Buying_a_chapter.php" />
         <option value="$PROJECT_DIR$/app/Chapter.php" />
@@ -170,29 +195,38 @@
         <option value="$PROJECT_DIR$/resources/views/chapter/editChapter.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/artwork/addArtwork.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/finance/anonsFinancialOperations.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/authorController.php" />
         <option value="$PROJECT_DIR$/resources/views/finance/userFinancialOperations.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/finance/chapterFinancialOperations.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Work_genre.php" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/views/chapter/addChapter.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php" />
-        <option value="$PROJECT_DIR$/resources/views/review/addReview.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/review/editReview.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/artwork/authorBooks.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/readerController.php" />
         <option value="$PROJECT_DIR$/app/Artwork.php" />
-        <option value="$PROJECT_DIR$/resources/views/page.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/page.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/authorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/views/artwork/userBooks.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/site.blade.php" />
+        <option value="$PROJECT_DIR$/app/Favorite.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FavoriteController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/resources/views/review/showReviews.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ReviewController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/readerController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php" />
+        <option value="$PROJECT_DIR$/resources/views/review/editReview.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/review/addReview.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php" />
       </list>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpServers">
     <servers />
@@ -356,6 +390,24 @@
             <path>
               <item name="bookmake.test" type="b2602c69:ProjectViewProjectNode" />
               <item name="bookmake.test" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmake.test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmake.test" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmake.test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmake.test" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmake.test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmake.test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -376,7 +428,7 @@
               <item name="bookmake.test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="review" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bookmake.test" type="b2602c69:ProjectViewProjectNode" />
@@ -396,6 +448,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -476,12 +529,15 @@
       <workItem from="1558693343486" duration="24692000" />
       <workItem from="1558766883473" duration="1662000" />
       <workItem from="1558809389557" duration="3960000" />
-      <workItem from="1558858363560" duration="26578000" />
+      <workItem from="1558858363560" duration="27292000" />
+      <workItem from="1559022351880" duration="3590000" />
+      <workItem from="1559133004724" duration="1876000" />
+      <workItem from="1559397579101" duration="15462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="391083000" />
+    <option name="totallyTimeSpent" value="412725000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -515,77 +571,13 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.22692889" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.22995462" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_14_085650_add_column_softdelete_to_tables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Work_status.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Types_of_financial_operation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Tag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Subscription.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Like.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Language.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -597,16 +589,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Buying_a_chapter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Favorite.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
@@ -722,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="131" column="26" lean-forward="true" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Chapter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -756,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="52" column="108" lean-forward="true" selection-start-line="52" selection-start-column="101" selection-end-line="52" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/chapter/addChapter.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -773,97 +741,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/authorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="142" column="19" selection-start-line="142" selection-start-column="19" selection-end-line="142" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/review/addReview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="48" column="48" lean-forward="true" selection-end-line="76" selection-end-column="11" />
-          <folding>
-            <element signature="e#2910#2935#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/artwork/authorBooks.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/readerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/review/editReview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="131" selection-start-line="58" selection-start-column="131" selection-end-line="58" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/e798f906-d68f-437f-9431-5f6f6bde38eb.DATABASE:BookMake_1.4">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>e798f906-d68f-437f-9431-5f6f6bde38eb.DATABASE:BookMake_1.4</OriginalElement>
-          <nodes>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.tags</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_rows</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_types</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.translations</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menus</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menu_items</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.password_resets</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permissions</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.settings</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.migrations</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.genres</node>
-            <node x="" y="">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.35776942355889724" x="1125.5" y="782.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
         </state>
       </provider>
     </entry>
@@ -884,33 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="25" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="25" />
-          <folding>
-            <element signature="e#23#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FinancialController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="101" column="56" lean-forward="true" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="56" />
-          <folding>
-            <element signature="e#40#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/artwork/addArtwork.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-206">
-          <caret line="43" column="77" selection-start-line="43" selection-start-column="77" selection-end-line="43" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/AddChapterRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -918,54 +772,538 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://DATABASE/e798f906-d68f-437f-9431-5f6f6bde38eb.DATABASE:BookMake_1.4">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>e798f906-d68f-437f-9431-5f6f6bde38eb.DATABASE:BookMake_1.4</OriginalElement>
+          <nodes>
+            <node x="120.64213659147845" y="1268.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags</node>
+            <node x="2258.247180451128" y="410.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_rows</node>
+            <node x="2234.247180451128" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_types</node>
+            <node x="1480.057503132832" y="821.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations</node>
+            <node x="1561.682503132832" y="1246.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations</node>
+            <node x="234.0" y="1807.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.translations</node>
+            <node x="330.64213659147845" y="1268.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres</node>
+            <node x="1705.3921365914784" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles</node>
+            <node x="0.0" y="1807.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menus</node>
+            <node x="539.6421365914784" y="1202.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters</node>
+            <node x="0.0" y="1975.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menu_items</node>
+            <node x="852.0575031328319" y="1235.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews</node>
+            <node x="1337.557503132832" y="190.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users</node>
+            <node x="656.075360275689" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images</node>
+            <node x="1270.057503132832" y="1257.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites</node>
+            <node x="1572.5156798245612" y="1567.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters</node>
+            <node x="1018.767857142857" y="1556.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions</node>
+            <node x="2000.2471804511276" y="0.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permissions</node>
+            <node x="761.5403665413533" y="700.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers</node>
+            <node x="0.0" y="821.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.tags</node>
+            <node x="936.0" y="1807.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.password_resets</node>
+            <node x="1061.057503132832" y="1257.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes</node>
+            <node x="301.66746553884695" y="289.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories</node>
+            <node x="908.0328947368421" y="289.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages</node>
+            <node x="510.66746553884695" y="300.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses</node>
+            <node x="1807.620003132832" y="854.5">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles</node>
+            <node x="477.0" y="1807.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.settings</node>
+            <node x="716.0" y="1807.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.migrations</node>
+            <node x="417.9999999999999" y="733.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks</node>
+            <node x="1959.620003132832" y="821.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses</node>
+            <node x="208.9999999999999" y="821.0">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.genres</node>
+            <node x="1973.2471804511276" y="333.5">e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="89.14285714285711" y="-191.0" />
+              <point x="954.6832236842104" y="650.0" />
+              <point x="1370.8575031328319" y="650.0" />
+              <point x="-77.70000000000005" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menu_items" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.menus">
+              <point x="0.0" y="-158.0" />
+              <point x="0.0" y="59.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permissions">
+              <point x="40.5" y="-36.5" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+              <point x="33.0" y="-36.5" />
+              <point x="1906.620003132832" y="170.0" />
+              <point x="1802.3921365914784" y="170.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="-63.0" y="-114.0" />
+              <point x="883.5575031328319" y="1142.0" />
+              <point x="542.0714285714284" y="1142.0" />
+              <point x="27.571428571428555" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="63.0" y="-114.0" />
+              <point x="1009.5575031328319" y="1182.0" />
+              <point x="1035.0403665413533" y="1182.0" />
+              <point x="1035.0403665413533" y="660.0" />
+              <point x="1393.057503132832" y="660.0" />
+              <point x="-55.5" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses">
+              <point x="-59.428571428571445" y="-191.0" />
+              <point x="806.1117951127818" y="580.0" />
+              <point x="605.167465538847" y="580.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="-79.875" y="-103.0" />
+              <point x="1045.3928571428569" y="1536.0" />
+              <point x="320.14213659147845" y="1536.0" />
+              <point x="320.14213659147845" y="1142.0" />
+              <point x="459.3571428571428" y="1142.0" />
+              <point x="-55.14285714285711" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="0.0" y="-81.0" />
+              <point x="425.14213659147845" y="1152.0" />
+              <point x="486.92857142857133" y="1152.0" />
+              <point x="-27.571428571428555" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+              <point x="59.428571428571445" y="-191.0" />
+              <point x="924.9689379699247" y="630.0" />
+              <point x="1107.532894736842" y="630.0" />
+              <point x="1107.532894736842" y="160.0" />
+              <point x="821.450360275689" y="160.0" />
+              <point x="70.875" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="-26.625" y="-103.0" />
+              <point x="1098.6428571428569" y="1526.0" />
+              <point x="841.5575031328319" y="1526.0" />
+              <point x="841.5575031328319" y="1182.0" />
+              <point x="865.5403665413533" y="1182.0" />
+              <point x="0.0" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.types_of_financial_operations">
+              <point x="-70.875" y="-103.0" />
+              <point x="1585.307503132832" y="1182.0" />
+              <point x="1574.557503132832" y="1182.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="-63.0" y="-92.0" />
+              <point x="1092.557503132832" y="1132.0" />
+              <point x="569.642857142857" y="1132.0" />
+              <point x="55.14285714285711" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="26.625" y="-103.0" />
+              <point x="1151.8928571428569" y="1526.0" />
+              <point x="1469.557503132832" y="1526.0" />
+              <point x="1469.557503132832" y="680.0" />
+              <point x="1459.6575031328318" y="680.0" />
+              <point x="11.099999999999909" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operation_statuses">
+              <point x="70.875" y="-103.0" />
+              <point x="1727.057503132832" y="1182.0" />
+              <point x="2054.1200031328317" y="1182.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.subscriptions" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations">
+              <point x="79.875" y="-103.0" />
+              <point x="1205.1428571428569" y="1536.0" />
+              <point x="1608.932503132832" y="1536.0" />
+              <point x="-47.25" y="103.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="0.0" y="-92.0" />
+              <point x="1155.557503132832" y="1122.0" />
+              <point x="924.9689379699247" y="1122.0" />
+              <point x="59.428571428571445" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="0.0" y="-81.0" />
+              <point x="215.14213659147845" y="1132.0" />
+              <point x="431.7857142857141" y="1132.0" />
+              <point x="-82.71428571428578" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_rows" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.data_types">
+              <point x="0.0" y="-158.0" />
+              <point x="0.0" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.likes" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="63.0" y="-92.0" />
+              <point x="1218.557503132832" y="670.0" />
+              <point x="1415.257503132832" y="670.0" />
+              <point x="-33.299999999999955" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+              <point x="0.0" y="-81.0" />
+              <point x="396.16746553884695" y="170.0" />
+              <point x="726.950360275689" y="170.0" />
+              <point x="-23.625" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories">
+              <point x="-38.59999999999991" y="-158.0" />
+              <point x="475.9" y="670.0" />
+              <point x="348.91746553884695" y="670.0" />
+              <point x="-47.25" y="81.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="-47.25" y="-147.0" />
+              <point x="586.8921365914784" y="1152.0" />
+              <point x="514.4999999999999" y="1152.0" />
+              <point x="0.0" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="63.0" y="-81.0" />
+              <point x="488.14213659147845" y="1172.0" />
+              <point x="806.1117951127818" y="1172.0" />
+              <point x="-59.428571428571445" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages">
+              <point x="38.60000000000002" y="-158.0" />
+              <point x="553.0999999999999" y="600.0" />
+              <point x="939.5328947368421" y="600.0" />
+              <point x="-63.0" y="81.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.reviews" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="0.0" y="-114.0" />
+              <point x="946.5575031328319" y="1182.0" />
+              <point x="895.2546522556389" y="1182.0" />
+              <point x="29.714285714285666" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters">
+              <point x="-71.0" y="-92.0" />
+              <point x="1608.0156798245612" y="1516.0" />
+              <point x="634.1421365914784" y="1516.0" />
+              <point x="0.0" y="147.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+              <point x="0.0" y="-180.0" />
+              <point x="1448.557503132832" y="170.0" />
+              <point x="1737.7254699248117" y="170.0" />
+              <point x="-64.66666666666674" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.user_roles" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="-33.0" y="-36.5" />
+              <point x="1840.620003132832" y="650.0" />
+              <point x="1548.4575031328318" y="650.0" />
+              <point x="99.89999999999986" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="77.20000000000005" y="-158.0" />
+              <point x="591.6999999999999" y="640.0" />
+              <point x="1348.6575031328318" y="640.0" />
+              <point x="-99.90000000000009" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+              <point x="-77.19999999999993" y="-158.0" />
+              <point x="437.29999999999995" y="680.0" />
+              <point x="291.16746553884695" y="680.0" />
+              <point x="291.16746553884695" y="160.0" />
+              <point x="679.700360275689" y="160.0" />
+              <point x="-70.875" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations">
+              <point x="0.0" y="-92.0" />
+              <point x="1679.0156798245612" y="1536.0" />
+              <point x="1703.432503132832" y="1536.0" />
+              <point x="47.25" y="103.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_genres" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.genres">
+              <point x="-63.0" y="-81.0" />
+              <point x="362.14213659147845" y="1122.0" />
+              <point x="303.4999999999999" y="1122.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks">
+              <point x="-62.999999999999886" y="-92.0" />
+              <point x="1301.557503132832" y="1112.0" />
+              <point x="597.2142857142857" y="1112.0" />
+              <point x="82.71428571428578" y="158.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.artworks" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_statuses">
+              <point x="0.0" y="-158.0" />
+              <point x="514.4999999999999" y="680.0" />
+              <point x="542.167465538847" y="680.0" />
+              <point x="-63.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.financial_operations" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="-23.625" y="-103.0" />
+              <point x="1632.557503132832" y="1172.0" />
+              <point x="1679.557503132832" y="1172.0" />
+              <point x="1679.557503132832" y="680.0" />
+              <point x="1481.8575031328319" y="680.0" />
+              <point x="33.299999999999955" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.permission_role" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.roles">
+              <point x="-40.5" y="-36.5" />
+              <point x="2013.7471804511276" y="160.0" />
+              <point x="1867.0588032581452" y="160.0" />
+              <point x="64.66666666666674" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.buying_a_chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="71.0" y="-92.0" />
+              <point x="1750.0156798245612" y="1536.0" />
+              <point x="1797.120003132832" y="1536.0" />
+              <point x="1797.120003132832" y="660.0" />
+              <point x="1526.2575031328317" y="660.0" />
+              <point x="77.69999999999982" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="63.0" y="-81.0" />
+              <point x="278.14213659147845" y="1162.0" />
+              <point x="776.3975093984961" y="1162.0" />
+              <point x="-89.14285714285711" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.images">
+              <point x="0.0" y="-81.0" />
+              <point x="1002.5328947368421" y="170.0" />
+              <point x="774.200360275689" y="170.0" />
+              <point x="23.625" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.languages">
+              <point x="0.0" y="-191.0" />
+              <point x="865.5403665413533" y="610.0" />
+              <point x="1002.5328947368421" y="610.0" />
+              <point x="0.0" y="81.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.work_tags" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.tags">
+              <point x="-63.0" y="-81.0" />
+              <point x="152.14213659147845" y="1182.0" />
+              <point x="94.5" y="1182.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.chapters" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="47.25" y="-147.0" />
+              <point x="681.3921365914784" y="1182.0" />
+              <point x="835.8260808270675" y="1182.0" />
+              <point x="-29.714285714285722" y="191.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.users">
+              <point x="63.000000000000114" y="-92.0" />
+              <point x="1427.557503132832" y="1182.0" />
+              <point x="1374.7671365914784" y="1182.0" />
+              <point x="1374.7671365914784" y="680.0" />
+              <point x="1437.457503132832" y="680.0" />
+              <point x="-11.099999999999909" y="180.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.categories">
+              <point x="-89.14285714285711" y="-191.0" />
+              <point x="776.3975093984961" y="590.0" />
+              <point x="443.41746553884695" y="590.0" />
+              <point x="47.25" y="81.0" />
+            </edge>
+            <edge source="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.favorites" target="e798f906-d68f-437f-9431-5f6f6bde38eb.TABLE:BookMake_1.4.public.transfers">
+              <point x="1.1368683772161603E-13" y="-92.0" />
+              <point x="1364.557503132832" y="1102.0" />
+              <point x="954.6832236842104" y="1102.0" />
+              <point x="89.14285714285711" y="191.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.547079186499351" x="1009.0" y="767.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="147" lean-forward="true" selection-start-line="35" selection-start-column="122" selection-end-line="35" selection-end-column="147" />
-          <folding>
-            <element signature="e#256#276#0#HTML" expanded="true" />
-            <element signature="e#416#436#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="1428">
+          <caret line="84" column="106" selection-start-line="84" selection-start-column="106" selection-end-line="84" selection-end-column="106" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/artwork/userBooks.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="e#347#372#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="29" />
+          <folding>
+            <element signature="e#23#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/site.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="208" column="40" lean-forward="true" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Like.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FinancialController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="101" column="56" lean-forward="true" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="56" />
+          <folding>
+            <element signature="e#40#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/authorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1721">
+          <caret line="67" column="11" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="67" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Favorite.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="243" column="16" lean-forward="true" selection-start-line="243" selection-start-column="16" selection-end-line="243" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReviewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FavoriteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="89" column="95" lean-forward="true" selection-start-line="89" selection-start-column="84" selection-end-line="89" selection-end-column="95" />
+        <state relative-caret-position="391">
+          <caret line="29" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="29" />
+          <folding>
+            <element signature="e#40#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/review/showReviews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AddReviewRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/artwork/addArtwork.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="62" column="30" lean-forward="true" selection-start-line="55" selection-start-column="24" selection-end-line="62" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/review/addReview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="53" column="48" lean-forward="true" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/readerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/review/editReview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="55" column="104" selection-start-line="55" selection-start-column="94" selection-end-line="55" selection-end-column="104" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/artwork/bookPage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="97" column="90" lean-forward="true" selection-start-line="97" selection-start-column="90" selection-end-line="97" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/site.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="179" column="20" lean-forward="true" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1322">
-          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        <state relative-caret-position="166">
+          <caret line="199" column="53" lean-forward="true" selection-start-line="199" selection-start-column="53" selection-end-line="199" selection-end-column="53" />
           <folding>
-            <element signature="e#41#57#0#PHP" expanded="true" />
+            <element signature="e#14921#14942#0#HTML" expanded="true" />
+            <element signature="e#15530#15554#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,0 +1,204 @@
+﻿
+CREATE TABLE Images (
+Id Serial PRIMARY KEY,
+Image_path character varying(250)
+);
+
+
+CREATE TABLE Languages (
+Id Serial PRIMARY KEY,
+Title VARCHAR(100) NOT NULL,
+Image_id int REFERENCES Images (Id)
+);
+
+
+CREATE TABLE Categories (
+Id Serial PRIMARY KEY,
+Title VARCHAR(100) NOT NULL,
+Image_id int REFERENCES Images (Id)
+);
+
+
+CREATE TABLE Work_statuses (
+Id Serial PRIMARY KEY,
+Title VARCHAR NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Types_of_financial_operations (
+Id Serial PRIMARY KEY,
+Title VARCHAR(200) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Financial_operation_statuses (
+Id Serial PRIMARY KEY,
+Title VARCHAR(100) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Financial_operations (
+Id Serial PRIMARY KEY,
+Amount int NOT NULL,
+Status_id int NOT NULL REFERENCES Financial_operation_statuses (Id),
+Type_id int NOT NULL REFERENCES Types_of_financial_operations (Id),
+Payer_id int NOT NULL REFERENCES Users (Id),
+Receiver_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+CREATE TABLE Artworks (
+Id Serial Primary key,
+Title VARCHAR(100) NOT NULL,
+Views int NOT NULL default 0,
+Subscription_price int,
+Image_id int REFERENCES Images (Id),
+User_id int NOT NULL REFERENCES Users (Id),
+Language_id Int NOT NULL REFERENCES Languages (Id),
+Category_id Int NOT NULL REFERENCES Categories (Id),
+Status_id Int REFERENCES Work_statuses (Id),
+Artwork_id Int REFERENCES Artworks (Id),
+Description VARCHAR(1000) NOT NULL
+);
+
+
+CREATE TABLE Likes (
+Id Serial PRIMARY KEY ,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id Int REFERENCES Artworks (Id)
+);
+
+
+CREATE TABLE Reviews (
+Id Serial PRIMARY KEY ,
+Text VARCHAR(5000) NOT NULL,
+Title VARCHAR(100) NOT NULL,
+Assessment int NOT NULL,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id int REFERENCES Artworks (Id)
+);
+
+
+CREATE TABLE Favorites (
+Id Serial PRIMARY KEY ,
+User_id int NOT NULL REFERENCES Users (Id),
+Artwork_id Int NOT NULL REFERENCES Artworks (Id)
+);
+
+
+CREATE TABLE Chapters (
+Id Serial PRIMARY KEY,
+Announcement Boolean NOT NULL default FALSE,
+Title VARCHAR(100) NOT NULL,
+Description VARCHAR(500),
+Price int NOT NULL default 0,
+Min_amount int,
+File_id VARCHAR(200),
+Artwork_id Int REFERENCES Artworks (Id)
+);
+
+CREATE TABLE Genres (
+Id Serial PRIMARY KEY ,
+Name VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Tags (
+Id Serial PRIMARY KEY ,
+Name VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE Work_genres (
+Id Serial PRIMARY KEY ,
+Artwork_id int REFERENCES Artworks (Id),
+Gеnre_id int NOT NULL REFERENCES Genres (Id)
+);
+
+
+CREATE TABLE Work_tags (
+Id Serial PRIMARY KEY ,
+Artwork_id int REFERENCES Artworks (Id),
+Tag_id int NOT NULL REFERENCES Tags (Id)
+);
+
+
+CREATE TABLE Buying_a_chapters (
+Id Serial PRIMARY KEY,
+Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
+Chapter_id int NOT NULL REFERENCES Chapters (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+CREATE TABLE Subscriptions (
+Id Serial PRIMARY KEY ,
+Artwork_id Int REFERENCES Artworks (Id),
+Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+CREATE TABLE Message_types (
+Id Serial PRIMARY KEY,
+Title VARCHAR(200) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE Messages (
+Id Serial PRIMARY KEY ,
+Theme VARCHAR(200) NOT NULL,
+Text VARCHAR(2000) NOT NULL,
+Types_id int NOT NULL REFERENCES Message_types (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+CREATE TABLE User_messages (
+Id Serial PRIMARY KEY,
+Message_id int NOT NULL REFERENCES Messages (Id),
+User_id int NOT NULL REFERENCES Users (Id)
+);
+
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+INSERT INTO Images
+(Image_path)
+VALUES
+('/img/Books/sheriff2.jpg'),
+('/img/Languages/ua.png'),
+('/img/Languages/ru.png'),
+('/img/Languages/en.png'),
+('/img/Languages/jp.png');
+
+
+INSERT INTO Languages
+(Title, Image_id)
+VALUES
+('Українська', 2),
+('Русский', 3),
+('English', 4),
+('日本語', 5);
+
+INSERT INTO Categories
+(Title)
+VALUES
+('Развлекательная литература'),
+('Научная литература'),
+('Учебная литература'),
+('Публицистика');
+
+
+INSERT INTO Artworks
+(Title, Views, Image_id, User_id, Language_id, Category_id, Description, Status)
+VALUES
+('Шериф', 407, 1, 1, 2, 1, 'Серьезный человек в игровом мире.', 'Завершено');
+
+
+
+-------------------------------------------------------------------------------------------------------------------------

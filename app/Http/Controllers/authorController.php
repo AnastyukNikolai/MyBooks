@@ -25,12 +25,19 @@ class authorController extends Controller
 
     public function artworksShow($id) {
 
-        $author=User::find($id);
-        $artworks=$author->artworks->where('transfer', false);
+        $user=User::find($id);
+        $artworks=$user->artworks;
+        $message1='Мои произведения';
+        $message2='Произведения автора';
+        $n = true;
 
-        return view('artwork.authorBooks')->with(['artworks' => $artworks,
-                                                'author' => $author,
-                                                ]);
+        return view('artwork.userBooks')
+            ->with(['artworks' => $artworks,
+                'user' => $user,
+                'message1' => $message1,
+                'message2' => $message2,
+                'n' => $n,
+            ]);
 
     }
 

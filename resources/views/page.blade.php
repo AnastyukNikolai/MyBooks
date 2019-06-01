@@ -80,12 +80,14 @@
                                     <img class="ico-voice" src="/icn/view.png"><span>{{ $artwork->views }}</span>
                                 </div>
                             </div>
+                        <div>
                             <h4 style="color: #218838;text-decoration: none"><a style="color: #218838"
                                 href="{{ route('bookShow', ['id'=>$artwork->id]) }}">{{ $artwork->title }}</a>
                                 @if($artwork->chapters->sortBy('created_at')->first()!=null)
-                                    - {{$artwork->chapters->where('created_at', $artwork->chapters->where('announcement', false)->max('created_at'))->first()->created_at}}
+
                                 @endif
                             </h4>
+                        </div>
                         </div>
                     @endforeach
                 @else

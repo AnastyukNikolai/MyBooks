@@ -43,12 +43,23 @@
 
                         <div class="form-group">
                             <label for="exampleInputTitle">Заголовок</label>
-                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" aria-describedby="emailHelp" placeholder="Введите название главы">
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" aria-describedby="emailHelp" placeholder="Введите заголовок отзыва">
                         </div>
 
                         <div class="form-group">
                             <label for="InputDescription">Текст отзыва</label>
-                            <textarea name="textrev" class="form-control" placeholder="Описание главы"></textarea>
+                            <textarea name="textrev" class="form-control" placeholder="Текст отзыва"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Оценка книги</label>
+                            <select class="form-control" id="exampleFormControlSelect2" name="assessment">
+                                <option value="5">Отлично</option>
+                                <option value="4">Хорошо</option>
+                                <option value="3">Неплохо</option>
+                                <option value="2">Плохо</option>
+                                <option value="1">Ужасно</option>
+                            </select>
                         </div>
 
                         <div class="form-group">

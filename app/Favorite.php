@@ -12,11 +12,5 @@ class Favorite extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = [];
 
-    public function artwork() {
-        return $this -> belongsTo('App\Artwork');
-    }
 
-    public function user() {
-        return $this -> belongsTo('App\User');
-    }
 }

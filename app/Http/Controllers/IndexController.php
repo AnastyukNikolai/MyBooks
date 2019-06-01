@@ -154,7 +154,7 @@ class IndexController extends Controller
 
         $artwork=Artwork::find($id);
         $artwork_views=$artwork->views;
-        $reviews = $artwork->reviews;
+        $reviews = $artwork->reviews->take(5);
         $chapters = Chapter::withTrashed()->get();
         $chapters=$chapters->where('artwork_id', $artwork->id)->where('announcement', false)->sortBy('created_at');
 

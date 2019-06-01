@@ -40,10 +40,15 @@
                         </div>
                     </div>
                     <div class="book_read text-center default" style="margin-top: 10px">
-                        @if($first_chapter)
-                            <a href="{{ route('chapterShow', ['id'=>$first_chapter->id]) }}"
-                               class="btn btn-outline-warning btn-lg my-2 my-sm-0" role="button" aria-pressed="true">
-                                <span>Начать читать</span>
+                        @if(Auth::check()&&Auth::user()->favorites->where('artwork_id', $artwork->id)==false)
+                            <a href="{{ route('addToFavorite', ['artwork_id'=>$artwork->id, 'user_id' => Auth::id()]) }}"
+                               class="btn btn-outline-primary btn-lg my-2 my-sm-0" role="button" aria-pressed="true">
+                                <span>Добавить в избранное</span>
+                            </a>
+                        @elseif(Auth::check()&&Auth::user()->favorites->where('artwork_id', $artwork->id)==true)
+                            <a href="{{ route('deleteFromFavorites', ['artwork_id'=>$artwork->id, 'user_id' => Auth::id()]) }}"
+                               class="btn btn-outline-danger btn-lg my-2 my-sm-0" role="button" aria-pressed="true">
+                                <span>Удалить из избранного</span>
                             </a>
                         @endif
                     </div>
@@ -175,6 +180,7 @@
                 <div class="col-md-2"></div>
             </div>
 
+            <div class="reviews">
             @foreach($reviews as $review)
                     <div class="book_item">
                         <div class="row">
@@ -194,7 +200,22 @@
                                             </button>
                                         </div>
                                         <div style="color: #1b1e21" class="modal-body">
-                                            @if($review->text != null){{$review->text}}@else Текст отсутствует @endif
+                                            <p>@if($review->text != null){{$review->text}}@else Текст отсутствует @endif</p>
+                                            <p></p>
+                                            <p>
+                                                <strong>Оценка:</strong>
+                                                    @if($review->assessment == 1)
+                                                       Ужасно
+                                                    @elseif($review->assessment == 2)
+                                                        Плохо
+                                                    @elseif($review->assessment == 3)
+                                                        Неплохо
+                                                    @elseif($review->assessment == 4)
+                                                        Хорошо
+                                                    @elseif($review->assessment == 5)
+                                                        Отлично
+                                                    @endif
+                                            </p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -210,14 +231,13 @@
                             @if($review->user->id==Auth::id())
                                 <div class="book-author-control col-md-5">
                                     <div class="book_item-btn">
-                                        <a class="btn btn-warning"
+                                        <a class="btn btn-warning btn-sm"
                                            href="{{ route('editReview', ['id'=>$review->id]) }}">
-                                            <i class="icon-arrow"></i>
                                             <span class="read-block">Изменить</span>
                                         </a>
                                     </div>
                                     <div class="book_item-btn">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                 data-target="#deleteReview{{ $review->id }}Modal">
                                             <span class="read-block">Удалить</span>
                                         </button>
@@ -258,6 +278,16 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-10 book_item-text" style="margin: 0.1px"></div>
             @endforeach
+                <div class="row" style="margin-top: 15px">
+                    <div class="col-md-10">
+                        <a class="btn btn-info btn-block"
+                           href="{{ route('reviewsShow', ['id'=>$artwork->id]) }}">
+                            <span class="read-block">Все отзывы ({{ $artwork->reviews->count() }})</span>
+                        </a>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
 
 
             <div class="row">

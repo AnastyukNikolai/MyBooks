@@ -10,15 +10,17 @@
 
           <div class="col-md-12">
             <div class="title default">
-              @if(Auth::user()&&$author->id==Auth::user()->id)
-              <h2>Мои произвидения</h2>
+              @if(Auth::user()&&$user->id==Auth::id())
+              <h2>{{ $message1 }}</h2>
+                @if($n)
               <div style="text-align: right" class="book_add-btn">
                 <a class="btn btn-success" href="{{ route('addArtwork') }}">
                   <span class="read-bloc">Добавить произвидение</span>
                 </a>
               </div>
+                @endif
               @else
-                <h2>Произвидения автора {{$author->name}}</h2>
+                <h2>{{ $message2 }} {{$author->name}}</h2>
               @endif
             </div>
             <hr>

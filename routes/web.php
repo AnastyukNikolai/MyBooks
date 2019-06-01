@@ -59,9 +59,16 @@ Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance
 
 ////////////////////////////////////////////User
 
+Route::get('/artwork/{id}/reviews', 'ReviewController@show')->name('reviewsShow');
 Route::get('/artwork/{id}/review/add', 'readerController@addReview')->name('addReview');
 Route::post('/artwork/review/add', 'readerController@storeReview')->name('storeReview');
 Route::get('/review/{id}/delete', 'readerController@deleteReview')->name('deleteReview');
+
+Route::get('/user/{id}/liked', 'UserController@likedShow')->name('likedShow');
+
+Route::get('/user/{id}/favorites', 'FavoriteController@show')->name('favoritesShow');
+Route::get('/artwork/{artwork_id}/AddToFavorites/user/{user_id}', 'FavoriteController@add')->name('addToFavorite');
+Route::get('/artwork/{artwork_id}/DeleteFromFavorites/user/{user_id}', 'FavoriteController@delete')->name('deleteFromFavorites');
 
 Route::get('/artwork/{id}/review/edit', 'readerController@editReview')->name('editReview');
 Route::post('/artwork/review/edit', 'readerController@updateReview')->name('updateReview');

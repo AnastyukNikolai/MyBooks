@@ -26,6 +26,7 @@ class AddReviewRequest extends FormRequest
         return [
             'title' => 'required',
             'textrev' => 'required',
+            'assessment' => 'required',
         ];
     }
 }
