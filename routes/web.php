@@ -62,19 +62,22 @@ Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance
 Route::get('/artwork/{id}/reviews', 'ReviewController@show')->name('reviewsShow');
 Route::get('/artwork/{id}/review/add', 'readerController@addReview')->name('addReview');
 Route::post('/artwork/review/add', 'readerController@storeReview')->name('storeReview');
+Route::get('/artwork/{id}/review/edit', 'readerController@editReview')->name('editReview');
+Route::post('/artwork/review/edit', 'readerController@updateReview')->name('updateReview');
 Route::get('/review/{id}/delete', 'readerController@deleteReview')->name('deleteReview');
-
-Route::get('/user/{id}/liked', 'UserController@likedShow')->name('likedShow');
 
 Route::get('/user/{id}/favorites', 'FavoriteController@show')->name('favoritesShow');
 Route::get('/artwork/{artwork_id}/AddToFavorites/user/{user_id}', 'FavoriteController@add')->name('addToFavorite');
 Route::get('/artwork/{artwork_id}/DeleteFromFavorites/user/{user_id}', 'FavoriteController@delete')->name('deleteFromFavorites');
 
-Route::get('/artwork/{id}/review/edit', 'readerController@editReview')->name('editReview');
-Route::post('/artwork/review/edit', 'readerController@updateReview')->name('updateReview');
-
+Route::get('/user/{id}/liked', 'UserController@likedShow')->name('likedShow');
 Route::get('/artwork/{id}/like/add', 'readerController@addLike')->name('addLike');
 Route::get('/{artwork_id}/{user_id}/like/delete', 'readerController@deleteLike')->name('deleteLike');
+
+Route::get('/user/{id}/messages/{type?}', 'MessageController@indexShow')->name('messagesIndex');
+Route::get('/message/{id}', 'MessageController@show')->name('showMessage');
+Route::get('/user/{id}/message/add', 'MessageController@add')->name('addMessage');
+Route::post('/message/store', 'MessageController@store')->name('storeMessage');
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');

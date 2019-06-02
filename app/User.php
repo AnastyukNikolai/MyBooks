@@ -47,12 +47,20 @@ class User extends \TCG\Voyager\Models\User
         return $this -> hasMany('App\Buying_a_chapter');
     }
 
+    public function outgoing_messages() {
+        return $this -> hasMany('App\Message');
+    }
+
     public function favorites() {
         return $this -> belongsToMany('App\Artwork', 'favorites');
     }
 
     public function liked() {
         return $this -> belongsToMany('App\Artwork', 'likes');
+    }
+
+    public function incoming_messages() {
+        return $this -> belongsToMany('App\Message', 'message_users');
     }
 
     public function subscriptions() {

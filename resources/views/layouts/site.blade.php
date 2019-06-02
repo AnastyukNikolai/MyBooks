@@ -115,6 +115,10 @@
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
+
+        a.admin:hover {
+            color: white;
+        }
     </style>
 
 </head>
@@ -131,12 +135,34 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
         @if(Auth::check()&&Auth::user()->role_id == 1)
-            <a class="btn btn-outline-primary" href="{{ url('admin') }}">Администрирование</a>
+            <div style="margin-right: 2%; margin-left: 1%">
+            <ul class="navbar-nav mr-auto">
+                <li class="divider"></li>
+                <a style="color: snow" class="nav-link dropdown-toggle btn btn-outline-primary admin" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Администрирование</a>
+                <li class="dropdown">
+                    <ul style="width: content-box" class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="btn-outline-primary" href="{{ url('admin') }}">Админ. панель</a>
+                            <hr  style="margin: 0; padding: 0">
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="btn-outline-dark" href="#">Сообщения</a>
+                            <hr  style="margin: 0; padding: 0">
+                            <ul class="dropdown-menu">
+                                <li class="third-lvl"><a href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>'2']) }}">Жалобы</a></li>
+                                <li class="third-lvl"><a href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>'3']) }}">Предложения</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
         @endif
 
         @if(Request::url() !== '/login/google/callback')
             @if(Auth::check()&&Auth::user()->role_id == 1)
-                <div style="margin-right: 10%; margin-left: 5%" class="log-reg">
+                <div style="margin-right: 10%; margin-left: 1%" class="log-reg">
             @else
                 <div style="margin-right: 20%; margin-left: 5%" class="log-reg">
             @endif
@@ -213,6 +239,12 @@
                             <hr style="margin: 5px">
                             <a class="dropdown-item" href="{{ route('favoritesShow', ['id'=>Auth::id()]) }}">
                                 Избранное</a>
+                            <hr style="margin: 5px">
+                            <a class="dropdown-item" href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>1]) }}">
+                                Уведомления</a>
+                            <hr style="margin: 5px">
+                            <a class="dropdown-item" href="{{ route('addMessage', ['id'=>Auth::id()]) }}">
+                                Написать администрации</a>
                             <hr style="margin: 5px">
                             <a class="dropdown-item" href="{{ route('userFinancialOperations', ['id'=>Auth::id()]) }}">
                                 Мои финансовые операции</a>

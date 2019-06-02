@@ -80,6 +80,14 @@ class AddColumnSoftdeleteToTables extends Migration
         Schema::table('types_of_financial_operations', function (Blueprint $table) {
             $table->softDeletes();
         });
+
+        Schema::table('messages', function (Blueprint $table) {
+            $table->softDeletes();
+        });
+
+        Schema::table('message_types', function (Blueprint $table) {
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -154,6 +162,14 @@ class AddColumnSoftdeleteToTables extends Migration
         });
 
         Schema::table('types_of_financial_operations', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
+
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
+
+        Schema::table('message_types', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

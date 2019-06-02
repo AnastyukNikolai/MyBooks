@@ -63,14 +63,14 @@ Description VARCHAR(1000) NOT NULL
 
 
 CREATE TABLE Likes (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 User_id int NOT NULL REFERENCES Users (Id),
 Artwork_id Int REFERENCES Artworks (Id)
 );
 
 
 CREATE TABLE Reviews (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Text VARCHAR(5000) NOT NULL,
 Title VARCHAR(100) NOT NULL,
 Assessment int NOT NULL,
@@ -80,7 +80,7 @@ Artwork_id int REFERENCES Artworks (Id)
 
 
 CREATE TABLE Favorites (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 User_id int NOT NULL REFERENCES Users (Id),
 Artwork_id Int NOT NULL REFERENCES Artworks (Id)
 );
@@ -98,26 +98,26 @@ Artwork_id Int REFERENCES Artworks (Id)
 );
 
 CREATE TABLE Genres (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Name VARCHAR(100) NOT NULL
 );
 
 
 CREATE TABLE Tags (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Name VARCHAR(100) NOT NULL
 );
 
 
 CREATE TABLE Work_genres (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Artwork_id int REFERENCES Artworks (Id),
 Gеnre_id int NOT NULL REFERENCES Genres (Id)
 );
 
 
 CREATE TABLE Work_tags (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Artwork_id int REFERENCES Artworks (Id),
 Tag_id int NOT NULL REFERENCES Tags (Id)
 );
@@ -132,7 +132,7 @@ User_id int NOT NULL REFERENCES Users (Id)
 
 
 CREATE TABLE Subscriptions (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Artwork_id Int REFERENCES Artworks (Id),
 Financial_operation_id int NOT NULL REFERENCES Financial_operations (Id),
 User_id int NOT NULL REFERENCES Users (Id)
@@ -146,10 +146,12 @@ Title VARCHAR(200) NOT NULL UNIQUE
 
 
 CREATE TABLE Messages (
-Id Serial PRIMARY KEY ,
+Id Serial PRIMARY KEY,
 Theme VARCHAR(200) NOT NULL,
 Text VARCHAR(2000) NOT NULL,
-Types_id int NOT NULL REFERENCES Message_types (Id),
+Seen Boolean NOT NULL default FALSE,
+Type_id int NOT NULL REFERENCES Message_types (Id),
+Artwork_id int NOT NULL REFERENCES Artworks (Id),
 User_id int NOT NULL REFERENCES Users (Id)
 );
 
