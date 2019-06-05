@@ -231,6 +231,9 @@
                            href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">{{Auth::user()->name}}</a>
                         <div style="text-align: center;text-decoration: none" id="drop-menu-items" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="{{ route('showUser', ['id'=>Auth::id()]) }}">
+                                Мой профиль</a>
+                            <hr style="margin: 5px">
                             <a class="dropdown-item" href="{{ route('artworksShow', ['id'=>Auth::id()]) }}">
                                 Мои произвидения</a>
                             <hr style="margin: 5px">

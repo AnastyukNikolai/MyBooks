@@ -78,6 +78,7 @@ class MessageController extends Controller
 
         $success='Сообщение успешно отправлено';
 
+
         if($request->uve == 'adm') {
 
             $message = Message::create([

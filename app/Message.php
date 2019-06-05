@@ -30,4 +30,8 @@ class Message extends Model
     public function message() {
         return $this -> belongsTo('App\Message');
     }
+
+    public function artwork() {
+        return $this -> belongsTo('App\Artwork');
+    }
 }

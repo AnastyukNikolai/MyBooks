@@ -37,6 +37,10 @@ class Artwork extends Model
         return $this -> hasMany('App\Chapter');
     }
 
+    public function messages() {
+        return $this -> hasMany('App\Message');
+    }
+
     public function lovers() {
         return $this -> belongsToMany('App\User', 'favorites');
     }

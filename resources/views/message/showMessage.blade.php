@@ -42,7 +42,11 @@
                     <div class="col-md-10" style="padding: 0">
                         <div class="book__description default">
                             <div class="book__description-heading">
-                                <strong>Тема: </strong>{{ $message->theme }}
+                                <strong>Тема: </strong>@if ($message->type_id == 2&&$message->theme == 'complaint'&&$message->artwork_id != null)
+                                   Пользователь <a href="#">{{ $message->user->name }}</a> пожаловался на книгу <a href="{{ route('bookShow', ['id'=>$message->artwork_id]) }}">{{ $message->artwork->title }}</a>
+                                @else
+                                    {{ $message->theme }}
+                                @endif
                             </div>
                             <div class="book__description-heading">
                                 <strong>Отправитель: </strong>
@@ -57,9 +61,15 @@
                             @if(Auth::user()->role_id == 1)
                             <div class="book__description-heading">
                                 <strong>Получатели: </strong>
+                                @if($message->user->role_id == 1)
+                                    Администрация
+                                @elseif ($message->user == null)
+                                    Система
+                                @else
                                @foreach($message->users as $recipient)
                                     |{{$recipient->name}}|
                                    @endforeach
+                                    @endif
                             </div>
                             @endif
                             <div class="book__description-heading">

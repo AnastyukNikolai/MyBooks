@@ -10,6 +10,7 @@ use App\Image;
 use App\Chapter;
 use App\User;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -78,6 +79,9 @@ class IndexController extends Controller
             elseif ($sort_param == 'reviews') {
                 $message .= '; Сортировка по отзывам';
             }
+            elseif ($sort_param == 'reviews') {
+                $message .= '; Сортировка по отзывам';
+            }
         }
         else {
             $artworks = $artworks->sortBy('created_at');
@@ -126,7 +130,7 @@ class IndexController extends Controller
 
     public function sort($artworks, $sort_param) {
 
-        if($sort_param == 'likes'||$sort_param == 'reviews') {
+        if($sort_param == 'likes'||$sort_param == 'reviews'||$sort_param == 'reviews_assessment') {
 
             $order_column = $sort_param . '_count';
             $artworks_id = $artworks->map(function ($artworks) {
@@ -137,6 +141,14 @@ class IndexController extends Controller
 
             if($sort_param == 'likes'||$sort_param == 'reviews') {
                 $artworks = $artworks->withCount($sort_param)->orderBy($order_column, 'desc')->get();
+            }
+
+            if($sort_param == 'reviews_assessment') {
+
+                $artworks = $artworks->withCount(['reviews AS reviews_assessment' => function ($artworks) {
+                    $artworks->select(DB::raw('SUM(assessment)/COUNT(assessment) as reviews_assessment'));
+                }])->orderBy('reviews_assessment', 'desc')->get();
+
             }
 
         }

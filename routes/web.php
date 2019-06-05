@@ -59,6 +59,8 @@ Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance
 
 ////////////////////////////////////////////User
 
+Route::get('/user/{id}/profile', 'UserController@show')->name('showUser');
+
 Route::get('/artwork/{id}/reviews', 'ReviewController@show')->name('reviewsShow');
 Route::get('/artwork/{id}/review/add', 'readerController@addReview')->name('addReview');
 Route::post('/artwork/review/add', 'readerController@storeReview')->name('storeReview');
@@ -77,7 +79,7 @@ Route::get('/{artwork_id}/{user_id}/like/delete', 'readerController@deleteLike')
 Route::get('/user/{id}/messages/{type?}', 'MessageController@indexShow')->name('messagesIndex');
 Route::get('/message/{id}', 'MessageController@show')->name('showMessage');
 Route::get('/user/{id}/message/add', 'MessageController@add')->name('addMessage');
-Route::post('/message/store', 'MessageController@store')->name('storeMessage');
+Route::post('/user/{id?}/message/store', 'MessageController@store')->name('storeMessage');
 
 Route::get('/chapter/{id}/buy', 'FinancialController@chapterBuy')->name('chapterBuy');
 Route::post('/chapter/sponsorship', 'FinancialController@chapterSponsorship')->name('chapterSponsorship');

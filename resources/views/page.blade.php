@@ -41,8 +41,12 @@
                                                 Просмотрам</a>
                                             <hr style="margin: 5px">
                                             <a class="dropdown-item"
+                                               href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'search'=>$search_request, 'sort_param'=>'reviews_assessment']) }}">
+                                                Оценкам</a>
+                                            <hr style="margin: 5px">
+                                            <a class="dropdown-item"
                                                href="{{ route('filterAndSort', ['table'=>$filter_table, 'id'=>$filter_id, 'search'=>$search_request, 'sort_param'=>'reviews']) }}">
-                                                Отзывам</a>
+                                                Количеству отзывов</a>
                                             <hr style="margin: 5px">
                                         </div>
                                     </li>

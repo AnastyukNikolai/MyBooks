@@ -53,7 +53,7 @@
                     <div class="col-md-3" style="text-align: center"><strong>Отправитель</strong>
                         <hr>
                     </div>
-                    <div class="col-md-5" style="text-align: center"><strong>Тема уведомления</strong>
+                    <div class="col-md-5" style="text-align: center"><strong>Тема</strong>
                         <hr>
                     </div>
                 @endif
@@ -96,7 +96,11 @@
                                             {{ $message->user->name }}
                                         @endif
                                     </div>
-                                    <div class="col-md-5" style="text-align: center">{{ $message->theme }}</div>
+                                    @if ($message->type_id == 2&&$message->theme == 'complaint'&&$message->artwork_id != null)
+                                        <div class="col-md-5" style="text-align: center">Пользователь <a href="{{ route('showUser', ['id'=>$message->user->id]) }}">{{ $message->user->name }}</a> пожаловался на книгу <a href="{{ route('bookShow', ['id'=>$message->artwork_id]) }}">{{ $message->artwork->title }}</a></div>
+                                        @else
+                                        <div class="col-md-5" style="text-align: center">{{ $message->theme }}</div>
+                                    @endif
                                 @endif
                                 <div class="col-md-2" style="text-align: center">
                                     @if($message->seen == true)

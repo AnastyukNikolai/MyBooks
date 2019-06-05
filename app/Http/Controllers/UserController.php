@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function show($id) {
+
+        $user=User::find($id);
+
+        return view('user.userProfile')
+            ->with([
+                'user' => $user,
+            ]);
+
+    }
+
     public function likedShow($id) {
 
         $user=User::find($id);
