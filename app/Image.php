@@ -22,4 +22,8 @@ class Image extends Model
     public function language() {
         return $this -> hasOne('App\Language');
     }
+
+    public function message() {
+        return $this -> hasOne('App\Message');
+    }
 }

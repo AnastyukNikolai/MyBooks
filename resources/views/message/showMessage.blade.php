@@ -50,7 +50,7 @@
                             </div>
                             <div class="book__description-heading">
                                 <strong>Отправитель: </strong>
-                                    @if($message->user->role_id == 1)
+                                    @if($message->user->role_id == 1&&$message->type_id != 4)
                                         Администрация
                                 @elseif ($message->user == null)
                                         Система
@@ -75,12 +75,43 @@
                             <div class="book__description-heading">
                                 <strong>Тип сообщения: </strong>{{$message->type->title}}
                             </div>
+                            @if($message->type_id == 4)
+                                <div class="book__description-heading">
+                                <strong>Сумма: </strong>{{ $message->text }}
+                                </div>
+                                <div class="book__description-heading" style="text-align: center;">
+                                    <p><strong>Чек </strong></p>
+                                    <img alt="{{ $message->image }}"
+                                         src="{{ \Storage::disk('public')->url($message->image->image_path) }}"
+                                         style="width: 900px">
+                                </div>
+                                <form method="POST" action="{{ route('updateBalance') }}" enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                        <input type="hidden" name="user_id" value={{ $message->user_id }}>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="hidden" name="sum" value={{ $message->text }}>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="hidden" name="message_id" value={{ $message->id }}>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button style="text-align: right" type="submit" class="btn btn-success btn-md text-right">Подтвердить пополнене баланса</button>
+                                    </div>
+                                    {{ csrf_field() }}
+                                </form>
+                            @else
                             <div>
                                 <div class="book__description-heading" style="text-align: center">
                                     <strong>Текст </strong>
                                 </div>
-                                <p>{{ $message->text }}<br></p>
+                                <p>{!! $message->text !!} <br></p>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-2"></div>

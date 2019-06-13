@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Buying_a_chapter;
 use App\Events\onAddFinancialOperationEvent;
 use App\Http\Requests\ChapterSponsorshipRequest;
+use App\Message;
 use Illuminate\Support\Facades\Auth;
 use App\Financial_operation;
 use App\Chapter;
@@ -14,7 +15,7 @@ use Illuminate\Http\Request;
 class FinancialController extends Controller
 {
 
-    public function financialOperation($amount, $type_id, $payer_id, $receiver_id) {
+    public static function financialOperation($amount, $type_id, $payer_id, $receiver_id) {
 
         $operation = Financial_operation::create([
             'amount' => $amount,
@@ -27,7 +28,7 @@ class FinancialController extends Controller
         $payment = event(new onAddFinancialOperationEvent($operation));
 
 
-        if($payment == true&&$operation->type_id == 1||$payment == true&&$operation->type_id == 4) {
+        if($payment == true&&$operation->type_id == 1||$payment == true&&$operation->type_id == 4 ||$payment == true&&$operation->type_id == 5) {
             $operation->update([
                 'status_id' => 1
             ]);
@@ -123,5 +124,20 @@ class FinancialController extends Controller
         return redirect()->back()->with('success', 'Глава успешно куплена');
 
     }
+
+    public function updateBalance (Request $request) {
+
+        $user = User::find($request->user_id);
+        $message = Message::find($request->message_id);
+
+        $this->financialOperation($request->sum, 5, $user->id, $user->id);
+        $message->delete();
+
+
+        return redirect()->route('messagesIndex', ['id' => Auth::id(), 'type'=>4])->with('success', 'Баланс пользователя обновлен');
+    }
+
+
+
 }
 

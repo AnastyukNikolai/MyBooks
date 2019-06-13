@@ -25,43 +25,47 @@ Route::get('/q/{table}/{id}/{sort_param}/{search?}', 'IndexController@indexShow'
 
 Route::get('/user/{id}/books', 'authorController@artworksShow')->name('artworksShow');
 
-Route::get('/book/{id}', 'IndexController@bookShow')->name('bookShow');
+
 
 Route::get('/chapter/{id}', 'IndexController@chapterShow')->name('chapterShow');
 
 Route::get('/test', 'readerController@test')->name('test');
+Route::get('/artwork/{id}/reviews', 'ReviewController@show')->name('reviewsShow');
 
 ////////////////////////////////////////////Author
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
+    Route::post('/artwork/add', 'authorController@storeArtwork')->name('storeArtwork');
+
+    Route::get('/artwork/{id}/chapter/add', 'authorController@addArtworkChapter')->name('addArtworkChapter');
+    Route::post('/artwork/chapter/add', 'authorController@storeArtworkChapter')->name('storeArtworkChapter');
+    Route::get('/chapter/{id}/edit', 'authorController@editChapter')->name('editChapter');
+    Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
+    Route::get('/chapter/{id}/delete', 'authorController@deleteChapter')->name('deleteChapter');
 
 
-Route::get('/artwork/add', 'authorController@addArtwork')->name('addArtwork');
-Route::post('/artwork/add', 'authorController@storeArtwork')->name('storeArtwork');
+    Route::get('/artwork/{id}/chapter/anons/add', 'authorController@addChapterAnons')->name('addChapterAnons');
+    Route::post('/artwork/chapter/anons/add', 'authorController@storeChapterAnons')->name('storeChapterAnons');
+    Route::get('/anons/{id}/delete', 'authorController@deleteAnons')->name('deleteAnons');
 
-Route::get('/artwork/{id}/chapter/add', 'authorController@addArtworkChapter')->name('addArtworkChapter');
-Route::post('/artwork/chapter/add', 'authorController@storeArtworkChapter')->name('storeArtworkChapter');
-Route::get('/chapter/{id}/edit', 'authorController@editChapter')->name('editChapter');
-Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
-Route::get('/chapter/{id}/delete', 'authorController@deleteChapter')->name('deleteChapter');
+    Route::get('/artwork/{id}/chapter/edit', 'authorController@editArtworkChapter')->name('editArtworkChapter');
+    Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
+
+    Route::get('/transfer/{id}/chapter/add', 'authorController@addChapter')->name('addTransferChapter');
+    Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('storeTransferChapter');
+
+    Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance')->name('chapterFinancialOperations');
 
 
-
-Route::get('/artwork/{id}/chapter/anons/add', 'authorController@addChapterAnons')->name('addChapterAnons');
-Route::post('/artwork/chapter/anons/add', 'authorController@storeChapterAnons')->name('storeChapterAnons');
-Route::get('/anons/{id}/delete', 'authorController@deleteAnons')->name('deleteAnons');
-
-Route::get('/artwork/{id}/chapter/edit', 'authorController@editArtworkChapter')->name('editArtworkChapter');
-Route::post('/artwork/chapter/edit', 'authorController@updateArtworkChapter')->name('updateArtworkChapter');
-
-Route::get('/transfer/{id}/chapter/add', 'authorController@addChapter')->name('addTransferChapter');
-Route::post('/transfer/chapter/add', 'authorController@storeChapter')->name('storeTransferChapter');
-
-Route::get('/chapter/{id}/{anons}/finance', 'authorController@showChapterFinance')->name('chapterFinancialOperations');
 
 ////////////////////////////////////////////User
 
-Route::get('/user/{id}/profile', 'UserController@show')->name('showUser');
 
-Route::get('/artwork/{id}/reviews', 'ReviewController@show')->name('reviewsShow');
+
+
+
+Route::get('/user/{id}/profile', 'UserController@show')->name('showUser');
 Route::get('/artwork/{id}/review/add', 'readerController@addReview')->name('addReview');
 Route::post('/artwork/review/add', 'readerController@storeReview')->name('storeReview');
 Route::get('/artwork/{id}/review/edit', 'readerController@editReview')->name('editReview');
@@ -87,9 +91,19 @@ Route::get('/chapter/{id}/cancel/sponsorship', 'readerController@cancelSponsorsh
 
 Route::get('/user/{id}/finance', 'authorController@showUserFinance')->name('userFinancialOperations');
 
+Route::get('balance/up', 'MessageController@upBalance')->name('upBalance');
+
+Route::post('balance/up/store', 'MessageController@upBalanceStore')->name('userBalanceUp');
+
+Route::post('balance/update', 'FinancialController@updateBalance')->name('updateBalance');
+
+});
+
 ////////////////////////////////////////////
 
 Route::auth();
+
+Route::get('/book/{id}', 'IndexController@bookShow')->name('bookShow');
 
 Route::get('/home', 'HomeController@index');
 

@@ -77,21 +77,31 @@ class authorController extends Controller
 
     public function addArtworkChapter($id) {
 
-        $artwork_id = $id;
+        $artwork = Artwork::find($id);
+        if($artwork->user_id == Auth::id()) {
+            $artwork_id = $id;
 
-        return view('chapter.addChapter')->with([
-            'artwork_id' => $artwork_id,
-        ]);
-
+            return view('chapter.addChapter')->with([
+                'artwork_id' => $artwork_id,
+            ]);
+        }
+        else {
+            return redirect()->back();
+        }
     }
 
     public function addChapterAnons($id) {
 
         $artwork_id = $id;
-
-        return view('chapter.addChapterAnons')->with([
-            'artwork_id' => $artwork_id,
-        ]);
+        $artwork = Artwork::find($id);
+        if($artwork->user_id == Auth::id()) {
+            return view('chapter.addChapterAnons')->with([
+                'artwork_id' => $artwork_id,
+            ]);
+        }
+        else {
+            return redirect()->back();
+        }
 
     }
 
@@ -121,67 +131,103 @@ class authorController extends Controller
     public function deleteAnons($id) {
 
         $anons = Chapter::find($id);
-        $anons_operations = $anons->financial_operations->where('type_id', 2)->where('status_id', 3);
+        $artwork = $anons->artwork;
+        if($artwork->user_id == Auth::id()) {
+            $anons_operations = $anons->financial_operations->where('type_id', 2)->where('status_id', 3);
 
-        FinancialController::cancellationSponsorship($anons_operations);
+            FinancialController::cancellationSponsorship($anons_operations);
 
-        $anons->purchases()->delete();
-        $anons->delete();
+            $anons->purchases()->delete();
+            $anons->delete();
 
 
-        return redirect()->back()->with('success', 'Анонс успешно отменен, деньги возвращены спонсорам');
+            return redirect()->back()->with('success', 'Анонс успешно отменен, деньги возвращены спонсорам');
+        }
+        else {
+            return redirect()->back();
+        }
+
 
     }
 
     public function editArtworkChapter($id) {
 
         $chapter = Chapter::find($id);
+        $artwork = $chapter->artwork;
+        if($artwork->user_id == Auth::id()) {
 
-        return view('chapter.editChapter')->with([
-            'chapter' => $chapter,
-        ]);
+            return view('chapter.editChapter')->with([
+                'chapter' => $chapter,
+            ]);
+        }
+        else {
+            return redirect()->back();
+        }
 
     }
 
     public function updateArtworkChapter(AddChapterRequest $request) {
 
         $chapter = Chapter::find($request->chapter_id);
+        $artwork = $chapter->artwork;
+        if($artwork->user_id == Auth::id()) {
 
-        $chapter->update([
-            'title' => $request->title,
-            'price' => $request->price,
-            'description' => $request->description,
-        ]);
+            $chapter->update([
+                'title' => $request->title,
+                'price' => $request->price,
+                'description' => $request->description,
+            ]);
 
-        return redirect()->route('bookShow',['id'=>$chapter->artwork->id])->with('success', 'Информация о главе обновлена');
+            return redirect()->route('bookShow', ['id' => $chapter->artwork->id])->with('success', 'Информация о главе обновлена');
+        }
+        else {
+            return redirect()->back();
+        }
 
     }
 
     public function deleteChapter($id) {
 
-        $chapter = Chapter::find($id)->delete();
+        $chapter = Chapter::find($id);
+        $artwork = $chapter->artwork;
+        if($artwork->user_id == Auth::id()) {
+
+            $chapter->delete();
+            return redirect()->back()->with('success', 'Глава успешно удалена');
+        }
+        else {
+            return redirect()->back();
+        }
 
 
-        return redirect()->back()->with('success', 'Глава успешно удалена');
 
     }
 
     public function showChapterFinance($id, $anons) {
 
         $chapter=Chapter::withTrashed()->where('id', $id)->first();
-        $operations=$chapter->financial_operations->sortByDesc('updated_at');
-        $n = 0;
+        $artwork = $chapter->artwork;
+        if($artwork->user_id == Auth::id()) {
+            $operations = $chapter->financial_operations->sortByDesc('updated_at');
+            $n = 0;
 
-        return view('finance.chapterFinancialOperations')
-            ->with(['operations' => $operations,
-            'anons' => $anons,
-            'chapter' => $chapter,
-            'n' => $n,
-        ]);
+            return view('finance.chapterFinancialOperations')
+                ->with(['operations' => $operations,
+                    'anons' => $anons,
+                    'chapter' => $chapter,
+                    'n' => $n,
+                ]);
+        }
+        else {
+            return redirect()->back();
+        }
+
 
     }
 
     public function showUserFinance($id) {
+
+        if($id == Auth::id()) {
 
         $operations=Financial_operation::where('payer_id', $id)->orWhere('receiver_id', $id)->get()->sortByDesc('updated_at');
         $n = 0;
@@ -190,6 +236,11 @@ class authorController extends Controller
             ->with(['operations' => $operations,
                 'n' => $n,
             ]);
+
+            }
+        else {
+            return redirect()->back();
+        }
 
     }
 

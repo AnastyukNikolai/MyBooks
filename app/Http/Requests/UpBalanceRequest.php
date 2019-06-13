@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddMessageRequest extends FormRequest
+class UpBalanceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class AddMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'theme' => 'max:200',
-            'text' => 'required|max:2000',
-            'type' => 'integer'
+
+            'sum' => 'required|integer',
+            'type' => 'required|integer',
+            'check' => 'required|mimes:png,jpg,jpeg'
         ];
     }
 }

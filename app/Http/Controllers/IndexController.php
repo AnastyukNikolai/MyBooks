@@ -25,6 +25,7 @@ class IndexController extends Controller
     public static function indexShow($filter_table = null, $filter_id = null, $sort_param = 'created_at', $search_request = null, $artworksS = null) {
 
         $indexController = new IndexController();
+        $message = null;
 
         if($filter_table != null) {
 
@@ -84,7 +85,12 @@ class IndexController extends Controller
             }
         }
         else {
-            $artworks = $artworks->sortBy('created_at');
+            $artworks = $artworks->sortByDesc('created_at');
+            if ($message == null){
+
+                $message = 'Книг не найдено';
+            }
+            else
             $message .= '; Сортировка по дате добавления';
         }
 
@@ -97,6 +103,8 @@ class IndexController extends Controller
         else {
             $q = null;
         }
+
+
 
         return view('page')->with([
             'artworks' => $artworks,

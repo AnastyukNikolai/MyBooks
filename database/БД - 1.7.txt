@@ -1,4 +1,5 @@
 ﻿
+
 CREATE TABLE Images (
 Id Serial PRIMARY KEY,
 Image_path character varying(250)
@@ -166,40 +167,6 @@ User_id int NOT NULL REFERENCES Users (Id)
 
 
 --------------------------------------------------------------------------------------------------------
-
-
-
-INSERT INTO Images
-(Image_path)
-VALUES
-('/img/Books/sheriff2.jpg'),
-('/img/Languages/ua.png'),
-('/img/Languages/ru.png'),
-('/img/Languages/en.png'),
-('/img/Languages/jp.png');
-
-
-INSERT INTO Languages
-(Title, Image_id)
-VALUES
-('Українська', 2),
-('Русский', 3),
-('English', 4),
-('日本語', 5);
-
-INSERT INTO Categories
-(Title)
-VALUES
-('Развлекательная литература'),
-('Научная литература'),
-('Учебная литература'),
-('Публицистика');
-
-
-INSERT INTO Artworks
-(Title, Views, Image_id, User_id, Language_id, Category_id, Description, Status)
-VALUES
-('Шериф', 407, 1, 1, 2, 1, 'Серьезный человек в игровом мире.', 'Завершено');
 
 
 

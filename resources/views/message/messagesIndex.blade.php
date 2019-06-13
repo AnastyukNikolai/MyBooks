@@ -64,6 +64,7 @@
             </div>
 
             @foreach($messages as $message)
+
                 @if($n%2==0)
                     <div class="row" style="color: snow;background-color: #1d643b;padding-top: 5px;padding-bottom: 5px; border-color: black; border-style: double; margin-bottom: 2px">
                         @else
@@ -90,7 +91,7 @@
                                     </div>
                                 @else
                                     <div class="col-md-3" style="text-align: center">
-                                        @if($message->user->role_id == 1)
+                                        @if($message->user->role_id == 1&&$message->type_id != 4)
                                             Администрация
                                         @else
                                             {{ $message->user->name }}

@@ -6,6 +6,7 @@ use App\Artwork;
 use App\Favorite;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -30,15 +31,21 @@ class FavoriteController extends Controller
 
     public function add($artwork_id, $user_id) {
 
-        $message='Книга успешно добавлена в избранное';
 
-        Favorite::create([
-            'user_id' => $user_id,
-            'artwork_id' => $artwork_id,
-        ]);
+        if($user_id==Auth::id()) {
+            $message = 'Книга успешно добавлена в избранное';
 
-        return redirect()->back()->with('success', $message);
+            Favorite::create([
+                'user_id' => $user_id,
+                'artwork_id' => $artwork_id,
+            ]);
+
+            return redirect()->back()->with('success', $message);
+        }
+
     }
+
+
 
     public function delete($artwork_id, $user_id) {
 

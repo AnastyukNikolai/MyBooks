@@ -56,51 +56,55 @@ class DriveController extends Controller
         }
     }
 
- function uploadFile(AddChapterRequest $request){
+ function uploadFile(AddChapterRequest $request)
+ {
+
+     $artwork = Chapter::find($request->anons_id)->artwork;
+     if ($artwork->user_id == Auth::id()) {
+         $file_id = $this->createFile($request->file('text'));
+
+     if ($request->anons_id) {
+
+         $chapter = Chapter::find($request->anons_id);
+         Chapter::find($request->anons_id)->update([
+             'announcement' => false,
+             'file_id' => $file_id,
+             'min_amount' => null,
+         ]);
+
+         $operations = Financial_operation::where('receiver_id', $chapter->artwork->user->id)
+             ->where('status_id', 3)
+             ->where('type_id', 2)
+             ->get();
+         foreach ($operations as $operation) {
+             if ($operation->chapter->chapter_id == $chapter->id) {
+                 $operation->update([
+                     'status_id' => 1,
+                 ]);
+             }
+         }
+
+         return redirect()->back()->with('success', 'Глава успешно опубликована');
+
+     } else {
 
 
-     $file_id = $this->createFile($request->file('text'));
+         $artwork = Artwork::find($request->artwork_id);
 
-        if($request->anons_id){
+         $chapter = Chapter::create([
+             'title' => $request->title,
+             'price' => $request->price,
+             'artwork_id' => $request->artwork_id,
+             'file_id' => $file_id
+         ]);
 
-            $chapter = Chapter::find($request->anons_id);
-             Chapter::find($request->anons_id)->update([
-                'announcement' => false,
-                'file_id' => $file_id,
-                'min_amount' => null,
-            ]);
+         return redirect()->back()->with('success', 'Глава успешно добавлена');
 
-           $operations = Financial_operation::where('receiver_id', $chapter->artwork->user->id)
-               ->where('status_id', 3)
-               ->where('type_id', 2)
-               ->get();
-        foreach ($operations as $operation) {
-            if($operation->chapter->chapter_id == $chapter->id) {
-                $operation->update([
-                    'status_id' => 1,
-                ]);
-            }
-        }
-
-            return redirect()->back()->with('success', 'Глава успешно опубликована');
-
-        }
-
-        else {
-
-
-            $artwork=Artwork::find($request->artwork_id);
-
-            $chapter = Chapter::create([
-                'title' => $request->title,
-                'price' => $request->price,
-                'artwork_id' => $request->artwork_id,
-                'file_id' => $file_id
-            ]);
-
-            return redirect()->back()->with('success', 'Глава успешно добавлена');
-
-        }
+     }
+ }
+     else {
+         return redirect()->back();
+     }
 
     }
 

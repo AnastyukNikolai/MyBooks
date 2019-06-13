@@ -39,7 +39,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('storeMessage') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('storeMessage', ['id'=>Auth::id()]) }}" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="exampleInputTitle">Тема</label>

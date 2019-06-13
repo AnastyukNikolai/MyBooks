@@ -23,6 +23,10 @@ class Message extends Model
         return $this -> belongsTo('App\User');
     }
 
+    public function image() {
+        return $this -> belongsTo('App\Image');
+    }
+
     public function type() {
         return $this -> belongsTo('App\MessageType');
     }

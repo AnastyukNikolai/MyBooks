@@ -152,6 +152,7 @@
                             <ul class="dropdown-menu">
                                 <li class="third-lvl"><a href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>'2']) }}">Жалобы</a></li>
                                 <li class="third-lvl"><a href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>'3']) }}">Предложения</a></li>
+                                <li class="third-lvl"><a href="{{ route('messagesIndex', ['id'=>Auth::id(), 'type'=>'4']) }}">Финансы</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -251,6 +252,9 @@
                             <hr style="margin: 5px">
                             <a class="dropdown-item" href="{{ route('userFinancialOperations', ['id'=>Auth::id()]) }}">
                                 Мои финансовые операции</a>
+                            <hr style="margin: 5px">
+                            <a class="dropdown-item" href="{{ route('upBalance')}}">
+                                Пополнение баланса</a>
                             <hr style="margin: 5px">
                             <a class="dropdown-item" href="{{ url('logout') }}">
                                 Выход</a>

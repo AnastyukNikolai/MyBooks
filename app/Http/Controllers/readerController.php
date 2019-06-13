@@ -21,9 +21,10 @@ class readerController extends Controller
 
     public function test() {
 
-        $chapters = Chapter::withCount('purchases')->orderBy('purchases_count', 'desc')->get();
-
-        dump($chapters);
+        if(Auth::user()->hasRole('adminisrtrator'));
+        {
+            dump('1234');
+        }
 
     }
 
